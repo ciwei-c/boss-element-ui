@@ -1,0 +1,24 @@
+{
+	"compilerOptions": {
+		"module": "es6",
+		"target": "es5",
+		"outDir": "dist",
+		"allowJs": true,
+		"moduleResolution":"node",
+		"experimentalDecorators": true,
+		"allowSyntheticDefaultImports":true,
+		"strict": true,
+		"lib": [
+			"es5","es2015.promise","dom"
+		],
+		"sourceMap": true,
+		"rootDirs":[
+			"types"
+		]
+	},
+	"exclude": [
+		"dist",
+		"packages",
+		"src"
+	]
+}

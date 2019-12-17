@@ -1,0 +1,40 @@
+{
+    "name": "bosssoft-ui",
+    "version": "0.0.1",
+    "elversion": "2.13.0",
+    "description": "博思软件vue组件",
+    "main": "lib/bosssoft-ui.common.js",
+    "license": "MIT",
+    "author": "huang",
+    "scripts": {
+        "clean": "rimraf lib",
+        "build": "npm run clean && webpack --config ./webpack.dev.js"
+    },
+    "devDependencies": {
+        "axios": "^0.19.0",
+        "babel-core": "^6.26.3",
+        "babel-loader": "^7.1.5",
+        "babel-plugin-syntax-jsx": "^6.18.0",
+        "babel-plugin-transform-runtime": "^6.23.0",
+        "babel-plugin-transform-vue-jsx": "^3.7.0",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-stage-2": "^6.24.1",
+        "css-loader": "^2.1.0",
+        "deepmerge": "^4.2.2",
+        "node-sass": "^4.13.0",
+        "rimraf": "^3.0.0",
+        "vue": "2.5.21",
+        "vue-loader": "^15.7.0",
+        "vue-template-compiler": "2.5.21",
+        "webpack": "^4.41.2",
+        "webpack-cli": "^3.3.10",
+        "webpack-dev-server": "^3.1.11"
+    },
+    "dependencies": {
+        "@babel/polyfill": "^7.6.0",
+        "babel-helper-vue-jsx-merge-props": "^2.0.3",
+        "normalize-wheel": "^1.0.1",
+        "resize-observer-polyfill": "^1.5.1",
+        "throttle-debounce": "^2.1.0"
+    }
+}
