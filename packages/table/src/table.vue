@@ -6,7 +6,11 @@
       'min-width':`${/^\d+$/g.test(minWidth) ? minWidth+'px' : minWidth}`
     }"
   >
-    <div class="boss-table__title" v-if="title || $slots.title"><slot name="title">{{title}}</slot></div>
+    <div 
+      :class="[{
+        'boss-table__title':true,
+        'boss-table__title--border':border
+      }]" v-if="title || $slots.title"><slot name="title">{{title}}</slot></div>
     <div class="boss-table"
       :class="[{
         'boss-table--fit': fit,
@@ -218,7 +222,10 @@
         }"></div>
       <div class="boss-table__column-resize-proxy" ref="resizeProxy" v-show="resizeProxyVisible"></div>
     </div>
-    <div class="boss-table__bottom" v-if="bottom || $slots.bottom"><slot name="bottom">{{bottom}}</slot></div>
+    <div :class="[{
+      'boss-table__bottom':true,
+      'boss-table__bottom--border':border
+    }]" v-if="bottom || $slots.bottom"><slot name="bottom">{{bottom}}</slot></div>
     <table-pagination 
       :table="layout.table"
       :store="layout.store"

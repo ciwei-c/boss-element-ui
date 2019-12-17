@@ -564,8 +564,20 @@
     }
   }
   // 新增样式
-  &-td--editable:hover{
-    color: #0a82e5;
+  @include e(editable-column){
+    position: relative;
+    &:hover{
+      .boss-table__editable-column-button {
+        display: block;
+      }
+    }
+    &-button {
+      display: none;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
   &-editor {
       position: absolute;
@@ -576,6 +588,7 @@
       transform: translateY(-50%);
       > *:first-child {
         flex: 1;
+        padding-left: 10px;
         > .boss-date-editor {
           width: 100%;
         }
@@ -592,9 +605,18 @@
   }
   @include e(title){
     padding: 16px;
+    @include m(border) {
+      border: 1px solid #dfe6ec;
+      border-bottom: 0;
+    }
     border-bottom: 1px solid #dfe6ec;
   }
   @include e(bottom){
+    @include m(border) {
+      border: 1px solid #dfe6ec;
+      border-top: 0;
+      margin-bottom: 10px;
+    }
     padding: 16px;
   }
 }

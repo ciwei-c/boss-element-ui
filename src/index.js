@@ -1,4 +1,5 @@
 import BossInput from '../packages/input/index.js';
+import BossInputNumber from '../packages/input-number/index.js';
 import BossCheckbox from '../packages/checkbox/index.js';
 import BossCheckboxButton from '../packages/checkbox-button/index.js';
 import BossCheckboxGroup from '../packages/checkbox-group/index.js';
@@ -15,9 +16,11 @@ import BossButton from '../packages/button/index.js';
 import BossDatePicker from '../packages/date-picker/index.js';
 import BossTimePicker from '../packages/time-picker/index.js';
 import BossTimeSelect from '../packages/time-select/index.js';
+import BossDialog from '../packages/dialog/index.js';
 
 const components = {
   BossInput,
+  BossInputNumber,
   BossCheckbox,
   BossCheckboxButton,
   BossCheckboxGroup,
@@ -33,7 +36,8 @@ const components = {
   BossButton,
   BossDatePicker,
   BossTimePicker,
-  BossTimeSelect
+  BossTimeSelect,
+  BossDialog
 };
 
 function install(Vue, opts = {}) {

@@ -30,12 +30,12 @@ export default {
     }
   },
   mounted() {
-    this.referenceElm = this.$parent.$refs.reference.$el;
-    this.$parent.popperElm = this.popperElm = this.$el;
-    this.$on("updatePopper", () => {
-      if (this.visible) this.updatePopper();
-    });
-    this.$on("destroyPopper", this.destroyPopper);
+    // this.referenceElm = this.$parent.$refs.reference.$el;
+    // this.$parent.popperElm = this.popperElm = this.$el;
+    // this.$on("updatePopper", () => {
+    //   if (this.visible) this.updatePopper();
+    // });
+    // this.$on("destroyPopper", this.destroyPopper);
   },
   methods: {
     getPanel() {

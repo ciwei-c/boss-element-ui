@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="boss-date-editor-wrap">
     <boss-input
       class="boss-date-editor"
       :class="'boss-date-editor--' + type"
@@ -83,7 +83,7 @@
         class="boss-input__icon boss-range__close-icon"
       ></i>
     </div>
-    <picker-panel ref="panel" :appendToBody="false"/>
+    <picker-panel ref="panel"/>
   </div>
 </template>
 

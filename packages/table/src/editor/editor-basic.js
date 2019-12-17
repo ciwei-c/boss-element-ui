@@ -1,6 +1,5 @@
 export default class EditorBasic {
   constructor(options) {
-    if(EditorBasic.inst) return EditorBasic.inst
     this.store = null
     this.table = null
     this.editorCellMap = []
@@ -16,7 +15,6 @@ export default class EditorBasic {
       up: 38,
       down: 40
     }
-    EditorBasic.inst = this
     for (let name in options) {
       if (options.hasOwnProperty(name)) {
         this[name] = options[name];

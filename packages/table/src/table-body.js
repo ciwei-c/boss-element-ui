@@ -3,7 +3,7 @@ import { getCell, getColumnByCell, getRowIdentity } from './utils/util';
 import { getStyle, hasClass, removeClass, addClass } from 'boss-element-ui/src/utils/dom';
 import BossCheckbox from 'boss-element-ui/packages/checkbox';
 import BossTooltip from 'boss-element-ui/packages/tooltip';
-import {debounce} from 'throttle-debounce';
+import { debounce } from 'throttle-debounce';
 import LayoutObserver from './utils/layout-observer';
 import { mapStates } from './store/helper';
 import EditorCell from './editor/editor-cell.vue'
@@ -43,7 +43,7 @@ export default {
         border="0">
         <colgroup>
           {
-            this.columns.map(column => <col name={ column.id } key={column.id} />)
+            this.columns.map(column => <col name={column.id} key={column.id} />)
           }
         </colgroup>
         <tbody>
@@ -52,27 +52,27 @@ export default {
               return acc.concat(this.wrappedRowRender(row, acc.length));
             }, [])
           }
-          <boss-tooltip effect={ this.table.tooltipEffect } placement="top" ref="tooltip" content={ this.tooltipContent }></boss-tooltip>
+          <boss-tooltip effect={this.table.tooltipEffect} placement="top" ref="tooltip" content={this.tooltipContent}></boss-tooltip>
         </tbody>
       </table>
     );
   },
-  updated(){
+  updated() {
     this.editorBasic.update()
   },
   computed: {
     table() {
       return this.$parent;
     },
-    
-    editorBasic(){
+
+    editorBasic() {
       return new EditorBasic({
-        table:this.table,
-        store:this.store
+        table: this.table,
+        store: this.store
       })
     },
     ...mapStates({
-      editorCellPosition:'editorCellPosition',
+      editorCellPosition: 'editorCellPosition',
       data: 'data',
       columns: 'columns',
       treeIndent: 'indent',
@@ -112,11 +112,13 @@ export default {
 
   data() {
     return {
-      tooltipContent: ''
+      tooltipContent: '',
+      states:this.store.states
     };
   },
 
   created() {
+    
     this.activateTooltip = debounce(50, tooltip => tooltip.handleShowPopper());
   },
 
@@ -247,7 +249,7 @@ export default {
 
       if (cell) {
         const column = getColumnByCell(table, cell);
-        const hoverState = table.hoverState = {cell, column, row};
+        const hoverState = table.hoverState = { cell, column, row };
         table.$emit('cell-mouse-enter', hoverState.row, hoverState.column, hoverState.cell, event);
       }
 
@@ -288,11 +290,11 @@ export default {
       this.table.$emit('cell-mouse-leave', oldHoverState.row, oldHoverState.column, oldHoverState.cell, event);
     },
 
-    handleMouseEnter: debounce(30, function(index) {
+    handleMouseEnter: debounce(30, function (index) {
       this.store.commit('setHoverRow', index);
     }),
 
-    handleMouseLeave: debounce(30, function() {
+    handleMouseLeave: debounce(30, function () {
       this.store.commit('setHoverRow', null);
     }),
 
@@ -333,14 +335,14 @@ export default {
       }
       return (<tr
         v-show={display}
-        style={ this.getRowStyle(row, $index) }
-        class={ rowClasses }
-        key={ this.getKeyOfRow(row, $index) }
-        on-dblclick={ ($event) => this.handleDoubleClick($event, row) }
-        on-click={ ($event) => this.handleClick($event, row) }
-        on-contextmenu={ ($event) => this.handleContextMenu($event, row) }
-        on-mouseenter={ _ => this.handleMouseEnter($index) }
-        on-mouseleave={ this.handleMouseLeave }>
+        style={this.getRowStyle(row, $index)}
+        class={rowClasses}
+        key={this.getKeyOfRow(row, $index)}
+        on-dblclick={($event) => this.handleDoubleClick($event, row)}
+        on-click={($event) => this.handleClick($event, row)}
+        on-contextmenu={($event) => this.handleContextMenu($event, row)}
+        on-mouseenter={_ => this.handleMouseEnter($index)}
+        on-mouseleave={this.handleMouseLeave}>
         {
           columns.map((column, cellIndex) => {
             const { rowspan, colspan } = this.getSpan(row, column, $index, cellIndex);
@@ -372,45 +374,54 @@ export default {
                 }
               }
             }
-            let editable = 
+            let editable =
               column.type === 'default'
-              && typeof column.editable === 'function' ? column.editable(row, $index, treeRowData) : column.editable
-              && this.$parent.editable
-            if( treeRowData && !treeRowData.display && treeRowData !== 0) editable = false
-            this.editorBasic.setEditorMap(editable,$index,cellIndex)
-            let editableVisible =  this.store.states.editorCellPosition.$index === $index && this.store.states.editorCellPosition.cellIndex === cellIndex
+                && typeof column.editable === 'function' ? column.editable(row, $index, treeRowData) : column.editable
+                && this.$parent.editable
+            if (treeRowData && !treeRowData.display && treeRowData !== 0) editable = false
+            this.editorBasic.setEditorMap(editable, $index, cellIndex)
+            let editableVisible = this.isEditableVisible({ $index, cellIndex })
             return (
               <td
-                style={ this.getCellStyle($index, cellIndex, row, column) }
-                class={ [this.getCellClass($index, cellIndex, row, column), editable ? "boss-table-td--editable" : ""] }
-                rowspan={ rowspan }
-                colspan={ colspan }
-                on-click={()=>{
-                  this.editorBasic.updateEditCellPosition({editable, $index, cellIndex, row, column})
-                }}
-                on-mouseenter={ ($event) => this.handleCellMouseEnter($event, row) }
-                on-mouseleave={ this.handleCellMouseLeave }>
+                style={this.getCellStyle($index, cellIndex, row, column)}
+                class={[this.getCellClass($index, cellIndex, row, column), editable ? "boss-table__editable-column" : ""]}
+                rowspan={rowspan}
+                colspan={colspan}
+                on-mouseenter={($event) => this.handleCellMouseEnter($event, row)}
+                on-mouseleave={this.handleCellMouseLeave}>
                 {
                   editable && editableVisible
-                  ?
-                  <editor-cell 
-                    $index={ $index }
-                    cellIndex={ cellIndex }
-                    editorBasic={ this.editorBasic }
-                    row={ row }
-                    column={ column }
-                    table={ this.table }
-                    store={ this.store }
-                  /> : null
+                    ?
+                    <editor-cell
+                      $index={$index}
+                      cellIndex={cellIndex}
+                      editorBasic={this.editorBasic}
+                      row={row}
+                      column={column}
+                      table={this.table}
+                      store={this.store}
+                    /> : null
                 }
                 {
                   editableVisible ? null :
-                  column.renderCell.call(
-                    this._renderProxy,
-                    this.$createElement,
-                    data,
-                    columnsHidden[cellIndex]
-                  )
+                    column.renderCell.call(
+                      this._renderProxy,
+                      this.$createElement,
+                      data,
+                      columnsHidden[cellIndex]
+                    )
+                }
+                {
+                  editable && !editableVisible ?
+                  <boss-button 
+                    class="boss-table__editable-column-button"  
+                    type="text"
+                    on-click={(e) => {
+                      e.stopPropagation()
+                      e.preventDefault()
+                      this.editorBasic.updateEditCellPosition({ editable, $index, cellIndex, row, column })
+                    }}
+                  ><i class="boss-icon-edit"></i></boss-button> : null
                 }
               </td>
             );
@@ -418,7 +429,9 @@ export default {
         }
       </tr>);
     },
-
+    isEditableVisible({ $index, cellIndex }) {
+      return this.store.states.editorCellPosition.$index === $index && this.store.states.editorCellPosition.cellIndex === cellIndex
+    },
     wrappedRowRender(row, $index) {
       const store = this.store;
       const { isRowExpanded, assertRowKey } = store;
@@ -434,8 +447,8 @@ export default {
         return [[
           tr,
           <tr key={'expanded-row__' + tr.key}>
-            <td colspan={ this.columnsCount } class="boss-table__expanded-cell">
-              { renderExpanded(this.$createElement, { row, $index, store: this.store }) }
+            <td colspan={this.columnsCount} class="boss-table__expanded-cell">
+              {renderExpanded(this.$createElement, { row, $index, store: this.store })}
             </td>
           </tr>]];
       } else if (Object.keys(treeData).length) {

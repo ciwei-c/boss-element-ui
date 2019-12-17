@@ -182,6 +182,7 @@ export default Vue.extend({
     },
 
     toggleRowSelection(row, selected, emitChange = true) {
+
       if(!this.beforeSelect(row)) return
       const changed = toggleRowStatus(this.states.selection, row, selected, this.states.data);
       if (changed) {
