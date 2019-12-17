@@ -1,0 +1,132 @@
+// cover some element-ui styles
+
+.boss-breadcrumb__inner,
+.boss-breadcrumb__inner a {
+  font-weight: 400 !important;
+}
+
+.boss-upload {
+  input[type="file"] {
+    display: none !important;
+  }
+}
+
+.boss-upload__input {
+  display: none;
+}
+
+.cell {
+  .boss-tag {
+    margin-right: 0px;
+  }
+}
+
+.small-padding {
+  .cell {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+.fixed-width {
+  .boss-button--mini {
+    padding: 7px 10px;
+    width: 60px;
+  }
+}
+
+.status-col {
+  .cell {
+    padding: 0 10px;
+    text-align: center;
+
+    .boss-tag {
+      margin-right: 0px;
+    }
+  }
+}
+
+// to fixed https://github.com/ElemeFE/element/issues/2461
+.boss-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+}
+
+// refine element ui upload
+.upload-container {
+  .boss-upload {
+    width: 100%;
+
+    .boss-upload-dragger {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}
+
+// dropdown
+.boss-dropdown-menu {
+  a {
+    display: block
+  }
+}
+
+// fix date-picker ui bug in filter-item
+.boss-range-editor.boss-input__inner {
+  display: inline-flex !important;
+}
+
+.boss-header,
+.boss-footer {
+  display: block !important;
+  overflow: auto;
+}
+
+.boss-aside {
+  background-color: #fff;
+  display: block !important;
+  overflow: auto;
+  margin-bottom: 0;
+}
+
+.boss-main {
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  padding: 0 !important;
+}
+
+.boss-container {
+  height: 100%;
+  overflow: auto;
+}
+
+.boss-row {
+  margin-bottom: 10px;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.boss-dropdown-menu__item {
+  font-size: 12px;
+  line-height: 28px;
+}
+
+.boss-menu--horizontal {
+  border-bottom: none !important;
+}
+
+.boss-menu {
+  border-right: 0 !important;
+}
+
+.boss-menu--collapse .boss-menu--display,
+.boss-menu--collapse .boss-menu--display+.boss-submenu__icon-arrow {
+  display: none;
+}
