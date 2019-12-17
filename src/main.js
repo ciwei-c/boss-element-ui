@@ -5,10 +5,10 @@ import router from './router'
 
 Vue.config.productionTip = false
 
-import BosssoftUI from "bosssoft-ui/src"
-import "bosssoft-ui/packages/theme-chalk/src/index.scss"
+import BossElementUI from "boss-element-ui/src"
+import "boss-element-ui/packages/theme-chalk/src/index.scss"
 
-Vue.use(BosssoftUI)
+Vue.use(BossElementUI)
 
 new Vue({
   router,
