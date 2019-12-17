@@ -1,4 +1,4 @@
-import { getValueByPath } from 'bosssoft-ui/src/utils/util';
+import { getValueByPath } from 'boss-element-ui/src/utils/util';
 export const deepClone = function(source){
   if(!source) return source
   if (!source && typeof source !== 'object') {

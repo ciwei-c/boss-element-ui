@@ -1,6 +1,6 @@
 import Vue from 'vue';
-import { hasClass, addClass, removeClass } from 'bosssoft-ui/src/utils/dom';
-import BossCheckbox from 'bosssoft-ui/packages/checkbox';
+import { hasClass, addClass, removeClass } from 'boss-element-ui/src/utils/dom';
+import BossCheckbox from 'boss-element-ui/packages/checkbox';
 import FilterPanel from './filter/filter-panel.vue';
 import LayoutObserver from './utils/layout-observer';
 import { mapStates } from './store/helper';

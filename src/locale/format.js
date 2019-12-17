@@ -1,4 +1,4 @@
-import { hasOwn } from 'bosssoft-ui/src/utils/util';
+import { hasOwn } from 'boss-element-ui/src/utils/util';
 
 const RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g;
 /**

@@ -149,7 +149,7 @@
 </template>
 
 <script type="text/babel">
-  import Popper from 'bosssoft-ui/src/utils/vue-popper';
+  import Popper from 'boss-element-ui/src/utils/vue-popper';
   import {
     formatDate,
     parseDate,
@@ -168,11 +168,11 @@
     extractDateFormat,
     extractTimeFormat,
     timeWithinRange
-  } from 'bosssoft-ui/src/utils/date-util';
-  import Clickoutside from 'bosssoft-ui/src/utils/clickoutside';
-  import Locale from 'bosssoft-ui/src/mixins/locale';
-  import BossInput from 'bosssoft-ui/packages/input';
-  import BossButton from 'bosssoft-ui/packages/button';
+  } from 'boss-element-ui/src/utils/date-util';
+  import Clickoutside from 'boss-element-ui/src/utils/clickoutside';
+  import Locale from 'boss-element-ui/src/mixins/locale';
+  import BossInput from 'boss-element-ui/packages/input';
+  import BossButton from 'boss-element-ui/packages/button';
   import TimePicker from './time';
   import YearTable from '../basic/year-table';
   import MonthTable from '../basic/month-table';

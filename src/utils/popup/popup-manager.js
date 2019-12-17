@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { addClass, removeClass } from 'bosssoft-ui/src/utils/dom';
+import { addClass, removeClass } from 'boss-element-ui/src/utils/dom';
 
 let hasModal = false;
 let hasInitZIndex = false;

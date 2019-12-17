@@ -1,9 +1,9 @@
 import Pager from './pager.vue';
-import BossSelect from 'bosssoft-ui/packages/select';
-import BossOption from 'bosssoft-ui/packages/option';
-import BossInput from 'bosssoft-ui/packages/input';
-import Locale from 'bosssoft-ui/src/mixins/locale';
-import { valueEquals } from 'bosssoft-ui/src/utils/util';
+import BossSelect from 'boss-element-ui/packages/select';
+import BossOption from 'boss-element-ui/packages/option';
+import BossInput from 'boss-element-ui/packages/input';
+import Locale from 'boss-element-ui/src/mixins/locale';
+import { valueEquals } from 'boss-element-ui/src/utils/util';
 
 export default {
   name: 'BossPagination',

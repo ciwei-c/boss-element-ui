@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import merge from 'bosssoft-ui/src/utils/merge';
+import merge from 'boss-element-ui/src/utils/merge';
 import { getKeysMap, getRowIdentity, getColumnById, getColumnByKey, orderBy, toggleRowStatus, deepClone } from '../utils/util';
 import expand from './expand';
 import current from './current';

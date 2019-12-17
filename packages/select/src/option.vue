@@ -16,8 +16,8 @@
 </template>
 
 <script type="text/babel">
-  import Emitter from 'bosssoft-ui/src/mixins/emitter';
-  import { getValueByPath, escapeRegexpString } from 'bosssoft-ui/src/utils/util';
+  import Emitter from 'boss-element-ui/src/mixins/emitter';
+  import { getValueByPath, escapeRegexpString } from 'boss-element-ui/src/utils/util';
 
   export default {
     mixins: [Emitter],

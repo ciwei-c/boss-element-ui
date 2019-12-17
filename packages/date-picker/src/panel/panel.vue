@@ -13,7 +13,7 @@ import MonthRangePanel from "./month-range";
 import TimePanel from "./time";
 import TimeRangePanel from "./time-range";
 import TimeSelectPanel from "../panel/time-select";
-import Popper from "bosssoft-ui/src/utils/vue-popper";
+import Popper from "boss-element-ui/src/utils/vue-popper";
 export default {
   mixins: [Popper],
   components: {

@@ -108,11 +108,11 @@
   </div>
 </template>
 <script>
-  import emitter from 'bosssoft-ui/src/mixins/emitter';
-  import Migrating from 'bosssoft-ui/src/mixins/migrating';
+  import emitter from 'boss-element-ui/src/mixins/emitter';
+  import Migrating from 'boss-element-ui/src/mixins/migrating';
   import calcTextareaHeight from './calcTextareaHeight';
-  import merge from 'bosssoft-ui/src/utils/merge';
-  import {isKorean} from 'bosssoft-ui/src/utils/shared';
+  import merge from 'boss-element-ui/src/utils/merge';
+  import {isKorean} from 'boss-element-ui/src/utils/shared';
 
   export default {
     name: 'BossInput',

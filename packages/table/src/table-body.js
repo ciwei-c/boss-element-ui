@@ -1,14 +1,14 @@
-import { arrayFindIndex } from 'bosssoft-ui/src/utils/util';
+import { arrayFindIndex } from 'boss-element-ui/src/utils/util';
 import { getCell, getColumnByCell, getRowIdentity } from './utils/util';
-import { getStyle, hasClass, removeClass, addClass } from 'bosssoft-ui/src/utils/dom';
-import BossCheckbox from 'bosssoft-ui/packages/checkbox';
-import BossTooltip from 'bosssoft-ui/packages/tooltip';
+import { getStyle, hasClass, removeClass, addClass } from 'boss-element-ui/src/utils/dom';
+import BossCheckbox from 'boss-element-ui/packages/checkbox';
+import BossTooltip from 'boss-element-ui/packages/tooltip';
 import {debounce} from 'throttle-debounce';
 import LayoutObserver from './utils/layout-observer';
 import { mapStates } from './store/helper';
 import EditorCell from './editor/editor-cell.vue'
 import EditorBasic from './editor/editor-basic'
-import BossButton from 'bosssoft-ui/packages/button';
+import BossButton from 'boss-element-ui/packages/button';
 export default {
   name: 'BossTableBody',
 

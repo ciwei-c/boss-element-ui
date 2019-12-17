@@ -19,8 +19,8 @@
 </template>
 
 <script type="text/babel">
-  import BossScrollbar from 'bosssoft-ui/components/scrollbar';
-  import scrollIntoView from 'bosssoft-ui/src/utils/scroll-into-view';
+  import BossScrollbar from 'boss-element-ui/packages/scrollbar';
+  import scrollIntoView from 'boss-element-ui/src/utils/scroll-into-view';
 
   const parseTime = function(time) {
     const values = (time || '').split(':');

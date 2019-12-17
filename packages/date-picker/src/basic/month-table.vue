@@ -13,10 +13,10 @@
 </template>
 
 <script type="text/babel">
-  import Locale from 'bosssoft-ui/src/mixins/locale';
-  import { isDate, range, getDayCountOfMonth, nextDate } from 'bosssoft-ui/src/utils/date-util';
-  import { hasClass } from 'bosssoft-ui/src/utils/dom';
-  import { arrayFindIndex, coerceTruthyValueToArray, arrayFind } from 'bosssoft-ui/src/utils/util';
+  import Locale from 'boss-element-ui/src/mixins/locale';
+  import { isDate, range, getDayCountOfMonth, nextDate } from 'boss-element-ui/src/utils/date-util';
+  import { hasClass } from 'boss-element-ui/src/utils/dom';
+  import { arrayFindIndex, coerceTruthyValueToArray, arrayFind } from 'boss-element-ui/src/utils/util';
 
   const datesInMonth = (year, month) => {
     const numOfDays = getDayCountOfMonth(year, month);

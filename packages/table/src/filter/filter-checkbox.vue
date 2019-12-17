@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-import BossScrollbar from 'bosssoft-ui/packages/scrollbar';
+import BossScrollbar from 'boss-element-ui/packages/scrollbar';
 export default {
   components:{
     BossScrollbar

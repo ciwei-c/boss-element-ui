@@ -1,4 +1,4 @@
-import { getPropByPath } from 'bosssoft-ui/src/utils/util';
+import { getPropByPath } from 'boss-element-ui/src/utils/util';
 
 export const cellStarts = {
   default: {

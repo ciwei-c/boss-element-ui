@@ -89,18 +89,18 @@
 
 <script>
 import Vue from "vue";
-import Clickoutside from "bosssoft-ui/src/utils/clickoutside";
+import Clickoutside from "boss-element-ui/src/utils/clickoutside";
 import PickerPanel from "./panel/panel"
 import {
   formatDate,
   parseDate,
   isDateObject,
   getWeekNumber
-} from "bosssoft-ui/src/utils/date-util";
-import Popper from "bosssoft-ui/src/utils/vue-popper";
-import Emitter from "bosssoft-ui/src/mixins/emitter";
-import BossInput from "bosssoft-ui/packages/input";
-import merge from "bosssoft-ui/src/utils/merge";
+} from "boss-element-ui/src/utils/date-util";
+import Popper from "boss-element-ui/src/utils/vue-popper";
+import Emitter from "boss-element-ui/src/mixins/emitter";
+import BossInput from "boss-element-ui/packages/input";
+import merge from "boss-element-ui/src/utils/merge";
 
 const NewPopper = {
   props: {

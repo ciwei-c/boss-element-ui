@@ -36,10 +36,10 @@
 </template>
 
 <script type="text/babel">
-  import Popper from 'bosssoft-ui/src/utils/vue-popper';
-  import { PopupManager } from 'bosssoft-ui/src/utils/popup';
-  import Locale from 'bosssoft-ui/src/mixins/locale';
-  import Clickoutside from 'bosssoft-ui/src/utils/clickoutside';
+  import Popper from 'boss-element-ui/src/utils/vue-popper';
+  import { PopupManager } from 'boss-element-ui/src/utils/popup';
+  import Locale from 'boss-element-ui/src/mixins/locale';
+  import Clickoutside from 'boss-element-ui/src/utils/clickoutside';
   import Dropdown from './dropdown';
   import FilterCheckbox from './filter-checkbox';
 

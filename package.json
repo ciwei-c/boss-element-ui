@@ -1,9 +1,9 @@
 {
-    "name": "bosssoft-ui",
+    "name": "boss-element-ui",
     "version": "0.0.1",
     "elversion": "2.13.0",
     "description": "博思软件vue组件",
-    "main": "lib/bosssoft-ui.common.js",
+    "main": "lib/boss-element-ui.common.js",
     "license": "MIT",
     "author": "huang",
     "scripts": {

@@ -1,7 +1,7 @@
 <script>
-import BossInput from "bosssoft-ui/packages/input";
-import BossSelect from "bosssoft-ui/packages/select";
-import BossDatePicker from "bosssoft-ui/packages/date-picker";
+import BossInput from "boss-element-ui/packages/input";
+import BossSelect from "boss-element-ui/packages/select";
+import BossDatePicker from "boss-element-ui/packages/date-picker";
 export default {
   components: { BossInput, BossSelect, BossDatePicker },
   render() {

@@ -8,7 +8,7 @@
 </template>
 
 <script type="text/babel">
-  import Popper from 'bosssoft-ui/src/utils/vue-popper';
+  import Popper from 'boss-element-ui/src/utils/vue-popper';
 
   export default {
     name: 'BossSelectDropdown',

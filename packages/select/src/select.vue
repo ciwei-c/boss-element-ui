@@ -134,22 +134,22 @@
 </template>
 
 <script type="text/babel">
-  import Emitter from 'bosssoft-ui/src/mixins/emitter';
-  import Focus from 'bosssoft-ui/src/mixins/focus';
-  import Locale from 'bosssoft-ui/src/mixins/locale';
-  import BossInput from 'bosssoft-ui/packages/input';
+  import Emitter from 'boss-element-ui/src/mixins/emitter';
+  import Focus from 'boss-element-ui/src/mixins/focus';
+  import Locale from 'boss-element-ui/src/mixins/locale';
+  import BossInput from 'boss-element-ui/packages/input';
   import BossSelectMenu from './select-dropdown.vue';
   import BossOption from './option.vue';
-  import BossTag from 'bosssoft-ui/packages/tag';
-  import BossScrollbar from 'bosssoft-ui/packages/scrollbar';
+  import BossTag from 'boss-element-ui/packages/tag';
+  import BossScrollbar from 'boss-element-ui/packages/scrollbar';
   import {debounce} from 'throttle-debounce';
-  import Clickoutside from 'bosssoft-ui/src/utils/clickoutside';
-  import { addResizeListener, removeResizeListener } from 'bosssoft-ui/src/utils/resize-event';
-  import { t } from 'bosssoft-ui/src/locale';
-  import scrollIntoView from 'bosssoft-ui/src/utils/scroll-into-view';
-  import { getValueByPath, valueEquals, isIE, isEdge } from 'bosssoft-ui/src/utils/util';
+  import Clickoutside from 'boss-element-ui/src/utils/clickoutside';
+  import { addResizeListener, removeResizeListener } from 'boss-element-ui/src/utils/resize-event';
+  import { t } from 'boss-element-ui/src/locale';
+  import scrollIntoView from 'boss-element-ui/src/utils/scroll-into-view';
+  import { getValueByPath, valueEquals, isIE, isEdge } from 'boss-element-ui/src/utils/util';
   import NavigationMixin from './navigation-mixin';
-  import { isKorean } from 'bosssoft-ui/src/utils/shared';
+  import { isKorean } from 'boss-element-ui/src/utils/shared';
 
   export default {
     mixins: [Emitter, Locale, Focus('reference'), NavigationMixin],

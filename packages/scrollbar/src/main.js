@@ -1,8 +1,8 @@
 // reference https://github.com/noeldelgado/gemini-scrollbar/blob/master/index.js
 
-import { addResizeListener, removeResizeListener } from 'bosssoft-ui/src/utils/resize-event';
-import scrollbarWidth from 'bosssoft-ui/src/utils/scrollbar-width';
-import { toObject } from 'bosssoft-ui/src/utils/util';
+import { addResizeListener, removeResizeListener } from 'boss-element-ui/src/utils/resize-event';
+import scrollbarWidth from 'boss-element-ui/src/utils/scrollbar-width';
+import { toObject } from 'boss-element-ui/src/utils/util';
 import Bar from './bar';
 
 /* istanbul ignore next */

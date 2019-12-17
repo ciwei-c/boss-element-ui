@@ -1,5 +1,5 @@
-import fecha from 'bosssoft-ui/src/utils/date';
-import { t } from 'bosssoft-ui/src/locale';
+import fecha from 'boss-element-ui/src/utils/date';
+import { t } from 'boss-element-ui/src/locale';
 
 const weeks = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];

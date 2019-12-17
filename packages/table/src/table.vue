@@ -229,14 +229,14 @@
 </template>
 
 <script type="text/babel">
-  import BossCheckbox from 'bosssoft-ui/packages/checkbox';
+  import BossCheckbox from 'boss-element-ui/packages/checkbox';
   import DynamicTable from './utils/dynamic-table'
   import TablePagination from './pagination'
   import { debounce, throttle } from 'throttle-debounce';
-  import { addResizeListener, removeResizeListener } from 'bosssoft-ui/src/utils/resize-event';
-  import Mousewheel from 'bosssoft-ui/src/directives/mousewheel';
-  import Locale from 'bosssoft-ui/src/mixins/locale';
-  import Migrating from 'bosssoft-ui/src/mixins/migrating';
+  import { addResizeListener, removeResizeListener } from 'boss-element-ui/src/utils/resize-event';
+  import Mousewheel from 'boss-element-ui/src/directives/mousewheel';
+  import Locale from 'boss-element-ui/src/mixins/locale';
+  import Migrating from 'boss-element-ui/src/mixins/migrating';
   import { createStore, mapStates } from './store/helper';
   import TableLayout from './table-layout';
   import TableBody from './table-body';

@@ -1,7 +1,7 @@
-import Popper from 'bosssoft-ui/src/utils/vue-popper';
+import Popper from 'boss-element-ui/src/utils/vue-popper';
 import { debounce } from 'throttle-debounce';
-import { addClass, removeClass, on, off } from 'bosssoft-ui/src/utils/dom';
-import { generateId } from 'bosssoft-ui/src/utils/util';
+import { addClass, removeClass, on, off } from 'boss-element-ui/src/utils/dom';
+import { generateId } from 'boss-element-ui/src/utils/util';
 import popervm from './poper-vm.vue'
 import Vue from 'vue';
 

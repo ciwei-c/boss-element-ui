@@ -31,8 +31,8 @@
 </template>
 
 <script type="text/babel">
-  import { limitTimeRange, isDate, clearMilliseconds, timeWithinRange } from 'bosssoft-ui/src/utils/date-util';
-  import Locale from 'bosssoft-ui/src/mixins/locale';
+  import { limitTimeRange, isDate, clearMilliseconds, timeWithinRange } from 'boss-element-ui/src/utils/date-util';
+  import Locale from 'boss-element-ui/src/mixins/locale';
   import TimeSpinner from '../basic/time-spinner';
 
   export default {

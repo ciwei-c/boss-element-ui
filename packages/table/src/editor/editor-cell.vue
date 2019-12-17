@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-import BossButton from "bosssoft-ui/packages/button";
+import BossButton from "boss-element-ui/packages/button";
 import EditorWidget from "./editor-widget"
 export default {
   components: { BossButton, EditorWidget},

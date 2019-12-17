@@ -202,13 +202,13 @@
     nextDate,
     extractDateFormat,
     extractTimeFormat
-  } from 'bosssoft-ui/src/utils/date-util';
-  import Clickoutside from 'bosssoft-ui/src/utils/clickoutside';
-  import Locale from 'bosssoft-ui/src/mixins/locale';
+  } from 'boss-element-ui/src/utils/date-util';
+  import Clickoutside from 'boss-element-ui/src/utils/clickoutside';
+  import Locale from 'boss-element-ui/src/mixins/locale';
   import TimePicker from './time';
   import DateTable from '../basic/date-table';
-  import BossInput from 'bosssoft-ui/packages/input';
-  import BossButton from 'bosssoft-ui/packages/button';
+  import BossInput from 'boss-element-ui/packages/input';
+  import BossButton from 'boss-element-ui/packages/button';
 
   const calcDefaultValue = (defaultValue) => {
     if (Array.isArray(defaultValue)) {

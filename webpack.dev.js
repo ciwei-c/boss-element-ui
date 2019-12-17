@@ -9,17 +9,17 @@ module.exports = {
   output: {
     path: path.resolve(process.cwd(), './lib'),
     publicPath: '/lib/',
-    filename: 'bosssoft-ui.common.js',
+    filename: 'boss-element-ui.common.js',
     chunkFilename: '[id].js',
     libraryExport: 'default',
-    library: 'BOSSSOFTUI',
+    library: 'BOSSELEMENTUI',
     libraryTarget: 'commonjs2'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     modules: ['node_modules'],
     alias: {
-      "bosssoft-ui": path.resolve("./")
+      "boss-element-ui": path.resolve("./")
     }
   },
   module: {

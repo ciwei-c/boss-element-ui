@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Watcher from './watcher';
-import { arrayFind } from 'bosssoft-ui/src/utils/util';
+import { arrayFind } from 'boss-element-ui/src/utils/util';
 import { deepClone } from '../utils/util'
 
 Watcher.prototype.mutations = {

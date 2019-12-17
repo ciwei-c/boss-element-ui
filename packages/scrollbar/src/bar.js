@@ -1,4 +1,4 @@
-import { on, off } from 'bosssoft-ui/src/utils/dom';
+import { on, off } from 'boss-element-ui/src/utils/dom';
 import { renderThumbStyle, BAR_MAP } from './util';
 
 /* istanbul ignore next */

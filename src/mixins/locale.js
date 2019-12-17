@@ -1,4 +1,4 @@
-import { t } from 'bosssoft-ui/src/locale';
+import { t } from 'boss-element-ui/src/locale';
 
 export default {
   methods: {

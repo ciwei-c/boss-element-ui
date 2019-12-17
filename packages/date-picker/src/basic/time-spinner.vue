@@ -101,9 +101,9 @@
 </template>
 
 <script type="text/babel">
-  import { getRangeHours, getRangeMinutes, modifyTime } from 'bosssoft-ui/src/utils/date-util';
-  import BossScrollbar from 'bosssoft-ui/packages/scrollbar';
-  import RepeatClick from 'bosssoft-ui/src/directives/repeat-click';
+  import { getRangeHours, getRangeMinutes, modifyTime } from 'boss-element-ui/src/utils/date-util';
+  import BossScrollbar from 'boss-element-ui/packages/scrollbar';
+  import RepeatClick from 'boss-element-ui/src/directives/repeat-click';
 
   export default {
     components: { BossScrollbar },

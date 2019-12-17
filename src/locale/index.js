@@ -1,4 +1,4 @@
-import defaultLang from 'bosssoft-ui/src/locale/lang/zh-CN';
+import defaultLang from 'boss-element-ui/src/locale/lang/zh-CN';
 import Vue from 'vue';
 import deepmerge from 'deepmerge';
 import Format from './format';

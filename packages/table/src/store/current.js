@@ -1,4 +1,4 @@
-import { arrayFind } from 'bosssoft-ui/src/utils/util';
+import { arrayFind } from 'boss-element-ui/src/utils/util';
 import { getRowIdentity } from '../utils/util';
 
 export default {

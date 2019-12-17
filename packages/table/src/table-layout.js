@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import scrollbarWidth from 'bosssoft-ui/src/utils/scrollbar-width';
+import scrollbarWidth from 'boss-element-ui/src/utils/scrollbar-width';
 import { parseHeight } from './utils/util';
 
 class TableLayout {

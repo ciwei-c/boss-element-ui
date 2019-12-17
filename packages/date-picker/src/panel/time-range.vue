@@ -62,8 +62,8 @@
     modifyDate,
     clearMilliseconds,
     timeWithinRange
-  } from 'bosssoft-ui/src/utils/date-util';
-  import Locale from 'bosssoft-ui/src/mixins/locale';
+  } from 'boss-element-ui/src/utils/date-util';
+  import Locale from 'boss-element-ui/src/mixins/locale';
   import TimeSpinner from '../basic/time-spinner';
 
   const MIN_TIME = parseDate('00:00:00', 'HH:mm:ss');

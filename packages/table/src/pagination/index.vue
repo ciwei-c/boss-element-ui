@@ -22,7 +22,7 @@
   </div>
 </template>
 <script>
-import BossPagination from "bosssoft-ui/packages/pagination";
+import BossPagination from "boss-element-ui/packages/pagination";
 import property from "./property";
 export default {
   name: "BossTablePagination",

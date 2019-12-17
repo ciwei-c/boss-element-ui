@@ -44,9 +44,9 @@
 </template>
 
 <script type="text/babel">
-  import { hasClass } from 'bosssoft-ui/src/utils/dom';
-  import { isDate, range, nextDate, getDayCountOfYear } from 'bosssoft-ui/src/utils/date-util';
-  import { arrayFindIndex, coerceTruthyValueToArray } from 'bosssoft-ui/src/utils/util';
+  import { hasClass } from 'boss-element-ui/src/utils/dom';
+  import { isDate, range, nextDate, getDayCountOfYear } from 'boss-element-ui/src/utils/date-util';
+  import { arrayFindIndex, coerceTruthyValueToArray } from 'boss-element-ui/src/utils/util';
 
   const datesInYear = year => {
     const numOfDays = getDayCountOfYear(year);

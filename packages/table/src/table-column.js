@@ -1,6 +1,6 @@
 import { cellStarts, cellForced, defaultRenderCell, treeCellPrefix } from './utils/config';
 import { mergeOptions, parseWidth, parseMinWidth, compose } from './utils/util';
-import BossCheckbox from 'bosssoft-ui/packages/checkbox';
+import BossCheckbox from 'boss-element-ui/packages/checkbox';
 
 let columnIdSeed = 1;
 
