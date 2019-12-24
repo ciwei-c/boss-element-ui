@@ -26,6 +26,6 @@ module.exports = [
     enableMock: true,
     name: 'table',
     url: '/tables',
-    method: 'get',
+    method: 'post',
   },
 ];

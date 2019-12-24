@@ -1,28 +1,21 @@
 <template>
   <div class="app">
-    <navs />
-    <route-wrap />
+    <demo-header />
+    <demo-main />
   </div>
 </template>
 
 <script>
-import Navs from "@/components/Navs";
-import RouteWrap from "@/components/RouteWrap";
+import DemoMain from "@/components/DemoMain";
+import DemoHeader from "@/components/DemoHeader";
 export default {
-  components: { Navs, RouteWrap }
+  components: { DemoMain,DemoHeader }
 };
 </script>
-<style lang="scss">
-* {
-  margin: 0;
-  padding: 0;
-}
-a {
-  text-decoration: none;
-}
-</style>
 <style lang="scss" scoped>
 .app {
-  padding: 0 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 </style>

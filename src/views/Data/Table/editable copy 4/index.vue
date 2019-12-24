@@ -1,5 +1,5 @@
 <template>
-  <div class="component-demo">
+  <demo-sample-panel :title="anchor.title" :panel-id="anchor.id" :code="code" desc="基础的表格展示用法。">
     <boss-table
       border
       ref="table"
@@ -43,17 +43,20 @@
         label="日期"
         :editable="true"
         editWidget="date-picker"
+        :editWidgetProps="{
+          'value-format':'yyyy-MM-dd'
+        }"
         sortable
       ></boss-table-column>
       <boss-table-column prop="address" label="地址" :showOverflowTooltip="true"></boss-table-column>
-      <boss-table-column :editable="true" prop="age" label="年龄"></boss-table-column>
+      <boss-table-column :editable="true" prop="age" label="年龄" editWidget="input-number"></boss-table-column>
     </boss-table>
-  </div>
+  </demo-sample-panel>
 </template>
-
 <script>
-import Vue from "vue";
+import code from "./code";
 export default {
+  mixins: [code],
   data() {
     return {
       pagination: {

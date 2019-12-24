@@ -1,6 +1,6 @@
 <template>
   <div>
-    <boss-input v-model="inputValue"></boss-input>
+    <boss-input v-model="inputValue" validate-event></boss-input>
   </div>
 </template>
 

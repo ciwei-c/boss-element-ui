@@ -3,7 +3,8 @@ export default {
     {
       route: "/button",
       title: "Button 按钮",
-      desc: "常用的操作按钮。"
+      desc: "常用的操作按钮。",
+      fileSource: "Basic/Button"
     }
   ]
 }
