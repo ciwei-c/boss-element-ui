@@ -6,15 +6,7 @@ export default {
       type:Boolean,
       default:true
     },
-    queryParams:{
-      type:Object,
-      default(){
-        return {
-          index:1,
-          size:10
-        }
-      }
-    },
+    queryParams:Object,
     beforeLoad:Function
   },
   data() {
@@ -28,35 +20,43 @@ export default {
   computed: {
     enableLoadUrl() {
       return !this.sourceData && this.url
+    },
+    hasPagination(){
+      return this.pagination && typeof this.pagination === "object"
     }
   },
   created() {
-    this.store.commit('setData', []);
-    if( this.autoLoad ){
-
-      let pagination = this.pagination
-      let { size = 10, index = 1 } = this.queryParams
-
-      if(index && index !== pagination.currentPage) pagination.currentPage = index
-      if(size && size !== pagination.pageSize) pagination.pageSize = size
-
-      this.getDataByUrl({
-        index,
-        size
-      })
+    if(this.enableLoadUrl){
+      this.store.commit('setData', []);
+      if( this.autoLoad && this.enableLoadUrl){
+        let pagination = this.pagination
+        let { size, index } = this.queryParams || {}
+        
+        if(pagination && index && index !== pagination.currentPage) pagination.currentPage = index
+        if(pagination && size && size !== pagination.pageSize) pagination.pageSize = size
+  
+        this.getDataByUrl()
+      }
     }
   },
   methods: {
-    getDataByUrl(params = { index:this.pagination.currentPage, size: this.pagination.pageSize }) {
+    getDataByUrl() {
       if (this.enableLoadUrl) {
+        let data = Object.assign({},this.queryParams || {})
+        if( this.hasPagination ) {
+          let { currentPage, pageSize } = this.pagination
+          if(pageSize !== undefined) Object.assign(data,{size:pageSize})
+          if(currentPage !== undefined) Object.assign(data,{index:currentPage})
+        }
         if(this.beforeLoad && typeof this.beforeLoad === 'function' && this.beforeLoad() === false) return
         request({
           url: this.url,
-          params
+          method:"post",
+          data
         }).then(data => {
           this.$emit("on-load-success")
           let jsonReader = Object.assign(this.defaultJsonReader, this.jsonReader)
-          this.pagination.total = this.findDataByJsonReader(jsonReader.total, data)
+          if(this.hasPagination) this.pagination.total = this.findDataByJsonReader(jsonReader.total, data)
           this.data = this.findDataByJsonReader(jsonReader.data, data)
           this.$nextTick(()=>{
             setTimeout(() => {

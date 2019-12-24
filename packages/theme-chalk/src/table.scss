@@ -588,7 +588,7 @@
       transform: translateY(-50%);
       > *:first-child {
         flex: 1;
-        padding-left: 10px;
+        margin-left: 10px;
         > .boss-date-editor {
           width: 100%;
         }
@@ -602,6 +602,9 @@
               padding: 0;
           }
       }
+  }
+  @include e(pagination){
+    margin-top: 10px;
   }
   @include e(title){
     padding: 16px;

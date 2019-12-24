@@ -92,7 +92,7 @@ export default {
       }
 
       if (!popper || !reference) return;
-      if (this.visibleArrow) this.appendArrow(popper);
+      if (this.visibleArrow || this.appendVisibleArrow) this.appendArrow(popper);
       if (this.appendToBody) document.body.appendChild(this.popperElm);
       if (this.popperJS && this.popperJS.destroy) {
         this.popperJS.destroy();

@@ -45,7 +45,7 @@ export default {
 
     if (gutter) {
       const gutterWith = `-${gutter}px`;
-      const gutterStyle = `margin-bottom: ${gutterWith}; margin-right: ${gutterWith};`;
+      const gutterStyle = `margin-bottom: ${gutterWith}; margin-right: ${gutterWith}; padding-bottom: ${gutter}px`;
 
       if (Array.isArray(this.wrapStyle)) {
         style = toObject(this.wrapStyle);
@@ -65,6 +65,7 @@ export default {
       <div
         ref="wrap"
         style={ style }
+        onMouseover={ this.update }
         onScroll={ this.handleScroll }
         class={ [this.wrapClass, 'boss-scrollbar__wrap', gutter ? '' : 'boss-scrollbar__wrap--hidden-default'] }>
         { [view] }
@@ -99,7 +100,6 @@ export default {
   methods: {
     handleScroll() {
       const wrap = this.wrap;
-
       this.moveY = ((wrap.scrollTop * 100) / wrap.clientHeight);
       this.moveX = ((wrap.scrollLeft * 100) / wrap.clientWidth);
     },
@@ -108,12 +108,10 @@ export default {
       let heightPercentage, widthPercentage;
       const wrap = this.wrap;
       if (!wrap) return;
-      setTimeout(() => {
-        heightPercentage = (wrap.clientHeight * 100 / wrap.scrollHeight);
-        widthPercentage = (wrap.clientWidth * 100 / wrap.scrollWidth);
-        this.sizeHeight = (heightPercentage < 100) ? (heightPercentage + '%') : '';
-        this.sizeWidth = (widthPercentage < 100) ? (widthPercentage + '%') : '';
-      },300);
+      heightPercentage = (wrap.clientHeight * 100 / wrap.scrollHeight);
+      widthPercentage = (wrap.clientWidth * 100 / wrap.scrollWidth);
+      this.sizeHeight = (heightPercentage < 100) ? (heightPercentage + '%') : '';
+      this.sizeWidth = (widthPercentage < 100) ? (widthPercentage + '%') : '';
     }
   },
 

@@ -28,7 +28,7 @@
     </span>
     <boss-input
       ref="input"
-      :value="displayValue"
+      :value="isFocus ? displayValue : formatterValue"
       :placeholder="placeholder"
       :disabled="inputNumberDisabled"
       :size="inputNumberSize"
@@ -54,10 +54,10 @@
     name: 'BossInputNumber',
     mixins: [Focus('input')],
     inject: {
-      elForm: {
+      bossForm: {
         default: ''
       },
-      elFormItem: {
+      bossFormItem: {
         default: ''
       }
     },
@@ -103,12 +103,21 @@
         validator(val) {
           return val >= 0 && val === parseInt(val, 10);
         }
-      }
+      },
+      format: Function | String
     },
     data() {
       return {
         currentValue: 0,
-        userInput: null
+        userInput: null,
+        isFocus:false,
+        defaultFormat:{
+          money:(val)=>{
+            val = `${val}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+            return `￥${val}`
+          },
+          percent:(val)=>`${val}%`
+        }
       };
     },
     watch: {
@@ -127,8 +136,8 @@
               newVal = Math.round(newVal / this.step) * precisionFactor * this.step / precisionFactor;
             }
 
-            if (this.precision !== undefined) {
-              newVal = this.toPrecision(newVal, this.precision);
+            if (this.reallyPrecision !== undefined) {
+              newVal = this.toPrecision(newVal, this.reallyPrecision);
             }
           }
           if (newVal >= this.max) newVal = this.max;
@@ -140,6 +149,10 @@
       }
     },
     computed: {
+      reallyPrecision(){
+        if(this.format === "money") return 2;
+        return this.precision;
+      },
       minDisabled() {
         return this._decrease(this.value, this.step) < this.min;
       },
@@ -161,14 +174,14 @@
       controlsAtRight() {
         return this.controls && this.controlsPosition === 'right';
       },
-      _elFormItemSize() {
-        return (this.elFormItem || {}).elFormItemSize;
+      _bossFormItemSize() {
+        return (this.bossFormItem || {}).bossFormItemSize;
       },
       inputNumberSize() {
-        return this.size || this._elFormItemSize || (this.$ELEMENT || {}).size;
+        return this.size || this._bossFormItemSize || (this.$ELEMENT || {}).size;
       },
       inputNumberDisabled() {
-        return this.disabled || (this.elForm || {}).disabled;
+        return this.disabled || (this.bossForm || {}).disabled;
       },
       displayValue() {
         if (this.userInput !== null) {
@@ -184,12 +197,24 @@
             currentValue = Math.round(currentValue / this.step) * precisionFactor * this.step / precisionFactor;
           }
 
-          if (this.precision !== undefined) {
-            currentValue = currentValue.toFixed(this.precision);
+          if (this.reallyPrecision !== undefined) {
+            currentValue = currentValue.toFixed(this.reallyPrecision);
           }
         }
-
         return currentValue;
+      },
+      formatterValue(){
+        if(this.format){
+          if(typeof this.format === "string"){
+            return this.defaultFormat[this.format](this.displayValue || "")
+          }else if(typeof this.format === "function"){
+            return this.format(this.displayValue || "")
+          }else{
+            return this.displayValue
+          }
+        }else{
+          return this.displayValue
+        }
       }
     },
     methods: {
@@ -234,15 +259,17 @@
         this.setCurrentValue(newVal);
       },
       handleBlur(event) {
+        this.isFocus = false;
         this.$emit('blur', event);
       },
       handleFocus(event) {
+        this.isFocus = true;
         this.$emit('focus', event);
       },
       setCurrentValue(newVal) {
         const oldVal = this.currentValue;
-        if (typeof newVal === 'number' && this.precision !== undefined) {
-          newVal = this.toPrecision(newVal, this.precision);
+        if (typeof newVal === 'number' && this.reallyPrecision !== undefined) {
+          newVal = this.toPrecision(newVal, this.reallyPrecision);
         }
         if (newVal >= this.max) newVal = this.max;
         if (newVal <= this.min) newVal = this.min;

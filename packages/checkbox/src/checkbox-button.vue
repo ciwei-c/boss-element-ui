@@ -52,10 +52,10 @@
     mixins: [Emitter],
 
     inject: {
-      elForm: {
+      bossForm: {
         default: ''
       },
-      elFormItem: {
+      bossFormItem: {
         default: ''
       }
     },
@@ -142,12 +142,12 @@
         };
       },
 
-      _elFormItemSize() {
-        return (this.elFormItem || {}).elFormItemSize;
+      _bossFormItemSize() {
+        return (this.bossFormItem || {}).bossFormItemSize;
       },
 
       size() {
-        return this._checkboxGroup.checkboxGroupSize || this._elFormItemSize || (this.$ELEMENT || {}).size;
+        return this._checkboxGroup.checkboxGroupSize || this._bossFormItemSize || (this.$ELEMENT || {}).size;
       },
 
       /* used to make the isDisabled judgment under max/min props */
@@ -160,8 +160,8 @@
 
       isDisabled() {
         return this._checkboxGroup
-          ? this._checkboxGroup.disabled || this.disabled || (this.elForm || {}).disabled || this.isLimitDisabled
-          : this.disabled || (this.elForm || {}).disabled;
+          ? this._checkboxGroup.disabled || this.disabled || (this.bossForm || {}).disabled || this.isLimitDisabled
+          : this.disabled || (this.bossForm || {}).disabled;
       }
     },
     methods: {

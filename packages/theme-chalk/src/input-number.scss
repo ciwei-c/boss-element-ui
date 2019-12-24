@@ -7,7 +7,6 @@
   display: inline-block;
   width: 180px;
   line-height: #{$--input-height - 2};
-
   .boss-input {
     display: block;
 
@@ -33,7 +32,6 @@
 
     &:hover {
       color: $--color-primary;
-
       &:not(.is-disabled) ~ .boss-input .boss-input__inner:not(.is-disabled) {
         border-color: $--input-focus-border;
       }

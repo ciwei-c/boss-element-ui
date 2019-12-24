@@ -90,7 +90,7 @@ export default class EditorBasic {
     this.storeFilterEditorCellMap = []
     this.storeEditorCellMap.filter(v => !!v).forEach((v) => {
       if (v.cellIndexs) {
-        v.cellIndexs.filter(c => !!c).forEach(c => {
+        v.cellIndexs.forEach(c => {
           this.storeFilterEditorCellMap.push(`${v.$index}-${c}`)
         })
       }

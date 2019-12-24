@@ -17,6 +17,11 @@ import BossDatePicker from '../packages/date-picker/index.js';
 import BossTimePicker from '../packages/time-picker/index.js';
 import BossTimeSelect from '../packages/time-select/index.js';
 import BossDialog from '../packages/dialog/index.js';
+import BossRow from '../packages/row/index.js';
+import BossCol from '../packages/col/index.js';
+import BossBackTop from '../packages/backtop/index.js';
+import BossTree from '../packages/tree/index.js';
+import BossSelectTree from '../packages/select-tree/index.js';
 
 const components = {
   BossInput,
@@ -37,7 +42,12 @@ const components = {
   BossDatePicker,
   BossTimePicker,
   BossTimeSelect,
-  BossDialog
+  BossDialog,
+  BossRow,
+  BossCol,
+  BossBackTop,
+  BossTree,
+  BossSelectTree
 };
 
 function install(Vue, opts = {}) {

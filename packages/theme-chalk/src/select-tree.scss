@@ -1,0 +1,32 @@
+@import "./tree.scss";
+@import "./mixins/mixins.scss";
+
+@include b(select-tree) {
+  width: 260px;
+  display: inline-block;
+  padding: 5px 0;
+  
+  @include e(popper){
+    border: 1px solid #E4E7ED;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    background: #FFFFFF;
+    border-radius: 4px;
+    line-height: 30px;
+    margin: 5px 0;
+  }
+  @include e(scrollbar){
+    max-height: 300px;
+    width: 275px;
+    .boss-tree-node > .boss-tree-node__children {
+      overflow: inherit;
+    }
+    .boss-tree-node__label {
+      padding-right: 10px;
+    }
+  }
+  @include e(bottom){
+    text-align: right;
+    border-top: 1px solid #dcdfe6;
+    padding: 0 10px;
+  }
+}

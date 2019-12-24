@@ -66,10 +66,10 @@ export default {
       type: String,
       default:"input"
     },
-    editWidgetOptions:{
-      type:Array,
+    editWidgetProps:{
+      type:Object,
       default(){
-        return []
+        return {}
       }
     }
   },
@@ -298,7 +298,7 @@ export default {
     const sortProps = ['sortMethod', 'sortBy', 'sortOrders'];
     const selectProps = ['selectable', 'reserveSelection'];
     const filterProps = ['filterMethod', 'filters', 'filterMultiple', 'filterOpened', 'filteredValue', 'filterPlacement'];
-    const editProps = ['editable','editWidget','editWidgetOptions']
+    const editProps = ['editable','editWidget','editWidgetProps']
 
     let column = this.getPropsData(basicProps, sortProps, selectProps, filterProps, editProps);
     column = mergeOptions(defaults, column);

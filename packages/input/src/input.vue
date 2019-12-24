@@ -124,10 +124,10 @@
     inheritAttrs: false,
 
     inject: {
-      elForm: {
+      bossForm: {
         default: ''
       },
-      elFormItem: {
+      bossFormItem: {
         default: ''
       }
     },
@@ -193,14 +193,14 @@
     },
 
     computed: {
-      _elFormItemSize() {
-        return (this.elFormItem || {}).elFormItemSize;
+      _bossFormItemSize() {
+        return (this.bossFormItem || {}).bossFormItemSize;
       },
       validateState() {
-        return this.elFormItem ? this.elFormItem.validateState : '';
+        return this.bossFormItem ? this.bossFormItem.validateState : '';
       },
       needStatusIcon() {
-        return this.elForm ? this.elForm.statusIcon : false;
+        return this.bossForm ? this.bossForm.statusIcon : false;
       },
       validateIcon() {
         return {
@@ -213,10 +213,10 @@
         return merge({}, this.textareaCalcStyle, { resize: this.resize });
       },
       inputSize() {
-        return this.size || this._elFormItemSize || (this.$ELEMENT || {}).size;
+        return this.size || this._bossFormItemSize || (this.$ELEMENT || {}).size;
       },
       inputDisabled() {
-        return this.disabled || (this.elForm || {}).disabled;
+        return this.disabled || (this.bossForm || {}).disabled;
       },
       nativeInputValue() {
         return this.value === null || this.value === undefined ? '' : String(this.value);

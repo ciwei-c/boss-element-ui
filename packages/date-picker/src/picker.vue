@@ -349,10 +349,10 @@ const validator = function(val) {
 export default {
   mixins: [Emitter, NewPopper],
   inject: {
-    elForm: {
+    bossForm: {
       default: ""
     },
-    elFormItem: {
+    bossFormItem: {
       default: ""
     }
   },
@@ -577,16 +577,16 @@ export default {
         : new Date(this.value);
     },
 
-    _elFormItemSize() {
-      return (this.elFormItem || {}).elFormItemSize;
+    _bossFormItemSize() {
+      return (this.bossFormItem || {}).bossFormItemSize;
     },
 
     pickerSize() {
-      return this.size || this._elFormItemSize || (this.$ELEMENT || {}).size;
+      return this.size || this._bossFormItemSize || (this.$ELEMENT || {}).size;
     },
 
     pickerDisabled() {
-      return this.disabled || (this.elForm || {}).disabled;
+      return this.disabled || (this.bossForm || {}).disabled;
     },
 
     firstInputId() {
@@ -799,6 +799,7 @@ export default {
     },
 
     handleKeydown(event) {
+      if(this.$parent.$options._componentTag === "editor-widget") return
       const keyCode = event.keyCode;
 
       // ESC

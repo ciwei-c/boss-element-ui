@@ -54,8 +54,8 @@ export default {
     widget(){
       return this.column.editWidget
     },
-    widgetOptions(){
-      return this.column.editWidgetOptions
+    widgetProps(){
+      return this.column.editWidgetProps
     }
   },
   created(){

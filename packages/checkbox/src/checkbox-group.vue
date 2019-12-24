@@ -9,7 +9,7 @@
     mixins: [Emitter],
 
     inject: {
-      elFormItem: {
+      bossFormItem: {
         default: ''
       }
     },
@@ -25,11 +25,11 @@
     },
 
     computed: {
-      _elFormItemSize() {
-        return (this.elFormItem || {}).elFormItemSize;
+      _bossFormItemSize() {
+        return (this.bossFormItem || {}).bossFormItemSize;
       },
       checkboxGroupSize() {
-        return this.size || this._elFormItemSize || (this.$ELEMENT || {}).size;
+        return this.size || this._bossFormItemSize || (this.$ELEMENT || {}).size;
       }
     },
 

@@ -226,7 +226,8 @@
       'boss-table__bottom':true,
       'boss-table__bottom--border':border
     }]" v-if="bottom || $slots.bottom"><slot name="bottom">{{bottom}}</slot></div>
-    <table-pagination 
+    <table-pagination
+      v-if="!!pagination"
       :table="layout.table"
       :store="layout.store"
       :pagination="pagination"

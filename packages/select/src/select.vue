@@ -159,11 +159,11 @@
     componentName: 'BossSelect',
 
     inject: {
-      elForm: {
+      bossForm: {
         default: ''
       },
 
-      elFormItem: {
+      bossFormItem: {
         default: ''
       }
     },
@@ -175,8 +175,8 @@
     },
 
     computed: {
-      _elFormItemSize() {
-        return (this.elFormItem || {}).elFormItemSize;
+      _bossFormItemSize() {
+        return (this.bossFormItem || {}).bossFormItemSize;
       },
 
       readonly() {
@@ -224,11 +224,11 @@
       },
 
       selectSize() {
-        return this.size || this._elFormItemSize || (this.$ELEMENT || {}).size;
+        return this.size || this._bossFormItemSize || (this.$ELEMENT || {}).size;
       },
 
       selectDisabled() {
-        return this.disabled || (this.elForm || {}).disabled;
+        return this.disabled || (this.bossForm || {}).disabled;
       },
 
       collapseTagSize() {

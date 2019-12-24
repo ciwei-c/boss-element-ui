@@ -2,8 +2,9 @@
 import BossInput from "boss-element-ui/packages/input";
 import BossSelect from "boss-element-ui/packages/select";
 import BossDatePicker from "boss-element-ui/packages/date-picker";
+import BossInputNumber from "boss-element-ui/packages/input-number";
 export default {
-  components: { BossInput, BossSelect, BossDatePicker },
+  components: { BossInput, BossSelect, BossDatePicker, BossInputNumber },
   render() {
     let widget = this.getWidget(this.$parent.widget);
     let { componentOptions = {}, data = {} } = widget;
@@ -13,9 +14,10 @@ export default {
       blur: this.onBlurEdit,
       input: v => (this.$parent.value = v)
     });
-    Object.assign(componentOptions.propsData, {
+    Object.assign(componentOptions.propsData, this.getCamelCaseWidgetProps(this.$parent.widgetProps), {
       value: this.$parent.value
     });
+
     Object.assign(data, { ref: "widget" });
     return widget;
   },
@@ -25,14 +27,31 @@ export default {
     });
   },
   methods: {
-    blur(){
+    getCamelCaseWidgetProps(widgetProps) {
+      let props = {};
+      Object.keys(widgetProps).forEach(k => {
+        let v = widgetProps[k]
+        k = k.split("-").filter(v => !!v).map((v, i) => i ? v[0].toUpperCase() + v.substring(1, v.length) : v).join("");
+        props[k] = v
+      });
+      return props
+    },
+    blur() {
       this.$refs.widget.blur();
     },
     onBlurEdit() {
-      this.$parent.editorBasic.onEndEdit(this.$parent.row, this.$parent.$index, this.$parent.column);
+      this.$parent.editorBasic.onEndEdit(
+        this.$parent.row,
+        this.$parent.$index,
+        this.$parent.column
+      );
     },
     onFocusEdit() {
-      this.$parent.editorBasic.onBeginEdit(this.$parent.row, this.$parent.$index, this.$parent.column);
+      this.$parent.editorBasic.onBeginEdit(
+        this.$parent.row,
+        this.$parent.$index,
+        this.$parent.column
+      );
     },
     getWidget(widget) {
       const widgetsMap = {
@@ -42,7 +61,7 @@ export default {
         select() {
           return (
             <boss-select>
-              {this.$parent.widgetOptions.map(item => {
+              {(this.$parent.widgetProps.options || []).map(item => {
                 return (
                   <boss-option
                     key={item.value}
@@ -59,9 +78,12 @@ export default {
             <boss-date-picker
               editable={false}
               clearable={false}
-              value-format="yyyy-MM-dd"
+              valueFormat="yyyy-MM-dd"
             />
           );
+        },
+        "input-number"() {
+          return <boss-input-number />;
         }
       };
       let fn = widgetsMap[widget] || (() => null);
