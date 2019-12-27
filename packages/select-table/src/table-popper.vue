@@ -16,7 +16,7 @@
           :highlight-current-row="!multiple"
           border
           size="small"
-          @current-change="handleCurrentChange"
+          @row-click="handleCurrentChange"
           @selection-change="onConfirm"
           :url="url"
           :sourceData="tableData"
@@ -52,7 +52,7 @@ export default {
     visible(val) {
       if (val) {
         this.$nextTick(()=>{
-          if(!this.url && !this.tableData) console.error((`[Select-table warn]: tableData or url one of them must be set`));
+          if(!this.url && !this.tableData) console.error((`[Select-table warn]: data or url one of them must be set`));
           this.update()
         })
       }

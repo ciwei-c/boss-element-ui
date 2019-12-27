@@ -6,12 +6,19 @@
   display: inline-block;
   position: relative;
   padding: 5px 0;
-  .boss-input__icon {
-    cursor: pointer;
+  .boss-input {
+    > input {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .boss-input__icon {
+      cursor: pointer;
+    }
   }
   &:hover{
     .boss-input__inner {
-      border-color: #C0C4CC;
+      border-color: $--color-text-placeholder;
     }
     .is-clearable {
       .boss-icon-close {
@@ -24,9 +31,9 @@
   }
 
   @include e(popper){
-    border: 1px solid #E4E7ED;
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-    background: #FFFFFF;
+    border: 1px solid $--border-color-light;
+    box-shadow: $--box-shadow-light;
+    background: $--color-white;
     border-radius: 4px;
     padding: 10px;
     line-height: 30px;
@@ -46,12 +53,22 @@
     align-items: center;
     flex-wrap: wrap;
     .boss-tag {
-      max-width: calc(100% - 60px);
+      max-width: 100%;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+      margin: 2px 0 2px 6px;
     }
   }
+  
+  @include e(multiple-tags){
+    @include m(collapsetags){
+      .boss-tag {
+        max-width: calc(100% - 60px);
+      }
+    }
+  }
+
   .is-focus .boss-input__inner {
     border-color: $--select-input-focus-border-color;
   }
@@ -66,10 +83,5 @@
   @include e(bottom){
     text-align: right;
     padding: 0 10px;
-  }
-
-
-  .boss-tag {
-    margin: 2px 0 2px 6px;
   }
 }

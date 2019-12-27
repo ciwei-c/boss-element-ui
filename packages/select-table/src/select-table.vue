@@ -34,8 +34,8 @@
       :url="url"
       :jsonReader="jsonReader"
       :multiple="multiple"
-      :tableColumns="tableColumns"
-      :tableData="tableData"
+      :tableColumns="columns"
+      :tableData="data"
       :popperWidth="popperWidth"
       :maxPopperHeight="maxPopperHeight"
     />
@@ -64,9 +64,9 @@ export default {
       default:"bottom-start"
     },
     url:String,
-    tableData:Array,
+    data:Array,
     jsonReader:Object,
-    tableColumns:{
+    columns:{
       type:Array,
       default(){
         return []

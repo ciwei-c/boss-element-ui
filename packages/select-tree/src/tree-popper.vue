@@ -7,6 +7,9 @@
       }]"
       v-show="visible"
     >
+      <div class="boss-select-tree__filter" v-if="filter">
+        <boss-input placeholder="请输入关键字进行过滤" size="mini" v-model="filterValue" clearable/>
+      </div>
       <boss-scrollbar noresize wrap-class="boss-select-tree__scrollbar">
         <boss-tree
           ref="tree"
@@ -19,27 +22,32 @@
           :data="data"
           :node-key="nodeKey"
           :show-checkbox="multiple"
+          :check-on-click-node="true"
           :check-strictly="checkStrictly"
+          :default-expand-all="defaultExpandAll"
           :icon="icon"
           :default-expanded-keys="defaultExpandedKeys"
           :expandedIcon="expandedIcon"
+          :filter-node-method="filterNodeMethod"
+          @check="onNodeClick"
           @node-click="onNodeClick"
         ></boss-tree>
       </boss-scrollbar>
-      <div class="boss-select-tree__bottom" v-if="multiple">
+      <!-- <div class="boss-select-tree__bottom" v-if="multiple">
         <boss-button size="mini" type="text" @click="handleLeave">取消</boss-button>
         <boss-button size="mini" type="text" @click="onConfirm">确定</boss-button>
-      </div>
+      </div> -->
     </div>
   </transition>
 </template>
 <script>
 import BossTree from "boss-element-ui/packages/tree";
-import BossButton from "boss-element-ui/packages/button"
+import BossButton from "boss-element-ui/packages/button";
+import BossInput from "boss-element-ui/packages/input";
 import BossScrollbar from 'boss-element-ui/packages/scrollbar';
 export default {
   name: "BossTreePopper",
-  components: { BossTree, BossButton, BossScrollbar },
+  components: { BossTree, BossButton, BossScrollbar, BossInput },
   props:{
     parent:Object,
     props:Object,
@@ -55,33 +63,46 @@ export default {
     icon:String,
     expandedIcon:String,
     defaultExpandedKeys:Array,
-    checkStrictly:Boolean
+    defaultExpandAll:Boolean,
+    checkStrictly:Boolean,
+    filter:Boolean,
+    filterNodeMethod:Function
   },
   watch:{
     visible(val){
       if(val){
-        if(this.multiple){
-          this.clearChecked()
-          if(!Array.isArray(this.value)) console.error((`[Select-tree warn]: Expected Array with value ["${this.value}"], got String with value "${this.value}"`));
-          this.$refs.tree.setCheckedKeys(this.value, false)
-          if(!this.checkStrictly){
-            this.$parent.setValue(this.$refs.tree.getCheckedNodes())
-          }
-        }else{
-          this.clearCurrentKey()
-          this.$refs.tree.setCurrentKey(this.value)
-        }
+        this.update()
       }
+    },
+    filterValue(val){
+      this.$refs.tree.filter(val);
     }
   },
   data() {
     return {
-      visible:false
+      visible:false,
+      filterValue:""
     };
   },
   created(){
   },
   methods:{
+    update(){
+      if(this.multiple){
+        this.clearChecked()
+        if(!Array.isArray(this.value)) console.error((`[Select-tree warn]: Expected Array with value ["${this.value}"], got String with value "${this.value}"`));
+        this.$refs.tree.setCheckedKeys(this.value, false)
+        if(!this.checkStrictly){
+          this.$parent.setValue(this.$refs.tree.getCheckedNodes())
+        }
+      }else{
+        this.clearCurrentKey()
+        this.$refs.tree.setCurrentKey(this.value)
+      }
+    },
+    filterNode(value,data){
+      return data.label.indexOf(value) > -1
+    },
     handleEnter() {
       document.body.addEventListener('keydown', this.handleKeydown);
     },
@@ -94,6 +115,8 @@ export default {
     onNodeClick(node){
       if(!this.multiple) {
         this.$emit("pick", node)
+      }else{
+        this.$emit("pick", this.$refs.tree.getCheckedNodes())
       }
     },
 
@@ -103,10 +126,6 @@ export default {
 
     clearCurrentKey(){
       this.$refs.tree.clearCurrentKey()
-    },
-
-    onConfirm(){
-      this.$emit("pick", this.$refs.tree.getCheckedNodes())
     },
     getTree(){
       return this.$refs.tree
