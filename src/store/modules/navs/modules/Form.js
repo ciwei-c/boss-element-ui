@@ -33,8 +33,14 @@ export default {
     {
       route: "/select-tree",
       title: "SelectTree 下拉树选择器",
-      desc: "当数据源为树并需要采用下拉菜单来选择某一个节点数据时使用。",
+      desc: "当数据源为树并需要采用下拉菜单来选择某一个节点或多个数据时使用。",
       fileSource:"Form/SelectTree"
+    },
+    {
+      route: "/select-table",
+      title: "SelectTable 下拉表格选择器",
+      desc: "当数据源为列表并需要采用下拉菜单来选择某一个或多个节点数据时使用。",
+      fileSource:"Form/SelectTable"
     },
     {
       route: "/date-picker",

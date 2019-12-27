@@ -1,19 +1,46 @@
 <template>
-    <boss-select-table 
-      v-model="value"
-      row-key="id"
-      collapseTags
-      multiple
-      :data="tableData"
-      :columns="tableColumns"
-      placeholder="请从表格中选择数据"
-      :formatter="(row)=>{return `${row.name}-${row.address}`}"
-    >
-      
-    </boss-select-table>
+  <demo-sample-panel
+    :title="anchor.title"
+    :panel-id="anchor.id"
+    :code="code"
+    :codeDesc="codeDesc"
+    desc="下拉表格多选用法"
+  >
+    <div style="display:flex">
+      <div>
+        <span>设置 collapse-tags</span>
+        <boss-select-table 
+          v-model="value"
+          row-key="id"
+          collapse-tags
+          multiple
+          :data="tableData"
+          :columns="tableColumns"
+          placeholder="请从表格中选择数据"
+          :formatter="(row)=>{return `${row.name}-${row.address}`}"
+        >
+        </boss-select-table>
+      </div>
+      <div>
+        <span>不设置 collapse-tags</span>
+        <boss-select-table 
+          v-model="value"
+          row-key="id"
+          multiple
+          :data="tableData"
+          :columns="tableColumns"
+          placeholder="请从表格中选择数据"
+          :formatter="(row)=>{return `${row.name}-${row.address}`}"
+        >
+        </boss-select-table>
+      </div>
+    </div>
+  </demo-sample-panel>
 </template>
 <script>
+import code from "./code";
 export default {
+  mixins: [code],
   data() {
     return {
       value:[{
@@ -65,9 +92,6 @@ export default {
         }
       ]
     };
-  },
-  created() {},
-  methods: {}
+  }
 };
 </script>
-

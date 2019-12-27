@@ -14,4 +14,6 @@ export default [{
   path: '/select'
 }, {
   path: '/select-tree'
+}, {
+  path: '/select-table'
 }];

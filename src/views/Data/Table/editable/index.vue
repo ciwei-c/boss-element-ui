@@ -41,7 +41,7 @@
         :editable="(row, index)=>{ return index % 2 === 0}"
         editWidget="select-tree"
         :editWidgetProps="{
-          treeData:[{
+          data:[{
             label:'中国',
             children:[{
               label:'福建',

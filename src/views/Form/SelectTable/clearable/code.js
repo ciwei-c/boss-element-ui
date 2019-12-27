@@ -1,28 +1,26 @@
-<template>
-    <boss-select-table 
-      v-model="value"
-      row-key="id"
-      collapseTags
-      multiple
-      :data="tableData"
-      :columns="tableColumns"
-      placeholder="请从表格中选择数据"
-      :formatter="(row)=>{return `${row.name}-${row.address}`}"
-    >
-      
-    </boss-select-table>
+let code = `<template>
+  <boss-select-table 
+    v-model="value"
+    row-key="id"
+    :data="tableData"
+    clearable
+    :columns="tableColumns"
+    placeholder="请从表格中选择数据"
+    :formatter="(row)=>{return \`\${row.name}-\${row.address}\`}"
+  >
+  </boss-select-table>
 </template>
 <script>
 export default {
   data() {
     return {
-      value:[{
+      value:{
         date: "2016-05-02",
         name: "王小虎1",
         id:1,
         sex: 1,
         address: ["中国","福建","福州"]
-      }],
+      },
       tableColumns:[{
         label:"日期",
         prop:"date"
@@ -65,9 +63,19 @@ export default {
         }
       ]
     };
-  },
-  created() {},
-  methods: {}
+  }
 };
 </script>
-
+`
+export default {
+  data(){
+    return {
+      code,
+      codeDesc:"boss-select-table 标签设置 clearable",
+      anchor:{
+        id:"clearable",
+        title:"可清除的"
+      }
+    }
+  }
+}

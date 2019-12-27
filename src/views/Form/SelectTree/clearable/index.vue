@@ -1,19 +1,21 @@
-let code = `<template>
-  <boss-select-tree
-    :data="data"
-    node-key="label"
-    v-model="value"
-    multiple
-    icon="boss-icon-folder"
-    expandedIcon="boss-icon-folder-opened"
-    placeholder="请从树中选择数据"
-  />
+<template>
+  <demo-sample-panel
+    :title="anchor.title"
+    :panel-id="anchor.id"
+    :code="code"
+    :codeDesc="codeDesc"
+    desc="下拉树基础用法"
+  >
+    <boss-select-tree :data="data" node-key="label" v-model="value" placeholder="请从树中选择数据" clearable/>
+  </demo-sample-panel>
 </template>
 <script>
+import code from "./code";
 export default {
+  mixins: [code],
   data() {
     return {
-      value: ["一级 1"],
+      value: "一级 1",
       data: [
         {
           label: "一级 1",
@@ -75,16 +77,3 @@ export default {
   }
 };
 </script>
-`
-export default {
-  data(){
-    return {
-      code,
-      codeDesc:"boss-select-tree 标签设置 multiple 属性为 true 开启多选， 当开启多选模式时，v-model 绑定值需要是一个 Array 类型的数据",
-      anchor:{
-        id:"multiple",
-        title:"多选下拉树"
-      }
-    }
-  }
-}

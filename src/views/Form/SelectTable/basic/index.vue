@@ -1,28 +1,35 @@
 <template>
+  <demo-sample-panel
+    :title="anchor.title"
+    :panel-id="anchor.id"
+    :code="code"
+    :codeDesc="codeDesc"
+    desc="下拉表格基础用法"
+  >
     <boss-select-table 
       v-model="value"
       row-key="id"
-      collapseTags
-      multiple
       :data="tableData"
       :columns="tableColumns"
       placeholder="请从表格中选择数据"
       :formatter="(row)=>{return `${row.name}-${row.address}`}"
     >
-      
     </boss-select-table>
+  </demo-sample-panel>
 </template>
 <script>
+import code from "./code";
 export default {
+  mixins: [code],
   data() {
     return {
-      value:[{
+      value:{
         date: "2016-05-02",
         name: "王小虎1",
         id:1,
         sex: 1,
         address: ["中国","福建","福州"]
-      }],
+      },
       tableColumns:[{
         label:"日期",
         prop:"date"
@@ -65,9 +72,6 @@ export default {
         }
       ]
     };
-  },
-  created() {},
-  methods: {}
+  }
 };
 </script>
-
