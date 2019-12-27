@@ -31,14 +31,20 @@ export default {
       fileSource:"Form/Select"
     },
     {
+      route: "/select-tree",
+      title: "SelectTree 下拉树选择器",
+      desc: "当数据源为树并需要采用下拉菜单来选择某一个节点数据时使用。",
+      fileSource:"Form/SelectTree"
+    },
+    {
       route: "/date-picker",
-      title: "DatePicker 选择器",
+      title: "DatePicker 日期选择器",
       desc: "用于选择或输入日期",
       fileSource:"Form/DatePicker"
     },
     {
       route: "/time-picker",
-      title: "TimePicker 选择器",
+      title: "TimePicker 时间选择器",
       desc: "用于选择或输入时间",
       fileSource:"Form/TimePicker"
     },

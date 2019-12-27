@@ -4,4 +4,6 @@ export default [{
   path: '/tag',
 },{
   path: '/pagination',
+},{
+  path: '/tree',
 }];

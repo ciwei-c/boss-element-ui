@@ -18,7 +18,7 @@ export default {
       code,
       anchor:{
         id:"basic",
-        title:"基本用法"
+        title:"基础用法"
       }
     }
   }

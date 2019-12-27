@@ -31,9 +31,10 @@ export default {
   computed:{
     childrens(){
       let { fileSource, files } = this.$store.state.app
+      fileSource = `./${fileSource}/`
       let vnodes = []
       files.keys().filter(key=>{
-        return key.indexOf(fileSource) > -1
+        return key.startsWith(fileSource)
       }).forEach(key=>{
         vnodes.push(new Vue(files(key).default).$mount())
       })

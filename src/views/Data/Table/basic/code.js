@@ -43,7 +43,7 @@ export default {
       codeDesc:"当 boss-table 元素中注入 data 对象数组后，在 boss-table-column 中用 prop 属性来对应对象中的键名即可填入数据，用 label 属性来定义表格的列名。可以使用 width 属性来定义列宽。",
       anchor: {
         id: "basic",
-        title: "基本用法"
+        title: "基础用法"
       }
     }
   }

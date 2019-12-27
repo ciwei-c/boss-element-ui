@@ -1,109 +1,74 @@
 <template>
-  <div>
-    <boss-select-tree 
-      :treeData="data"
-      :treeProps="props"
-      node-key="name"
+    <boss-select-table 
       v-model="value"
+      row-key="id"
+      collapseTags
       multiple
-      icon="boss-icon-folder"
-      expandedIcon="boss-icon-folder-opened"
-    />
-    <boss-tree :props="props" :load="loadNode" lazy show-checkbox></boss-tree>
-  </div>
+      clearable
+      :tableData="tableData"
+      :tableColumns="tableColumns"
+      placeholder="请从表格中选择数据"
+      :formatter="(row)=>{return `${row.name}-${row.address}`}"
+    >
+      
+    </boss-select-table>
 </template>
 <script>
 export default {
   data() {
     return {
-      props: {
-        label: "name",
-        children: "zones",
-        isLeaf:true
-      },
-      value: ["1"],
-      data: [
+      value:[{
+        date: "2016-05-02",
+        name: "王小虎1",
+        id:1,
+        sex: 1,
+        address: ["中国","福建","福州"]
+      }],
+      tableColumns:[{
+        label:"日期",
+        prop:"date"
+      },{
+        label:"名字",
+        prop:"name"
+      },{
+        label:"地址",
+        prop:"address",
+        "show-overflow-tooltip":true
+      }],
+      tableData: [
         {
-          name: "一级 1",
-          zones: [
-            {
-              name: "二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1",
-              zones: [
-                {
-                  name: "三级 1-1-1",
-                  icon: "boss-icon-document"
-                }
-              ]
-            }
-          ]
+          date: "2016-05-02",
+          name: "王小虎1",
+          id:1,
+          sex: 1,
+          address: ["中国","福建","福州"]
         },
         {
-          name: "一级 2",
-          zones: [
-            {
-              name: "二级 2-1",
-              zones: [
-                {
-                  name: "三级 2-1-1"
-                }
-              ]
-            },
-            {
-              name: "二级 2-2",
-              zones: [
-                {
-                  name: "三级 2-2-1"
-                }
-              ]
-            }
-          ]
+          date: "2016-05-04",
+          name: "王小虎2",
+          id:2,
+          sex: 0,
+          address: ["上海市普陀区金沙江路 1517 弄"]
         },
         {
-          name: "一级 3",
-          zones: [
-            {
-              name: "二级 3-1",
-              zones: [
-                {
-                  name: "三级 3-1-1"
-                }
-              ]
-            },
-            {
-              name: "二级 3-2",
-              zones: [
-                {
-                  name: "三级 3-2-1"
-                }
-              ]
-            }
-          ]
+          date: "2016-05-01",
+          name: "王小虎3",
+          id:3,
+          sex: 1,
+          address: ["中国"]
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎4",
+          id:4,
+          sex: 0,
+          address: ["上海市普陀区金沙江路 1516 弄"]
         }
       ]
     };
   },
-  methods: {
-    handleNodeClick(data) {},
-    loadNode(node, resolve) {
-      if (node.level === 0) {
-        return resolve([{ name: "region" }]);
-      }
-      if (node.level > 1) return resolve([]);
-
-      setTimeout(() => {
-        const data = [
-          {
-            name: "leaf",
-            leaf: true
-          },
-          {
-            name: "zone"
-          }
-        ];
-
-        resolve(data);
-      }, 500);
-    }
-  }
+  created() {},
+  methods: {}
 };
 </script>
+

@@ -5,16 +5,11 @@ import "@/style/index.scss"
 
 import store from "@/store"
 
-import VueHighlightJS from 'vue-highlightjs'
-Vue.use(VueHighlightJS)
+import "@/utils/global"
 
 Vue.config.productionTip = false
 
 import BossElementUI from "E:/workspace/boss-component/boss-element-ui/component/src"
-import "E:/workspace/boss-component/boss-element-ui/component/packages/theme-chalk/src/index.scss"
-
-import DemoSamplePanel from "@/components/DemoSamplePanel"
-Vue.component("demo-sample-panel",DemoSamplePanel)
 
 Vue.use(BossElementUI)
 

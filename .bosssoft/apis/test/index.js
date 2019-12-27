@@ -14,6 +14,7 @@ module.exports = [
       data:{
         "list|10": [
           {
+            "id|+1": 1,
             "name":"@cname",
             "age|1-100":10,
             "date":"@date",

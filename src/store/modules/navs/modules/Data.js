@@ -17,6 +17,12 @@ export default {
       title: "Pagination 分页",
       desc: "当数据量过多时，使用分页分解数据。",
       fileSource:"Data/Pagination"
+    },
+    {
+      route: "/tree",
+      title: "Tree 树形控件",
+      desc: "用清晰的层级结构展示信息，可展开或折叠。",
+      fileSource:"Data/Tree"
     }
   ]
 }

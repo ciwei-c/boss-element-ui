@@ -7,6 +7,7 @@
     desc="基础的表格展示用法。"
   >
     <boss-table :sourceData="tableData">
+      <boss-table-column type="selection"></boss-table-column>
       <boss-table-column prop="date" label="日期" width="180"></boss-table-column>
       <boss-table-column prop="name" label="姓名" width="180"></boss-table-column>
       <boss-table-column prop="address" label="地址"></boss-table-column>

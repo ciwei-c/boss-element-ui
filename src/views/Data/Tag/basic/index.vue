@@ -3,6 +3,7 @@
     :title="anchor.title"
     :panel-id="anchor.id"
     :code="code"
+    :codeDesc="codeDesc"
     desc="基础的标签用法。"
   >
     <boss-tag>标签一</boss-tag>
