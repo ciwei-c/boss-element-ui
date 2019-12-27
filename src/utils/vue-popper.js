@@ -132,7 +132,7 @@ export default {
     doDestroy(forceDestroy) {
       /* istanbul ignore if */
       if (!this.popperJS || (this.showPopper && !forceDestroy)) return;
-      this.popperJS.destroy();
+      // this.popperJS.destroy();
       this.popperJS = null;
     },
 

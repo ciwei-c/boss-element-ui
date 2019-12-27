@@ -910,8 +910,7 @@
         var translate   = isVertical ? 'translateY' : 'translateX';
         var altSide     = isVertical ? 'left' : 'top';
         var opSide      = isVertical ? 'bottom' : 'right';
-        var arrowSize   = getOuterSizes(arrow)[len];
-
+        var arrowSize   = getOuterSizes(arrow)[len] || 12;
         //
         // extends keepTogether behavior making sure the popper and its reference have enough pixels in conjuction
         //

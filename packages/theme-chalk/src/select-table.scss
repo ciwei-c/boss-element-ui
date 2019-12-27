@@ -1,0 +1,75 @@
+@import "./table.scss";
+@import "./mixins/mixins.scss";
+
+@include b(select-table) {
+  width: 260px; 
+  display: inline-block;
+  position: relative;
+  padding: 5px 0;
+  .boss-input__icon {
+    cursor: pointer;
+  }
+  &:hover{
+    .boss-input__inner {
+      border-color: #C0C4CC;
+    }
+    .is-clearable {
+      .boss-icon-close {
+        display: inline-block;
+      }
+      .boss-icon-arrow-down {
+        display: none;
+      }
+    }
+  }
+
+  @include e(popper){
+    border: 1px solid #E4E7ED;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    background: #FFFFFF;
+    border-radius: 4px;
+    padding: 10px;
+    line-height: 30px;
+    margin: 5px 0;
+    position: absolute !important;
+  }
+
+  @include e(multiple-tags){
+    position: absolute;
+    line-height: normal;
+    white-space: normal;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(100% - 30px);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    .boss-tag {
+      max-width: calc(100% - 60px);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+  .is-focus .boss-input__inner {
+    border-color: $--select-input-focus-border-color;
+  }
+  .boss-input__icon.boss-icon-close {
+    display: none;
+  }
+  .reverse-icon {
+    transform: rotate(180deg);
+    transition: 0.3s;
+  }
+
+  @include e(bottom){
+    text-align: right;
+    padding: 0 10px;
+  }
+
+
+  .boss-tag {
+    margin: 2px 0 2px 6px;
+  }
+}

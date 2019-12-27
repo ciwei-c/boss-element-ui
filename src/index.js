@@ -22,6 +22,7 @@ import BossCol from '../packages/col/index.js';
 import BossBackTop from '../packages/backtop/index.js';
 import BossTree from '../packages/tree/index.js';
 import BossSelectTree from '../packages/select-tree/index.js';
+import BossSelectTable from '../packages/select-table/index.js';
 
 const components = {
   BossInput,
@@ -47,7 +48,8 @@ const components = {
   BossCol,
   BossBackTop,
   BossTree,
-  BossSelectTree
+  BossSelectTree,
+  BossSelectTable
 };
 
 function install(Vue, opts = {}) {

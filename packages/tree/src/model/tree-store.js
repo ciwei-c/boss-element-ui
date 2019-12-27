@@ -301,7 +301,6 @@ export default class TreeStore {
     keys.forEach((key) => {
       checkedKeys[key] = true;
     });
-
     this._setCheckedKeys(key, leafOnly, checkedKeys);
   }
 

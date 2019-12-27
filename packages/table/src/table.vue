@@ -238,6 +238,7 @@
 
 <script type="text/babel">
   import BossCheckbox from 'boss-element-ui/packages/checkbox';
+  import BossScrollbar from 'boss-element-ui/packages/scrollbar';
   import DynamicTable from './utils/dynamic-table'
   import TablePagination from './pagination'
   import { debounce, throttle } from 'throttle-debounce';
@@ -390,6 +391,11 @@
         default: true
       },
 
+      selectOnClickRow:{
+        type: Boolean,
+        default: false
+      },
+
       indent: {
         type: Number,
         default: 16
@@ -415,7 +421,8 @@
       TableFooter,
       TableBody,
       TablePagination,
-      BossCheckbox
+      BossCheckbox,
+      BossScrollbar
     },
 
     methods: {
@@ -838,8 +845,13 @@
           });
         }
       });
-
+      let hasSelection = this.columns.findIndex(({type})=> type === "selection") > -1
       this.$ready = true;
+      this.$on("row-click",(row,data)=>{
+        if(this.selectOnClickRow && hasSelection){
+          this.toggleRowSelection(row)
+        }
+      })
     },
 
     destroyed() {

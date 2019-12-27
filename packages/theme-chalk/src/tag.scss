@@ -103,20 +103,22 @@
   border-style: solid;
   border-radius: $--tag-border-radius;
   box-sizing: border-box;
+  position: relative;
   white-space: nowrap;
 
   .boss-icon-close {
     border-radius: 50%;
     text-align: center;
-    position: relative;
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
     font-size: 12px;
     height: 16px;
     width: 16px;
     line-height: 16px;
     vertical-align: middle;
-    top: -1px;
-    right: -5px;
 
     &::before {
       display: block;

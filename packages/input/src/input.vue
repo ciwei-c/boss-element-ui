@@ -25,6 +25,7 @@
         v-if="type !== 'textarea'"
         class="boss-input__inner"
         v-bind="$attrs"
+        :style="innerStyle"
         :type="showPassword ? (passwordVisible ? 'text': 'password') : type"
         :disabled="inputDisabled"
         :readonly="readonly"
@@ -149,6 +150,7 @@
       form: String,
       disabled: Boolean,
       readonly: Boolean,
+      innerStyle:Object,
       type: {
         type: String,
         default: 'text'

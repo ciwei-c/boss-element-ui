@@ -19,8 +19,9 @@
           :data="data"
           :node-key="nodeKey"
           :show-checkbox="multiple"
-          :check-strictly="true"
+          :check-strictly="checkStrictly"
           :icon="icon"
+          :default-expanded-keys="defaultExpandedKeys"
           :expandedIcon="expandedIcon"
           @node-click="onNodeClick"
         ></boss-tree>
@@ -40,6 +41,7 @@ export default {
   name: "BossTreePopper",
   components: { BossTree, BossButton, BossScrollbar },
   props:{
+    parent:Object,
     props:Object,
     data:Array,
     value:String | Array,
@@ -51,14 +53,20 @@ export default {
     },
     load:Function,
     icon:String,
-    expandedIcon:String
+    expandedIcon:String,
+    defaultExpandedKeys:Array,
+    checkStrictly:Boolean
   },
   watch:{
     visible(val){
       if(val){
         if(this.multiple){
           this.clearChecked()
-          this.$refs.tree.setCheckedKeys(this.value,true)
+          if(!Array.isArray(this.value)) console.error((`[Select-tree warn]: Expected Array with value ["${this.value}"], got String with value "${this.value}"`));
+          this.$refs.tree.setCheckedKeys(this.value, false)
+          if(!this.checkStrictly){
+            this.$parent.setValue(this.$refs.tree.getCheckedNodes())
+          }
         }else{
           this.clearCurrentKey()
           this.$refs.tree.setCurrentKey(this.value)

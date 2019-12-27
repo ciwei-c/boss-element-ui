@@ -9,20 +9,22 @@
       @blur="onBlur"
       @change="onChange"
       @clear="onClear"
-      clearable
+      :clearable="clearable"
       ref="reference"
       :placeholder="placeholder"
     />
     <boss-tree-popper 
       ref="tree-popper"
-      :data="treeData"
+      :data="data"
       :value="value"
       :defaultKey="value"
       :multiple="multiple"
       :nodeKey="nodeKey"
+      :checkStrictly="checkStrictly"
+      :defaultExpandedKeys="defaultExpandedKeys"
       :icon="icon"
-      :load="treeLoad"
-      :props="treeProps"
+      :load="load"
+      :props="props"
       :expandedIcon="expandedIcon"
     />
   </div>
@@ -32,20 +34,21 @@ import Clickoutside from "boss-element-ui/src/utils/clickoutside";
 import BossInput from "boss-element-ui/packages/input";
 import BossTreePopper from "./tree-popper"
 import Popper from 'boss-element-ui/src/utils/vue-popper';
+import BossTag from "boss-element-ui/packages/tag";
 export default {
-  components:{BossInput,BossTreePopper},
+  components:{BossInput,BossTreePopper,BossTag},
   mixins:[Popper],
   name:"BossSelectTree",
   directives: { Clickoutside },
   props:{
     value:String | Array,
-    treeData:{
+    data:{
       type:Array,
       default(){
         return []
       }
     },
-    treeProps:{
+    props:{
       type:Object,
       default(){
         return {
@@ -55,12 +58,23 @@ export default {
         }
       }
     },
-    treeLoad:Function,
+    clearable:Boolean,
+    load:Function,
     multiple:Boolean,
     placeholder:String,
     nodeKey:String,
     icon:String,
-    expandedIcon:String
+    expandedIcon:String,
+    formatter:Function,
+    placement:{
+      type:String,
+      default:"bottom-start"
+    },
+    checkStrictly:{
+      type:Boolean,
+      default:false
+    },
+    defaultExpandedKeys:Array
   },
   data(){
     return {
@@ -75,21 +89,20 @@ export default {
       handler(val){
         this.$nextTick(()=>{
           let tree = this.$refs["tree-popper"].getTree()
-          if(Array.isArray(val)){
-            this.inputValue = val.map(v=>{
-              let node = tree.getNode(v)
-              return (node && node.label) || ""
-            }).filter(v=>!!v).join(",")
-          }else{
-            try {
-              this.inputValue = tree.getNode(val).label
-            } catch (error) {
-              this.inputValue = ""
-            }
-          }
+          if(!Array.isArray(val)) val = [val]
+          this.inputValue = val.map(v=>{
+            let node = tree.getNode(v)
+            let value = (node && node[this.props.label]) || ""
+            if(this.formatter && typeof this.formatter === 'function' && node){
+              value = this.formatter(node.data)
+            } 
+            return value
+          }).filter(v=>!!v).join(",")
         })
       }
     }
+  },
+  created(){
   },
   methods:{
     onFocus(){
@@ -103,7 +116,7 @@ export default {
         this.popperElm = this.popperVm.$el;
         this.popperVm.$on("dodestroy", this.handleClose)
         this.popperVm.$on("pick", (v)=>{
-          this.setInputValue(v)
+          this.setValue(v)
           this.handleClose()
         })
       }
@@ -117,26 +130,30 @@ export default {
         this.doDestroy()
       }
     },
-    setInputValue(value){
+    setValue(value){
       if(!value){
-        return this.setValue()
+        return this._setValue()
       }
       if(Array.isArray(value)){
-        this.setValue(value.map(v=>v[this.nodeKey]).filter(v=>!!v))
+        this._setValue(value.map(v=>v[this.nodeKey]).filter(v=>!!v))
       }else{
-        this.setValue(value[this.nodeKey])
+        this._setValue(value[this.nodeKey])
       }
     },
-    setValue(value){
+    _setValue(value){
       if(!value) value = this.multiple ? [] : ""
       this.$emit("input", value)
+    },
+    focus(){
+      this.$refs.reference.focus()
     },
     onBlur(){
       this.$emit("blur")
     },
     onClear(){
       this.handleClose()
-      this.setInputValue(null)
+      this.setValue(null)
+      this.$emit("clear")
     },
     onChange(){
       this.$emit("change")

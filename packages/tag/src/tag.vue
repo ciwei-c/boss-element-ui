@@ -40,10 +40,12 @@
         effect ? `boss-tag--${effect}` : '',
         hit && 'is-hit'
       ];
+      let style = { backgroundColor: this.color }
+      if(this.closable) style.paddingRight = "20px";
       const tagEl = (
         <span
           class={ classes }
-          style={{ backgroundColor: this.color }}
+          style={ style }
           on-click={ this.handleClick }>
           { this.$slots.default }
           {

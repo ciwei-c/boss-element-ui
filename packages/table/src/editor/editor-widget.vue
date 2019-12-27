@@ -3,8 +3,9 @@ import BossInput from "boss-element-ui/packages/input";
 import BossSelect from "boss-element-ui/packages/select";
 import BossDatePicker from "boss-element-ui/packages/date-picker";
 import BossInputNumber from "boss-element-ui/packages/input-number";
+import BossSelectTree from "boss-element-ui/packages/select-tree";
 export default {
-  components: { BossInput, BossSelect, BossDatePicker, BossInputNumber },
+  components: { BossInput, BossSelect, BossDatePicker, BossInputNumber, BossSelectTree },
   render() {
     let widget = this.getWidget(this.$parent.widget);
     let { componentOptions = {}, data = {} } = widget;
@@ -84,6 +85,9 @@ export default {
         },
         "input-number"() {
           return <boss-input-number />;
+        },
+        "select-tree"() {
+          return <boss-select-tree />;
         }
       };
       let fn = widgetsMap[widget] || (() => null);

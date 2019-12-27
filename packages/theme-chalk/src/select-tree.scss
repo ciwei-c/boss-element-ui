@@ -4,6 +4,7 @@
 @include b(select-tree) {
   width: 260px;
   display: inline-block;
+  position: relative;
   padding: 5px 0;
   
   @include e(popper){
@@ -16,7 +17,7 @@
   }
   @include e(scrollbar){
     max-height: 300px;
-    width: 275px;
+    width: 320px;
     .boss-tree-node > .boss-tree-node__children {
       overflow: inherit;
     }
