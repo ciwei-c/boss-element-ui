@@ -43,7 +43,6 @@
     },
 
     props: {
-      visible: Boolean,
       timeArrowControl: Boolean
     },
 
@@ -87,6 +86,7 @@
       return {
         popperClass: '',
         format: 'HH:mm:ss',
+        visible:false,
         value: '',
         defaultValue: null,
         date: new Date(),

@@ -33,6 +33,26 @@
     height: 1px;
     background-color: $--color-primary;
   }
+
+  @include e(search){
+    &-list{
+      > div {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        height: 26px;
+        &:hover {
+          background-color: $--tree-search-hover-background-color;
+        }
+        &.is-current {
+          background: mix($--color-white, $--color-primary, 92%);
+        }
+      }
+      &-icon {
+        padding: 6px;
+      }
+    }
+  }
 }
 
 @include b(tree-node) {

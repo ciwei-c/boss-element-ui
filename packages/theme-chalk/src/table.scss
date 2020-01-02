@@ -568,11 +568,11 @@
     position: relative;
     &:hover{
       .boss-table__editable-column-button {
-        display: block;
+        display: block !important;
       }
     }
     &-button {
-      display: none;
+      display: none !important;
       position: absolute;
       right: 10px;
       top: 50%;

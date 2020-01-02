@@ -239,3 +239,20 @@ export function objToArray(obj) {
   }
   return isEmpty(obj) ? [] : [obj];
 }
+
+export function findDataByJsonReader(jsonReaderProp, sourceData) {
+  let data
+  try {
+    let props = jsonReaderProp.split(".")
+    props.forEach(k=>{
+      if(data) {
+        data = data[k]
+      }else{
+        data = sourceData[k]
+      }
+    })
+  } catch (error) {
+
+  }
+  return data
+}

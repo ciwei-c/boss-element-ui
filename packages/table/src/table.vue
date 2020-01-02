@@ -269,6 +269,11 @@
 
       url:String,
 
+      method:{
+        type:String,
+        default:"post"
+      },
+
       pagination: Object,
 
       size: String,

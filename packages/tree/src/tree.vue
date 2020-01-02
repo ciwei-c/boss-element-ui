@@ -9,7 +9,17 @@
     }"
     role="tree"
   >
+    <boss-tree-search
+      ref="search"
+      :url="url"
+      :method="method"
+      :requestReader="requestReader"
+      :jsonReader="jsonReader"
+      :props="props"
+      :visibleChange="(visible)=>{ this.nodeVisible = !visible }"
+    />
     <boss-tree-node
+      v-show="nodeVisible"
       v-for="child in root.childNodes"
       :node="child"
       :props="props"
@@ -31,6 +41,7 @@
 </template>
 
 <script>
+  import BossTreeSearch from "./search"
   import TreeStore from './model/tree-store';
   import { getNodeKey, findNearestComponent } from './model/util';
   import BossTreeNode from './tree-node.vue';
@@ -45,6 +56,7 @@
 
     components: {
       BossTreeNode,
+      BossTreeSearch
     },
 
     data() {
@@ -54,6 +66,7 @@
         currentNode: null,
         treeItems: null,
         checkboxItems: [],
+        nodeVisible: true,
         dragState: {
           showDropIndicator: false,
           draggingNode: null,
@@ -64,6 +77,10 @@
     },
 
     props: {
+      url:String,
+      method:String,
+      requestReader:Function,
+      jsonReader:Object,
       data: {
         type: Array
       },
@@ -142,7 +159,6 @@
           return this.data;
         }
       },
-
       treeItemArray() {
         return Array.prototype.slice.call(this.treeItems);
       },

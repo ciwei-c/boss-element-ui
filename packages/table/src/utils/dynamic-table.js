@@ -1,7 +1,9 @@
-import request from './request'
+import request from 'boss-element-ui/src/utils/request'
+import {findDataByJsonReader} from "boss-element-ui/src/utils/util"
 export default {
   props: {
     jsonReader: Object,
+    requestReader: Function,
     autoLoad: {
       type:Boolean,
       default:true
@@ -49,15 +51,25 @@ export default {
           if(currentPage !== undefined) Object.assign(data,{index:currentPage})
         }
         if(this.beforeLoad && typeof this.beforeLoad === 'function' && this.beforeLoad() === false) return
-        request({
+
+        let requestData = {
           url: this.url,
-          method:"post",
-          data
-        }).then(data => {
+          method: this.method || "post",
+        }
+
+        let _data = (this.requestReader && this.requestReader(data)) || data
+
+        if(requestData.method === "get") {
+          request.params = _data
+        }else{
+          requestData.data = _data
+        }
+
+        request(requestData).then(data => {
           this.$emit("on-load-success")
           let jsonReader = Object.assign(this.defaultJsonReader, this.jsonReader)
-          if(this.hasPagination) this.pagination.total = this.findDataByJsonReader(jsonReader.total, data)
-          this.data = this.findDataByJsonReader(jsonReader.data, data)
+          if(this.hasPagination) this.pagination.total = findDataByJsonReader(jsonReader.total, data)
+          this.data = findDataByJsonReader(jsonReader.data, data)
           this.$nextTick(()=>{
             setTimeout(() => {
               this.$emit("after-data-render")
@@ -67,22 +79,6 @@ export default {
           console.log(e)
         })
       }
-    },
-    findDataByJsonReader(jsonReaderProp, sourceData) {
-      let data
-      try {
-        let props = jsonReaderProp.split(".")
-        props.forEach(k=>{
-          if(data) {
-            data = data[k]
-          }else{
-            data = sourceData[k]
-          }
-        })
-      } catch (error) {
-
-      }
-      return data
     }
   }
 }

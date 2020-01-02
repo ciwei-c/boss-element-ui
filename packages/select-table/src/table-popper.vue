@@ -52,7 +52,7 @@ export default {
     visible(val) {
       if (val) {
         this.$nextTick(()=>{
-          if(!this.url && !this.tableData) console.error((`[Select-table warn]: data or url one of them must be set`));
+          if(!this.url && !this.tableData) console.error((`[Select-table warn]: The data field or url field must be set to one`));
           this.update()
         })
       }

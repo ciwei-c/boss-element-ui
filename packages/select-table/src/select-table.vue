@@ -25,7 +25,9 @@
         <boss-tag type="info" v-if="value.length > 1">+{{value.length - 1}}</boss-tag>
       </div>
       <transition-group class="boss-select-table__multiple-tags" @after-leave="resetInputHeight" v-else ref="tags">
-        <boss-tag type="info" v-for="(val,idx) in value" :key="idx" closable  @close="onCloseTag(idx)">{{ getValue(val) }}</boss-tag>
+        <template>
+          <boss-tag type="info" v-for="(val,idx) in value" :key="idx" closable  @close="onCloseTag(idx)">{{ getValue(val) }}</boss-tag>
+        </template>
       </transition-group>
     </template>
     <table-popper 
