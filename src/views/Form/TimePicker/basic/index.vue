@@ -15,6 +15,7 @@
       }"
       placeholder="选择时间"
     ></boss-time-select>
+      <boss-time-picker placeholder="选择时间" v-model="value" style="width: 100%;"></boss-time-picker>
   </demo-sample-panel>
 </template>
 <script>

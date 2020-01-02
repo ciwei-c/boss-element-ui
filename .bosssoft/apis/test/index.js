@@ -1,15 +1,19 @@
 module.exports = [
   {
-    _id: 'ab05527d-4829-42ed-86d9-b93a6e5c1890',
     data: {
-      name: 'boss soft',
+      'list':[{
+        'label':'一级 1'
+      },{
+        'label':'一级 2'
+      },{
+        'label':'二级 1-1'
+      }]
     },
     enableMock: true,
     name: 'test',
-    url: '/test/getInfo',
-    method: 'get',
+    url: '/trees',
+    method: 'post',
   },{
-    _id: 'ab05527d-4829-42ed-86d9-b93a6e5c1890',
     data: {
       data:{
         "list|10": [

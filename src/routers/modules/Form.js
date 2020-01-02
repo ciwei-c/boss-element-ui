@@ -3,8 +3,16 @@ export default [{
 }, {
   path: '/input-number'
 }, {
+  path: '/cascader'
+},{
   path: '/checkbox'
 }, {
+  path: '/radio'
+}, {
+  path: '/switch'
+}, {
+  path: '/slider'
+},{
   path: '/date-picker'
 }, {
   path: '/time-picker'
@@ -16,4 +24,6 @@ export default [{
   path: '/select-tree'
 }, {
   path: '/select-table'
+}, {
+  path: '/form'
 }];

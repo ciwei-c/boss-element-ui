@@ -43,6 +43,24 @@ export default {
       fileSource:"Form/SelectTable"
     },
     {
+      route: "/cascader",
+      title: "Cascader 级联选择器",
+      desc: "当一个数据集合有清晰的层级结构时，可通过级联选择器逐级查看并选择。",
+      fileSource:"Form/Cascader"
+    },
+    {
+      route: "/switch",
+      title: "Switch 开关",
+      desc: "表示两种相互对立的状态间的切换，多用于触发「开/关」。",
+      fileSource:"Form/Switch"
+    },
+    {
+      route: "/slider",
+      title: "Slider 滑块",
+      desc: "通过拖动滑块在一个固定区间内进行选择",
+      fileSource:"Form/Slider"
+    },
+    {
       route: "/date-picker",
       title: "DatePicker 日期选择器",
       desc: "用于选择或输入日期",
@@ -59,6 +77,12 @@ export default {
       title: "DateTimePicker 日期时间选择器",
       desc: "在同一个选择器里选择日期和时间",
       fileSource:"Form/DateTimePicker"
+    },
+    {
+      route: "/form",
+      title: "Form 表单",
+      desc: "由输入框、选择器、单选框、多选框等控件组成，用以收集、校验、提交数据",
+      fileSource:"Form/Form"
     }
   ]
 }

@@ -70,10 +70,10 @@ export default {
   data(){
     return {
       code,
-      codeDesc:"data 为列表的数据源，v-model 的值为当前被选中的节点值，使用它需要先设置 row-key 属性，row-key 值应为数据中存在的字段，并且再整个列表中是唯一的存在，例如 row-key='id'，因为需要根据 row-key 判断选中及数据回溯渲染，确保回溯渲染时能选中当前 v-model 的值。另外需要设置 columns 数组，来渲染表格列，其属性值与 boss-table-column 完全一致",
+      codeDesc:"配置 formatter 方法用来做有具体意义的格式化展现，若没有设置，则默认显示数据源中 row-key 值所对应的键值",
       anchor:{
-        id:"basic",
-        title:"基础用法"
+        id:"format",
+        title:"格式化展示"
       }
     }
   }

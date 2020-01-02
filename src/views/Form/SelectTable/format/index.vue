@@ -1,16 +1,26 @@
-let code = `<template>
-  <boss-select-table 
-    v-model="value"
-    row-key="id"
-    :data="tableData"
-    :columns="tableColumns"
-    placeholder="请从表格中选择数据"
-    :formatter="(row)=>{return \`\${row.name}-\${row.address}\`}"
+<template>
+  <demo-sample-panel
+    :title="anchor.title"
+    :panel-id="anchor.id"
+    :code="code"
+    :codeDesc="codeDesc"
+    desc="下拉表格基础用法"
   >
-  </boss-select-table>
+    <boss-select-table 
+      v-model="value"
+      row-key="id"
+      :data="tableData"
+      :columns="tableColumns"
+      placeholder="请从表格中选择数据"
+      :formatter="(row)=>{return `${row.name}-${row.address}`}"
+    >
+    </boss-select-table>
+  </demo-sample-panel>
 </template>
 <script>
+import code from "./code";
 export default {
+  mixins: [code],
   data() {
     return {
       value:{
@@ -65,16 +75,3 @@ export default {
   }
 };
 </script>
-`
-export default {
-  data(){
-    return {
-      code,
-      codeDesc:"data 为列表的数据源，v-model 的值为当前被选中的节点值，使用它需要先设置 row-key 属性，row-key 值应为数据中存在的字段，并且再整个列表中是唯一的存在，例如 row-key='id'，因为需要根据 row-key 判断选中及数据回溯渲染，确保回溯渲染时能选中当前 v-model 的值。另外需要设置 columns 数组，来渲染表格列，其属性值与 boss-table-column 完全一致",
-      anchor:{
-        id:"basic",
-        title:"基础用法"
-      }
-    }
-  }
-}

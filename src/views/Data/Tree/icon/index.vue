@@ -1,8 +1,18 @@
-let code = `<template>
-  <boss-tree :data="data" :props="defaultProps"></boss-tree>
+<template>
+  <demo-sample-panel
+    :title="anchor.title"
+    :panel-id="anchor.id"
+    :code="code"
+    :codeDesc="codeDesc"
+    desc="树自定义图标的设置"
+  >
+    <boss-tree :data="data" :props="defaultProps" icon="boss-icon-folder" expandedIcon="boss-icon-folder-opened"></boss-tree>
+  </demo-sample-panel>
 </template>
 <script>
+import code from "./code";
 export default {
+  mixins: [code],
   data() {
     return {
       data: [{
@@ -10,7 +20,8 @@ export default {
         children: [{
           label: '二级 1-1',
           children: [{
-            label: '三级 1-1-1'
+            label: '三级 1-1-1',
+            icon:'boss-icon-document'
           }]
         }]
       }, {
@@ -47,16 +58,4 @@ export default {
     };
   }
 };
-</script>`
-export default {
-  data(){
-    return {
-      code,
-      codeDesc:"data 值绑定树的数据，props 设置节点属性值的别名，默认字节点集合的属性为children，文本显示为 label",
-      anchor:{
-        id:"basic",
-        title:"基础用法"
-      }
-    }
-  }
-}
+</script>
