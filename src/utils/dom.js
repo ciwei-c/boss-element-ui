@@ -182,13 +182,11 @@ export const isScroll = (el, vertical) => {
       ? getStyle(el, 'overflow-y')
       : getStyle(el, 'overflow-x')
     : getStyle(el, 'overflow');
-
   return overflow.match(/(scroll|auto)/);
 };
 
 export const getScrollContainer = (el, vertical) => {
   if (isServer) return;
-
   let parent = el;
   while (parent) {
     if ([window, document, document.documentElement].includes(parent)) {

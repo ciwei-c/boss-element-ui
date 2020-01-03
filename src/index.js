@@ -17,6 +17,7 @@ import BossOptionGroup from '../packages/option-group/index.js';
 import BossSelect from '../packages/select/index.js';
 import BossPagination from '../packages/pagination/index.js';
 import BossButton from '../packages/button/index.js';
+import BossButtonGroup from '../packages/button-group/index.js';
 import BossDatePicker from '../packages/date-picker/index.js';
 import BossTimePicker from '../packages/time-picker/index.js';
 import BossTimeSelect from '../packages/time-select/index.js';
@@ -46,9 +47,41 @@ import BossMenuItemGroup from '../packages/menu-item-group/index.js';
 import BossSubmenu from '../packages/submenu/index.js';
 import BossSteps from '../packages/steps/index.js';
 import BossStep from '../packages/step/index.js';
+import BossUpload from '../packages/upload/index.js';
+import BossProgress from '../packages/progress/index.js';
+import BossBadge from '../packages/badge/index.js';
+import BossDropdown from '../packages/dropdown/index.js';
+import BossDropdownMenu from '../packages/dropdown-menu/index.js';
+import BossDropdownItem from '../packages/dropdown-item/index.js';
+import BossTransfer from '../packages/transfer/index.js';
+import BossPopover from '../packages/popover/index.js';
+import BossCarousel from '../packages/carousel/index.js';
+import BossCarouselItem from '../packages/carousel-item/index.js';
+import BossCollapse from '../packages/collapse/index.js';
+import BossCollapseItem from '../packages/collapse-item/index.js';
+import BossCalendar from '../packages/calendar/index.js';
+import BossDrawer from '../packages/drawer/index.js';
+import BossCard from '../packages/card/index.js';
+import BossPopconfirm from '../packages/popconfirm/index.js';
+import BossTimeline from '../packages/timeline/index.js';
+import BossTimelineItem from '../packages/timeline-item/index.js';
+import BossAutocomplete from '../packages/autocomplete/index.js';
+import BossAvatar from '../packages/avatar/index.js';
+import BossDivider from '../packages/divider/index.js';
+import BossIcon from '../packages/icon/index.js';
+import BossImage from '../packages/image/index.js';
+import BossInfiniteScroll from '../packages/infinite-scroll/index.js';
+import BossLink from '../packages/link/index.js';
+import BossColorPicker from '../packages/color-picker/index.js';
+import BossRate from '../packages/rate/index.js';
+import BossPageHeader from '../packages/page-header/index.js';
 
 const components = {
+  BossColorPicker,
+  BossRate,
+  BossPageHeader,
   BossInput,
+  BossAutocomplete,
   BossInputNumber,
   BossRadio,
   BossRadioButton,
@@ -66,6 +99,7 @@ const components = {
   BossSelect,
   BossPagination,
   BossButton,
+  BossButtonGroup,
   BossDatePicker,
   BossTimePicker,
   BossTimeSelect,
@@ -95,7 +129,30 @@ const components = {
   BossMenuItemGroup,
   BossSubmenu,
   BossSteps,
-  BossStep
+  BossStep,
+  BossUpload,
+  BossProgress,
+  BossBadge,
+  BossDropdown,
+  BossDropdownItem,
+  BossDropdownMenu,
+  BossTransfer,
+  BossPopover,
+  BossCarousel,
+  BossCarouselItem,
+  BossCollapse,
+  BossCollapseItem,
+  BossCalendar,
+  BossDrawer,
+  BossCard,
+  BossPopconfirm,
+  BossTimeline,
+  BossTimelineItem,
+  BossAvatar,
+  BossDivider,
+  BossIcon,
+  BossImage,
+  BossLink
 };
 
 function install(Vue, opts = {}) {
@@ -104,6 +161,8 @@ function install(Vue, opts = {}) {
   });
 
   Vue.use(BossLoading.directive);
+  Vue.use(BossPopover.directive);
+  Vue.use(BossInfiniteScroll);
 
   Vue.prototype.$ELEMENT = {
     size: opts.size || '',

@@ -19,7 +19,7 @@ export default {
     },
     cancelBtnComponent() {
       return this.getVueComponent((
-        this.showCancelButton ? null :
+        !this.showCancelButton ? null :
           <boss-button
             loading={this.cancelButtonLoading}
             ref="cancel"
@@ -37,6 +37,7 @@ export default {
     visible(val) {
       // btn、input
       if (val) {
+        console.log(this.showCancelButton)
         let { confirm, cancel, btns } = this.$refs
         if (!cancel) btns.appendChild(this.cancelBtnComponent)
         if (!confirm) btns.appendChild(this.confirmBtnComponent)
