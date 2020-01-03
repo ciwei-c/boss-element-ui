@@ -4,7 +4,7 @@
     :panel-id="anchor.id"
     :code="code"
     :codeDesc="codeDesc"
-    desc="由于选项默认可见，不宜过多，若选项过多，建议使用 Select 选择器。"
+    desc="由输入框、选择器、单选框、多选框等控件组成，用以收集、校验、提交数据"
   >
     <boss-form ref="form" :model="form" label-width="80px">
       <boss-form-item label="活动名称">

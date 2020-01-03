@@ -1,5 +1,5 @@
 <template>
-  <demo-sample-panel :title="anchor.title" :panel-id="anchor.id" :code="code" desc="基础的按钮用法。">
+  <demo-sample-panel :title="anchor.title" :panel-id="anchor.id" :code="code" desc="基础的按钮用法。" :codeDesc="codeDesc">
     <boss-row>
       <boss-button>默认按钮</boss-button>
       <boss-button type="primary">主要按钮</boss-button>

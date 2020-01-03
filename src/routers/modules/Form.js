@@ -26,4 +26,12 @@ export default [{
   path: '/select-table'
 }, {
   path: '/form'
+}, {
+  path: '/upload'
+}, {
+  path: '/transfer'
+}, {
+  path: '/rate'
+}, {
+  path: '/color-picker'
 }];

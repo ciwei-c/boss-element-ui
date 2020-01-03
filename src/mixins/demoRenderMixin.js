@@ -12,7 +12,6 @@ export default {
     }
   },
   mounted(){
-    console.log(112)
     this.render()
   },
   methods:{

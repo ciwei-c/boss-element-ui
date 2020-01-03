@@ -61,6 +61,12 @@ export default {
       fileSource:"Form/Slider"
     },
     {
+      route: "/upload",
+      title: "Upload 上传",
+      desc: "通过点击或者拖拽上传文件",
+      fileSource:"Form/Upload"
+    },
+    {
       route: "/date-picker",
       title: "DatePicker 日期选择器",
       desc: "用于选择或输入日期",
@@ -77,6 +83,24 @@ export default {
       title: "DateTimePicker 日期时间选择器",
       desc: "在同一个选择器里选择日期和时间",
       fileSource:"Form/DateTimePicker"
+    },
+    {
+      route: "/rate",
+      title: "Rate 评分",
+      desc: "评分组件",
+      fileSource:"Form/Rate"
+    },
+    {
+      route: "/color-picker",
+      title: "ColorPicker 颜色选择器",
+      desc: "评分组件",
+      fileSource:"Form/ColorPicker"
+    },
+    {
+      route: "/transfer",
+      title: "Transfer 穿梭框",
+      desc: "在两个穿梭框中交换数据",
+      fileSource:"Form/Transfer"
     },
     {
       route: "/form",

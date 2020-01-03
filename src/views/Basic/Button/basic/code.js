@@ -34,6 +34,7 @@ export default {
   data(){
     return {
       code,
+      codeDesc:"使用type、plain、round和circle属性来定义 Button 的样式。",
       anchor:{
         id:"basic",
         title:"基础用法"

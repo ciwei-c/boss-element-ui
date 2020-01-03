@@ -1,27 +1,43 @@
 <template>
-  <boss-row>
-    <boss-steps :active="active" finish-status="success">
-      <boss-step title="步骤 1"></boss-step>
-      <boss-step title="步骤 2"></boss-step>
-      <boss-step title="步骤 3"></boss-step>
-    </boss-steps>
-
-    <boss-button style="margin-top: 12px;" @click="next">下一步</boss-button>
-  </boss-row>
+  <div>
+    <ul class="infinite-list" v-infinite-scroll="load" style="overflow:auto">
+      <li v-for="i in count" :key="i" class="infinite-list-item">{{ i }}</li>
+      <li style="text-align:center" v-if="loading"><boss-icon name="loading"></boss-icon></li>
+    </ul>
+  </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      active: 0
-    };
-  },
-
-  methods: {
-    next() {
-      if (this.active++ > 2) this.active = 0;
+  export default {
+    data () {
+      return {
+        count: 10,
+        loading:false
+      }
+    },
+    methods: {
+      load () {
+        this.loading = true
+        setTimeout(() => {
+          this.loading = false
+          this.count += 10
+        }, 1000);
+      }
     }
   }
-};
 </script>
+<style lang="scss">
+.infinite-list {
+  height: 300px;
+  overflow: hidden;
+  .infinite-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    background: #e8f3fe;
+    margin: 10px 0;
+    color: #7dbcfc;
+  }
+}
+</style>

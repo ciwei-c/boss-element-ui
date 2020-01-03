@@ -19,6 +19,18 @@ export default {
       fileSource: "Navigation/Breadcrumb"
     },
     {
+      route: "/page-header",
+      title: "PageHeader 页头",
+      desc: "如果页面的路径比较简单，推荐使用页头组件而非面包屑组件。",
+      fileSource: "Navigation/PageHeader"
+    },
+    {
+      route: "/dropdown",
+      title: "Dropdown 下拉菜单",
+      desc: "将动作或菜单折叠到下拉菜单中。",
+      fileSource: "Navigation/Dropdown"
+    },
+    {
       route: "/steps",
       title: "Steps 步骤条",
       desc: "引导用户按照流程完成任务的分步导航条，可根据实际应用场景设定步骤，步骤不得少于 2 步。",
