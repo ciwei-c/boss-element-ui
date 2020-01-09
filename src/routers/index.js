@@ -15,6 +15,10 @@ const requireContext = (files) => {
     if(!route.component) route.component = DemoRender
     return route
   })
+  routes.push({
+    path:"/",
+    redirect:"/layout"
+  })
   return routes
 }
 

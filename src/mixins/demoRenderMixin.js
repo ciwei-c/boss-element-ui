@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Store from "@/store"
 
 export default {
   render(){
@@ -18,6 +19,7 @@ export default {
     render(){
       this.$nextTick(()=>{
         let anchors = []
+        this.store = this.$store
         this.$el.innerHTML = ""
         this.$store.commit("SET_ANCHORS", [])
         this.childrens.forEach(children=>{
@@ -36,6 +38,7 @@ export default {
       files.keys().filter(key=>{
         return key.startsWith(fileSource)
       }).forEach(key=>{
+        files(key).default.store = this.$store
         vnodes.push(new Vue(files(key).default).$mount())
       })
       return vnodes

@@ -4,7 +4,9 @@ export default {
     title:"",
     desc:"",
     fileSource:"",
-    files:require.context("@/views", true, /.\/\w+\/\index.vue$/)
+    files:require.context("@/views", true, /.\/\w+\/\index.vue$/),
+    theme:window.localStorage.getItem("theme")||"element",
+    globalLoading:false
   },
   mutations:{
     'SET_ANCHORS'(state, payload){
@@ -18,6 +20,11 @@ export default {
     },
     'SET_FILE_SOURCE'(state, payload){
       state.fileSource = payload
+    },
+    'SET_THEME'(state, payload){
+      state.theme = payload
+      window.localStorage.setItem("theme",payload)
+      state.globalLoading = true
     },
   }
 }

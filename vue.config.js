@@ -8,7 +8,8 @@ function resolve(dir) {
 module.exports = {
   lintOnSave: false,
   devServer:{
-    after:require("./server/index.js")
+    after:require("./server/index.js"),
+    port:8081
   },
   configureWebpack: {
     resolve: {

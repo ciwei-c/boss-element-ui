@@ -1,9 +1,8 @@
 <template>
   <div>
-    <ul class="infinite-list" v-infinite-scroll="load" style="overflow:auto">
-      <li v-for="i in count" :key="i" class="infinite-list-item">{{ i }}</li>
-      <li style="text-align:center" v-if="loading"><boss-icon name="loading"></boss-icon></li>
-    </ul>
+    <boss-download data="./index.vue" filename="download.vue">
+      <boss-button>点击下载</boss-button>
+    </boss-download>
   </div>
 </template>
 
