@@ -1,0 +1,92 @@
+@import "./convert.scss";
+
+$hueStep:2;
+$saturationStep:16;
+$saturationStep2:5;
+$brightnessStep1:5;
+$brightnessStep2:15;
+$lightColorCount:5;
+$darkColorCount:4;
+
+@function colorPalette($color, $index){
+  $isLight:$index <= 6;
+  $hsv:get-hsv($color);
+  $i:0;
+  @if $isLight {
+    $i:$lightColorCount + 1 - $index;
+  } @else {
+    $i:$index - $lightColorCount - 1;
+  }
+  
+  $H:get-hue($hsv, $i, $isLight);
+  $S:get-saturation($hsv, $i, $isLight);
+  $V:get-value($hsv, $i, $isLight);
+
+  @return hsv-to-rgb(('H':$H, 'S':$S / 100, 'V':$V / 100))
+};
+
+@function get-hue($hsv, $i, $isLight){
+  $hue:0;
+  $h:map-get($hsv, 'H');
+
+  @if $h >= 60 and $h <= 240 {
+    @if $isLight {
+      $hue:$h - $hueStep * $i;
+    }@else{
+      $hue:$h + $hueStep * i;
+    }
+  } @else {
+    @if $isLight {
+      $hue:$h + $hueStep * $i;
+    }@else{
+      $hue:$h - $hueStep * i;
+    }
+  }
+
+  @if $hue < 0 {
+    $hue:$hue + 360;
+  }@else if $hue >= 360 {
+    $hue:$hue - 360;
+  }
+
+  @return round($hue);
+};
+
+@function get-saturation($hsv, $i, $isLight){
+  $saturation:0;
+  $S:map-get($hsv, 'S');
+
+  @if $isLight {
+    $saturation:round($S * 100) - $saturationStep * $i;
+  } @else if $i == $darkColorCount {
+    $saturation:round($S * 100) + $saturationStep;
+  } @else {
+    $saturation:round($S * 100) + $saturationStep2 * $i;
+  };
+
+  @if $saturation > 100 {
+    $saturation:100;
+  };
+  
+  @if $isLight and $i == $lightColorCount and $saturation > 10{
+    $saturation:10;
+  }
+
+  @if $saturation < 6 {
+    $saturation:6;
+  }
+  
+  @return round($saturation);
+};
+
+@function get-value($hsv, $i, $isLight){
+  $value:0;
+  $V:map-get($hsv, 'V');
+  @if $isLight {
+    $value:round($V * 100) + $brightnessStep1 * $i;
+  } @else {
+    $value:round($V * 100) + $brightnessStep2 * $i;
+  };
+
+  @return $value;
+};

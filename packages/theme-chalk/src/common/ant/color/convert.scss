@@ -1,4 +1,4 @@
-@function rgb-to-hsv($color){
+@function get-hsv($color){
   $R:red($color);
   $G:green($color);
   $B:blue($color);
@@ -30,22 +30,17 @@
 };
 
 @function hsv-to-rgb($hsv){
-  $H:map-get($map: $hsv, $key: 'H');
-  $S:map-get($map: $hsv, $key: 'S');
-  $V:map-get($map: $hsv, $key: 'V');
+  $H:map-get($hsv,'H');
+  $S:map-get($hsv,'S');
+  $V:map-get($hsv,'V');
 
-  $R:0;
-  $G:0;
-  $B:0;
+  $R:$V;
+  $G:$V;
+  $B:$V;
 
-  @if $S == 0 {
-    $R:$V;
-    $G:$V;
-    $B:$V;
-  }@else {
-    $H:$H / 60;
-    $i:floor($H);
-    $f:$H - $i;
+  @if $S != 0 {
+    $i:floor(($H / 60) % 6);
+    $f:($H / 60) - $i;
     $a:$V * (1 - $S);
     $b:$V * (1 - $S * $f);
     $c:$V * (1 - $S * (1 - $f));
@@ -77,19 +72,9 @@
     }
   };
 
-  $map:('red':$R, 'green':$G, 'blue':$B);
-  @return $map;
+  $R: floor($R * 255.0);
+  $G: floor($G * 255.0);
+  $B: floor($B * 255.0);
+
+  @return rgb($R, $G, $B);
 }
-
-@mixin test($color) {
-  $hsv:rgb-to-hsv($color);
-  $rgb:hsv-to-rgb($hsv);
-
-  $red:map-get($map: $rgb, $key: 'red');
-  $green:map-get($map: $rgb, $key: 'green');
-  $blue:map-get($map: $rgb, $key: 'blue');
-  
-  body {
-    background:rgb($red, $green, $blue);
-  } 
-};

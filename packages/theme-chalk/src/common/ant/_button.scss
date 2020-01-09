@@ -1,8 +1,8 @@
 @import "../var";
 @import "../../mixins/mixins";
 @import "../../mixins/utils";
-@import "./test.scss";
-@include test(#F5222D);
+@import "./color/colorPalette.scss";
+
 @function _mix($color-one, $color-two, $-percent){
   @return mix($color-one, $color-two, $-percent)
 };
