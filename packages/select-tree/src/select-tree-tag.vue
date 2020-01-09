@@ -4,7 +4,7 @@
     <boss-tag type="info" v-if="value.length > 1">+{{value.length - 1}}</boss-tag>
   </div>
   <transition-group class="boss-select-tree__multiple-tags" @after-leave="resetInputHeight" v-else-if="!collapseTags && enableTag" ref="tags">
-    <boss-tag type="info" v-for="(val,idx) in value" :key="idx" closable  @close="onCloseTag(idx)">{{ getValue(val) }}</boss-tag>
+    <boss-tag type="info" v-for="(val,idx) in value" :key="val" closable  @close="onCloseTag(idx)">{{ getValue(val) }}</boss-tag>
   </transition-group>
 </template>
 <script>

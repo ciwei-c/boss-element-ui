@@ -75,8 +75,20 @@ import BossLink from '../packages/link/index.js';
 import BossColorPicker from '../packages/color-picker/index.js';
 import BossRate from '../packages/rate/index.js';
 import BossPageHeader from '../packages/page-header/index.js';
+import BossContainer from '../packages/container/index.js';
+import BossHeader from '../packages/header/index.js';
+import BossAside from '../packages/aside/index.js';
+import BossMain from '../packages/main/index.js';
+import BossFooter from '../packages/footer/index.js';
+import BossDownload from '../packages/download/index.js';
 
 const components = {
+  BossDownload,
+  BossFooter,
+  BossMain,
+  BossAside,
+  BossHeader,
+  BossContainer,
   BossColorPicker,
   BossRate,
   BossPageHeader,
@@ -110,11 +122,6 @@ const components = {
   BossTree,
   BossSelectTree,
   BossSelectTable,
-  BossAlert,
-  BossLoading:BossLoading.service,
-  BossMessage,
-  BossMessageBox,
-  BossNotification,
   BossSwitch,
   BossCascader,
   BossSlider,
@@ -180,10 +187,15 @@ function install(Vue, opts = {}) {
 };
 
 const version = '0.0.1'
-
 const DEFAULT_EXPORTS = Object.assign({
   install,
-  version
+  version,
+  BossLoading,
+  BossInfiniteScroll,
+  BossAlert,
+  BossMessage,
+  BossMessageBox,
+  BossNotification,
 },components)
 
 export default DEFAULT_EXPORTS

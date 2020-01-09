@@ -1,0 +1,153 @@
+@import "../var";
+@import "../../mixins/mixins";
+@import "../../mixins/utils";
+@import "./test.scss";
+@include test(#F5222D);
+@function _mix($color-one, $color-two, $-percent){
+  @return mix($color-one, $color-two, $-percent)
+};
+
+@mixin ant-button-plain($color) {
+  color: $color;
+  background:  $--background-color-base;
+  border-color:  $--border-color-base;
+  
+  &:hover {
+    background: _mix($--color-white, $color, $--button-hover-tint-percent);
+    border-color: $color;
+    color: $--color-white;
+  }
+
+  &:focus {
+    color: $color;
+    background: $--background-color-base;
+    border-color: $color;
+  }
+  
+
+  &:active {
+    background: _mix($--color-black, $color, $--button-active-shade-percent);
+    border-color: _mix($--color-black, $color, $--button-active-shade-percent);
+    color: $--color-white;
+    outline: none;
+  }
+
+  &.is-disabled {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: $--button-disabled-font-color;
+      background-color: $--button-disabled-background-color;
+      border-color: $--button-disabled-border-color;
+    }
+  }
+}
+
+@mixin ant-button-ghost($color) {
+  color: $color;
+  background:  transparent;
+  border-color:  $color;
+
+  &:hover {
+    background: transparent;
+    border-color: $color;
+    color: _mix($--color-black, $color, $--button-active-shade-percent);
+  }
+
+  &:focus {
+    color: $color;
+    background: transparent;
+    border-color: _mix($--color-black, $color, $--button-active-shade-percent);
+  }
+  
+
+  &:active {
+    background: transparent;
+    border-color: _mix($--color-black, $color, $--button-active-shade-percent);
+    color: _mix($--color-black, $color, $--button-active-shade-percent);
+    outline: none;
+  }
+
+  &.is-disabled {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: $--button-disabled-font-color;
+      background-color: transparent;
+      border-color: $--button-disabled-border-color;
+    }
+  }
+}
+
+@mixin ant-button-variant($color, $background-color, $border-color) {
+  color: $color;
+  background-color: _mix($--color-white, $background-color, $--button-hover-tint-percent);
+  border-color: $border-color;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+  transition: $--all-transition;
+  &:hover,
+  &:focus {
+    background: _mix($--color-white, $background-color, $--button-hover-tint-percent);
+    border-color: _mix($--color-white, $border-color, $--button-hover-tint-percent);
+    color: $color;
+  }
+  
+  &:active {
+    background: _mix($--color-black, $background-color, $--button-active-shade-percent);
+    border-color: _mix($--color-black, $border-color, $--button-active-shade-percent);
+    color: $color;
+    outline: none;
+  }
+
+  &.is-active {
+    background: _mix($--color-black, $background-color, $--button-active-shade-percent);
+    border-color: _mix($--color-black, $border-color, $--button-active-shade-percent);
+    color: $color;
+  }
+
+  &.is-disabled {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: $--button-disabled-font-color;
+      background-color: $--button-disabled-background-color;
+      border-color: $--button-disabled-border-color;
+    }
+  }
+
+  &.is-plain {
+    @include ant-button-plain($background-color);
+  }
+
+  &.is-ghost {
+    @include ant-button-ghost($background-color);
+  }
+}
+
+@if $--theme == ant {
+  @include b(button) {
+    @include m(dashed) {
+      border-style: dashed;
+    }
+    @include when(ghost){
+      background: transparent;
+      &.is-default-color {
+        color: $--color-white;
+        &:hover,
+        &:focus {
+          color: $--color-primary;
+          border-color: $--color-primary;
+        }
+
+        &:active {
+          color: _mix($--color-black, $--color-primary, $--button-active-shade-percent);
+          border-color: _mix($--color-black, $--color-primary, $--button-active-shade-percent);
+          outline: none;
+        }
+      }
+    }
+  }
+}

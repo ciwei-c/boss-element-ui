@@ -1,0 +1,95 @@
+@function rgb-to-hsv($color){
+  $R:red($color);
+  $G:green($color);
+  $B:blue($color);
+
+  $max:max($R, $G, $B);
+  $min:min($R, $G, $B);
+
+  $H:0;
+  $S:($max - $min) / $max;
+  $V:$max / 255;
+
+  @if $R == $max {
+    $H:($G - $B) / ($max - $min)
+  } @else if $G == $max {
+    $H:2 + ($B - $R)/($max - $min) 
+  } @else {
+    $H:4 + ($R - $G)/($max - $min)  
+  }
+
+  $H:$H * 60;
+
+  @if $H < 0 {
+    $H:$H + 360
+  }
+
+  $map:('H':$H, 'S':$S, 'V':$V);
+
+  @return $map;
+};
+
+@function hsv-to-rgb($hsv){
+  $H:map-get($map: $hsv, $key: 'H');
+  $S:map-get($map: $hsv, $key: 'S');
+  $V:map-get($map: $hsv, $key: 'V');
+
+  $R:0;
+  $G:0;
+  $B:0;
+
+  @if $S == 0 {
+    $R:$V;
+    $G:$V;
+    $B:$V;
+  }@else {
+    $H:$H / 60;
+    $i:floor($H);
+    $f:$H - $i;
+    $a:$V * (1 - $S);
+    $b:$V * (1 - $S * $f);
+    $c:$V * (1 - $S * (1 - $f));
+
+    @if $i == 0 {
+      $R:$V;
+      $G:$c;
+      $B:$a;
+    }@else if $i == 1{
+      $R:$b;
+      $G:$V;
+      $B:$a;
+    }@else if $i == 2{
+      $R:$a;
+      $G:$V;
+      $B:$c;
+    }@else if $i == 3{
+      $R:$a;
+      $G:$b;
+      $B:$V;
+    }@else if $i == 4{
+      $R:$c;
+      $G:$a;
+      $B:$V;
+    }@else if $i == 5{
+      $R:$V;
+      $G:$a;
+      $B:$b;
+    }
+  };
+
+  $map:('red':$R, 'green':$G, 'blue':$B);
+  @return $map;
+}
+
+@mixin test($color) {
+  $hsv:rgb-to-hsv($color);
+  $rgb:hsv-to-rgb($hsv);
+
+  $red:map-get($map: $rgb, $key: 'red');
+  $green:map-get($map: $rgb, $key: 'green');
+  $blue:map-get($map: $rgb, $key: 'blue');
+  
+  body {
+    background:rgb($red, $green, $blue);
+  } 
+};
