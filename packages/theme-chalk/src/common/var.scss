@@ -1,17 +1,17 @@
 $--theme:element !default;
-@import "./element/index.scss";
-@import "./ant/index.scss";
-@import "./ant/wave.scss";
 
 // Using the element theme if the $--theme is equal to element
 @if $--theme == element {
-  $--global:register-element();
+  html {
+    @import "./element/index.scss";
+  };
 }
 
 // Using the ant theme if the $--theme is equal to ant
 @else if $--theme == ant {
-  $--global:register-ant();
-  @include set-wave();
+  html {
+    @import "./ant/index.scss";
+  }
 }
 
 // If the $--theme is not one of element and ant or is not undefined，the element theme will be used

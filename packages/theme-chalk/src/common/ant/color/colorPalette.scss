@@ -8,7 +8,7 @@ $brightnessStep2:15;
 $lightColorCount:5;
 $darkColorCount:4;
 
-@function colorPalette($color, $index){
+@function color-palette($color, $index){
   $isLight:$index <= 6;
   $hsv:get-hsv($color);
   $i:0;
@@ -33,13 +33,13 @@ $darkColorCount:4;
     @if $isLight {
       $hue:$h - $hueStep * $i;
     }@else{
-      $hue:$h + $hueStep * i;
+      $hue:$h + $hueStep * $i;
     }
   } @else {
     @if $isLight {
       $hue:$h + $hueStep * $i;
     }@else{
-      $hue:$h - $hueStep * i;
+      $hue:$h - $hueStep * $i;
     }
   }
 
@@ -85,7 +85,7 @@ $darkColorCount:4;
   @if $isLight {
     $value:round($V * 100) + $brightnessStep1 * $i;
   } @else {
-    $value:round($V * 100) + $brightnessStep2 * $i;
+    $value:round($V * 100) - $brightnessStep2 * $i;
   };
 
   @return $value;

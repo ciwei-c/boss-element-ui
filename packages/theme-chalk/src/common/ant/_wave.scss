@@ -1,41 +1,39 @@
-@mixin set-wave() {
-  /* Wave
-  -------------------------- */
-  html {
-    --wave-shadow-color: #000;
-  }
-  $--wave-transition: cubic-bezier(0.08, 0.82, 0.17, 1) !default !global;
-  $--wave-animation-width:6px !default !global;
+/* Wave
+-------------------------- */
+html {
+  --wave-shadow-color: #000;
+}
+$--wave-transition: cubic-bezier(0.08, 0.82, 0.17, 1);
+$--wave-animation-width:6px;
 
-  [animating-node='true'] {
-    position: relative;
-  }
-  [animating-node='true']::after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: block;
-    border-radius: inherit;
+[animating-node='true'] {
+  position: relative;
+}
+[animating-node='true']::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  border-radius: inherit;
+  box-shadow: 0 0 0 0 var(--wave-shadow-color);
+  opacity: 0.2;
+  animation:  fadeEffect 2s $--wave-transition, waveEffect 0.4s $--wave-transition;
+  animation-fill-mode: forwards;
+  content: '';
+  pointer-events: none;
+}
+
+@keyframes waveEffect {
+  100% {
     box-shadow: 0 0 0 0 var(--wave-shadow-color);
-    opacity: 0.2;
-    animation:  fadeEffect 2s $--wave-transition, waveEffect 0.4s $--wave-transition;
-    animation-fill-mode: forwards;
-    content: '';
-    pointer-events: none;
+    box-shadow: 0 0 0 $--wave-animation-width var(--wave-shadow-color);
   }
+}
 
-  @keyframes waveEffect {
-    100% {
-      box-shadow: 0 0 0 0 var(--wave-shadow-color);
-      box-shadow: 0 0 0 $--wave-animation-width var(--wave-shadow-color);
-    }
-  }
-
-  @keyframes fadeEffect {
-    100% {
-      opacity: 0;
-    }
+@keyframes fadeEffect {
+  100% {
+    opacity: 0;
   }
 }

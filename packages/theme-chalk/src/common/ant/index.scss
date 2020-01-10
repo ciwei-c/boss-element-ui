@@ -1,4 +1,5 @@
-@function register-ant(){
+@import "./color/colorPalette.scss";
+@import "./wave";
   /* BOSS-ELEMENT-UI Chalk Variables */
   // ant theme
   // Special comment for theme configurator
@@ -18,6 +19,7 @@
   -------------------------- */
   /// color|1|Brand Color|0
   $--color-primary: #1890ff !default !global;
+
   /// color|1|Background Color|4
   $--color-white: #FFFFFF !default !global;
   /// color|1|Background Color|4
@@ -65,6 +67,68 @@
   $--border-color-lighter: #EBEEF5 !default !global;
   /// color|1|Border Color|3
   $--border-color-extra-light: #F2F6FC !default !global;
+
+  /* Color Palette
+  -------------------------- */
+  // primary blue
+  $--color-blue-6:$--color-primary !default !global;
+  $--color-blue-1:color-palette($--color-blue-6, 1) !default !global;
+  $--color-blue-2:color-palette($--color-blue-6, 2) !default !global;
+  $--color-blue-3:color-palette($--color-blue-6, 3) !default !global;
+  $--color-blue-4:color-palette($--color-blue-6, 4) !default !global;
+  $--color-blue-5:color-palette($--color-blue-6, 5) !default !global;
+  $--color-blue-7:color-palette($--color-blue-6, 7) !default !global;
+  $--color-blue-8:color-palette($--color-blue-6, 8) !default !global;
+  $--color-blue-9:color-palette($--color-blue-6, 9) !default !global;
+  $--color-blue-9:color-palette($--color-blue-6, 10) !default !global;
+
+  // danger red
+  $--color-red-6:$--color-danger !default !global;
+  $--color-red-1:color-palette($--color-red-6, 1) !default !global;
+  $--color-red-2:color-palette($--color-red-6, 2) !default !global;
+  $--color-red-3:color-palette($--color-red-6, 3) !default !global;
+  $--color-red-4:color-palette($--color-red-6, 4) !default !global;
+  $--color-red-5:color-palette($--color-red-6, 5) !default !global;
+  $--color-red-7:color-palette($--color-red-6, 7) !default !global;
+  $--color-red-8:color-palette($--color-red-6, 8) !default !global;
+  $--color-red-9:color-palette($--color-red-6, 9) !default !global;
+  $--color-red-9:color-palette($--color-red-6, 10) !default !global;
+
+  // warning yellow
+  $--color-yellow-6:$--color-warning !default !global;
+  $--color-yellow-1:color-palette($--color-yellow-6, 1) !default !global;
+  $--color-yellow-2:color-palette($--color-yellow-6, 2) !default !global;
+  $--color-yellow-3:color-palette($--color-yellow-6, 3) !default !global;
+  $--color-yellow-4:color-palette($--color-yellow-6, 4) !default !global;
+  $--color-yellow-5:color-palette($--color-yellow-6, 5) !default !global;
+  $--color-yellow-7:color-palette($--color-yellow-6, 7) !default !global;
+  $--color-yellow-8:color-palette($--color-yellow-6, 8) !default !global;
+  $--color-yellow-9:color-palette($--color-yellow-6, 9) !default !global;
+  $--color-yellow-9:color-palette($--color-yellow-6, 10) !default !global;
+
+  // success green
+  $--color-green-6:$--color-success !default !global;
+  $--color-green-1:color-palette($--color-green-6, 1) !default !global;
+  $--color-green-2:color-palette($--color-green-6, 2) !default !global;
+  $--color-green-3:color-palette($--color-green-6, 3) !default !global;
+  $--color-green-4:color-palette($--color-green-6, 4) !default !global;
+  $--color-green-5:color-palette($--color-green-6, 5) !default !global;
+  $--color-green-7:color-palette($--color-green-6, 7) !default !global;
+  $--color-green-8:color-palette($--color-green-6, 8) !default !global;
+  $--color-green-9:color-palette($--color-green-6, 9) !default !global;
+  $--color-green-9:color-palette($--color-green-6, 10) !default !global;
+
+  // info gray
+  $--color-gray-6:$--color-info !default !global;
+  $--color-gray-1:color-palette($--color-gray-6, 1) !default !global;
+  $--color-gray-2:color-palette($--color-gray-6, 2) !default !global;
+  $--color-gray-3:color-palette($--color-gray-6, 3) !default !global;
+  $--color-gray-4:color-palette($--color-gray-6, 4) !default !global;
+  $--color-gray-5:color-palette($--color-gray-6, 5) !default !global;
+  $--color-gray-7:color-palette($--color-gray-6, 7) !default !global;
+  $--color-gray-8:color-palette($--color-gray-6, 8) !default !global;
+  $--color-gray-9:color-palette($--color-gray-6, 9) !default !global;
+  $--color-gray-9:color-palette($--color-gray-6, 10) !default !global;
 
   // Background
   /// color|1|Background Color|4
@@ -593,7 +657,7 @@
 
   $--button-hover-tint-percent: 20% !default !global;
   $--button-active-shade-percent: 10% !default !global;
-
+  $--button-shadow: 0 2px 0 rgba(0, 0, 0, 0.015) !default !global;
 
   /* cascader
   -------------------------- */
@@ -999,6 +1063,3 @@
     'lg-and-down': (max-width: $--xl - 1),
     'xl-only' : (min-width: $--xl),
   ) !global;
-
-  @return $--theme;
-}

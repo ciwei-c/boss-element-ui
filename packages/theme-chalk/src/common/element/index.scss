@@ -1,4 +1,3 @@
-@function register-element(){
   /* BOSS-ELEMENT-UI Chalk Variables */
   // element theme
   // Special comment for theme configurator
@@ -997,6 +996,3 @@
     'lg-and-down': (max-width: $--xl - 1),
     'xl-only' : (min-width: $--xl),
   ) !global;
-
-  @return $--theme;
-}

@@ -29,52 +29,52 @@
   @return $map;
 };
 
+@function set-rgb-map($r, $g, $b){
+  $map:('r':$r, 'g':$g, 'b':$b);
+  @return $map;
+}
+
 @function hsv-to-rgb($hsv){
   $H:map-get($hsv,'H');
   $S:map-get($hsv,'S');
   $V:map-get($hsv,'V');
 
-  $R:$V;
-  $G:$V;
-  $B:$V;
+  $h:round($H);
+  $s:round($S * 255);
+  $v:round($V * 255);
 
-  @if $S != 0 {
-    $i:floor(($H / 60) % 6);
-    $f:($H / 60) - $i;
-    $a:$V * (1 - $S);
-    $b:$V * (1 - $S * $f);
-    $c:$V * (1 - $S * (1 - $f));
+  $rgbmap:();
 
-    @if $i == 0 {
-      $R:$V;
-      $G:$c;
-      $B:$a;
-    }@else if $i == 1{
-      $R:$b;
-      $G:$V;
-      $B:$a;
-    }@else if $i == 2{
-      $R:$a;
-      $G:$V;
-      $B:$c;
-    }@else if $i == 3{
-      $R:$a;
-      $G:$b;
-      $B:$V;
-    }@else if $i == 4{
-      $R:$c;
-      $G:$a;
-      $B:$V;
-    }@else if $i == 5{
-      $R:$V;
-      $G:$a;
-      $B:$b;
+  @if s == 0 {
+    $rgbmap:set-rgb-map($v, $v, $v);
+  } @else {
+    $t1:$v;
+    $t2:(255 - $s) * $v / 255;
+    $t3:($t1 - $t2) * ($h % 60) / 60;
+
+    @if $h == 360 {
+      $h:0;
+    } 
+    @if $h < 60 {
+      $rgbmap:set-rgb-map($t1, $t2 + $t3, $t2);
+    }@else if $h < 120 {
+      $rgbmap:set-rgb-map($t1 - $t3, $t1, $t2);
+    }@else if $h < 180 {
+      $rgbmap:set-rgb-map($t2, $t1, $t2 + $t3 );
+    }@else if $h < 240 {
+      $rgbmap:set-rgb-map($t2, $t1 - $t3, $t1 );
+    }@else if $h < 300 {
+      $rgbmap:set-rgb-map($t2 + $t3, $t2, $t1 );
+    }@else if $h < 360 { 
+      $rgbmap:set-rgb-map($t1, $t2, $t1 - $t3 );
+    }@else { 
+      $rgbmap:set-rgb-map(0,0,0);
     }
-  };
+  }
+  
+  $r:round(map-get($rgbmap, 'r'));
+  $g:round(map-get($rgbmap, 'g'));
+  $b:round(map-get($rgbmap, 'b'));
 
-  $R: floor($R * 255.0);
-  $G: floor($G * 255.0);
-  $B: floor($B * 255.0);
-
-  @return rgb($R, $G, $B);
+  @return rgb($r, $g, $b);
 }
