@@ -34,6 +34,7 @@ import BossMessage from '../packages/message/index.js';
 import BossMessageBox from '../packages/message-box/index.js';
 import BossNotification from '../packages/notification/index.js';
 import BossCascader from '../packages/cascader/index.js';
+import BossCascaderPanel from '../packages/cascader-panel/index.js';
 import BossSlider from '../packages/slider/index.js';
 import BossForm from '../packages/form/index.js';
 import BossFormItem from '../packages/form-item/index.js';
@@ -110,6 +111,7 @@ const components = {
   BossOptionGroup,
   BossSelect,
   BossPagination,
+  BossAlert,
   BossButton,
   BossButtonGroup,
   BossDatePicker,
@@ -124,6 +126,7 @@ const components = {
   BossSelectTable,
   BossSwitch,
   BossCascader,
+  BossCascaderPanel,
   BossSlider,
   BossForm,
   BossFormItem,
@@ -192,7 +195,6 @@ const DEFAULT_EXPORTS = Object.assign({
   version,
   BossLoading,
   BossInfiniteScroll,
-  BossAlert,
   BossMessage,
   BossMessageBox,
   BossNotification,

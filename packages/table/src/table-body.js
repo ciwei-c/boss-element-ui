@@ -333,9 +333,13 @@ export default {
         rowClasses.push('boss-table__row--level-' + treeRowData.level);
         display = treeRowData.display;
       }
+      let styles = this.getRowStyle(row, $index)
+      if(styles && typeof styles === 'object') {
+        display = styles.display === 'none' ? false : true
+      }
       return (<tr
         v-show={display}
-        style={this.getRowStyle(row, $index)}
+        style={styles}
         class={rowClasses}
         key={this.getKeyOfRow(row, $index)}
         on-dblclick={($event) => this.handleDoubleClick($event, row)}

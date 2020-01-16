@@ -660,14 +660,14 @@
       },
 
       reload(){
-        this.getSyncData()
+        this.getDataByUrl()
       },
       
       refreshData(){
         if(this.sourceData){
-          this.data = deepClone(this.sourceData)
+          this.data = this.sourceData
         }else{
-          this.getSyncData()
+          this.getDataByUrl()
         }
       },
 
@@ -782,7 +782,7 @@
       sourceData:{
         immediate: true,
         handler(value) {
-          this.data = deepClone(value);
+          this.data = value;
         }
       },
 

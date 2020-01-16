@@ -579,7 +579,11 @@
 
       blur() {
         this.visible = false;
-        this.$refs.reference.blur();
+        (this.$refs.input || this.$refs.reference).blur();
+      },
+
+      focus() {
+        (this.$refs.input || this.$refs.reference).focus();
       },
 
       handleBlur(event) {

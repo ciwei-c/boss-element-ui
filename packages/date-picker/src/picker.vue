@@ -877,6 +877,12 @@ export default {
       if (!this.picker) {
         this.mountPicker();
       }
+      if(this.value && this.picker.value !== null || this.picker.value !== undefined){
+        this.picker.value = this.value;
+      }
+      if(this.value && this.picker.dateValue !== null || this.picker.dateValue !== undefined){
+        this.picker.dateValue = this.value;
+      }
       this.pickerVisible = this.picker.visible = true;
 
       this.updatePopper();

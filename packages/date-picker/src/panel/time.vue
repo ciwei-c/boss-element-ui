@@ -43,10 +43,14 @@
     },
 
     props: {
-      timeArrowControl: Boolean
+      timeArrowControl: Boolean,
+      propVisible: Boolean
     },
 
     watch: {
+      propVisible(val){
+        this.visible = val;
+      },
       visible(val) {
         if (val) {
           this.oldValue = this.value;

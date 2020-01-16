@@ -30,13 +30,7 @@ export default {
   created() {
     if(this.enableLoadUrl){
       this.store.commit('setData', []);
-      if( this.autoLoad && this.enableLoadUrl){
-        let pagination = this.pagination
-        let { size, index } = this.queryParams || {}
-        
-        if(pagination && index && index !== pagination.currentPage) pagination.currentPage = index
-        if(pagination && size && size !== pagination.pageSize) pagination.pageSize = size
-  
+      if( this.autoLoad ){
         this.getDataByUrl()
       }
     }
@@ -44,6 +38,13 @@ export default {
   methods: {
     getDataByUrl() {
       if (this.enableLoadUrl) {
+        
+        let pagination = this.pagination
+        let { size, index } = this.queryParams || {}
+        
+        if(pagination && index && index !== pagination.currentPage) pagination.currentPage = index
+        if(pagination && size && size !== pagination.pageSize) pagination.pageSize = size
+        
         let data = Object.assign({},this.queryParams || {})
         if( this.hasPagination ) {
           let { currentPage, pageSize } = this.pagination

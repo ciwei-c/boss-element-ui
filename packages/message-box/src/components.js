@@ -8,11 +8,11 @@ export default {
           <boss-button
             loading={this.confirmButtonLoading}
             ref="confirm"
-            class={[this.confirmButtonClasses]}
+            class={[this.confirmButtonClasses,'is-confirm']}
             round={this.roundButton}
             size="small"
-            onclick={() => this.handleAction('confirm')}
-            onkeydown={() => this.handleAction('confirm')}>
+            onClick={() => this.handleAction('confirm')}
+            onKeydown={() => this.handleAction('confirm')}>
             {this.confirmButtonText || t('boss.messagebox.confirm')}
           </boss-button> : null
       ))
@@ -23,11 +23,11 @@ export default {
           <boss-button
             loading={this.cancelButtonLoading}
             ref="cancel"
-            class={[this.cancelButtonClasses]}
+            class={[this.cancelButtonClasses, 'is-cancel']}
             round={this.roundButton}
             size="small"
-            onclick={() => this.handleAction('cancel')}
-            onkeydown={() => this.handleAction('cancel')}>
+            onClick={() => this.handleAction('cancel')}
+            onKeydown={() => this.handleAction('cancel')}>
             {this.cancelButtonText || t('boss.messagebox.cancel')}
           </boss-button>
       ))
@@ -37,7 +37,6 @@ export default {
     visible(val) {
       // btn、input
       if (val) {
-        console.log(this.showCancelButton)
         let { confirm, cancel, btns } = this.$refs
         if (!cancel) btns.appendChild(this.cancelBtnComponent)
         if (!confirm) btns.appendChild(this.confirmBtnComponent)

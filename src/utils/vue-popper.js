@@ -83,7 +83,7 @@ export default {
         return;
       }
       const options = this.popperOptions;
-      const popper = this.popperElm = this.popperElm || this.popper || this.$refs.popper || this.popperVM.$el;
+      const popper = this.popperElm = this.popperElm || this.popper || this.$refs.popper || (this.popperVM && this.popperVM.$el);
       let reference = this.referenceElm = this.referenceElm || this.reference || this.$refs.reference;
       if (!reference &&
         this.$slots.reference &&

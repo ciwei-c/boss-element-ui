@@ -45,7 +45,7 @@
                   ref="minTimePicker"
                   @pick="handleMinTimePick"
                   :time-arrow-control="arrowControl"
-                  :visible="minTimePickerVisible"
+                  :propVisible="minTimePickerVisible"
                   @mounted="$refs.minTimePicker.format=timeFormat">
                 </time-picker>
               </span>
@@ -78,7 +78,7 @@
                   ref="maxTimePicker"
                   @pick="handleMaxTimePick"
                   :time-arrow-control="arrowControl"
-                  :visible="maxTimePickerVisible"
+                  :propVisible="maxTimePickerVisible"
                   @mounted="$refs.maxTimePicker.format=timeFormat">
                 </time-picker>
               </span>

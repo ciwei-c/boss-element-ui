@@ -37,7 +37,9 @@
               >
                 <input
                   class="boss-input__inner"
-                  @focus="()=>timePickerVisible = true"
+                  @focus="()=>{
+                    this.timePickerVisible = true
+                  }"
                   :placeholder="t('boss.datepicker.selectTime')"
                   :value="visibleTime"
                   size="small"
@@ -48,7 +50,7 @@
                 ref="timepicker"
                 :time-arrow-control="arrowControl"
                 @pick="handleTimePick"
-                :visible="timePickerVisible"
+                :propVisible="timePickerVisible"
                 @mounted="proxyTimePickerDataProperties">
               </time-picker>
             </span>
@@ -138,7 +140,7 @@
           <span>{{ t('boss.datepicker.now') }}</span>
         </button>
         <button 
-          class="boss-picker-panel__link-btn boss-button boss-button--mini"
+          class="boss-picker-panel__link-btn boss-button boss-button--mini boss-button--default"
           @click="confirm"
         >
           <span>{{ t('boss.datepicker.confirm') }}</span>
@@ -192,6 +194,10 @@
             this.pickerWidth = inputElm.getBoundingClientRect().width + 10;
           }
         });
+      },
+
+      value(val) {
+        this.dateValue = val;
       },
 
       dateValue(val) {

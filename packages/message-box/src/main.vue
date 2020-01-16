@@ -52,7 +52,7 @@
                 </textarea>
               </div>
               <div class="boss-input" v-else>
-                <input 
+                <input
                   v-model="inputValue"
                   ref="input"
                   type="text"
@@ -235,6 +235,16 @@
     },
 
     watch: {
+      showInput:{
+        handler(val){
+          if(val) this.$nextTick(()=>{
+            setTimeout(() => {
+              this.$refs.input.focus()
+            });
+          })
+        },
+        immediate:true
+      },
       inputValue: {
         immediate: true,
         handler(val) {
