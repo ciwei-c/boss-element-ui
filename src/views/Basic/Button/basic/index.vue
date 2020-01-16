@@ -29,6 +29,7 @@
       <boss-button :size="size" type="primary" ghost>幽灵按钮</boss-button>
       <boss-button :size="size" type="danger" ghost>Danger</boss-button>
       <boss-button :size="size" type="dashed" ghost>虚线按钮</boss-button>
+      <boss-button :size="size" plain ghost>朴素按钮</boss-button>
     </boss-row>
     <boss-row>
       <boss-button :size="size" round>圆角按钮</boss-button>

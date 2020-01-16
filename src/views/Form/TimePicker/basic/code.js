@@ -1,13 +1,5 @@
 let code = `<template>
-  <boss-time-select
-    v-model="value"
-    :picker-options="{
-      start: '08:30',
-      step: '00:15',
-      end: '18:30'
-    }"
-    placeholder="选择时间"
-  ></boss-time-select>
+  <boss-time-picker placeholder="选择时间" v-model="value" style="width: 100%;"></boss-time-picker>
 </template>
 <script>
 export default {
@@ -23,10 +15,10 @@ export default {
   data(){
     return {
       code,
-      codeDesc:"分别通过 start、end 和 step 指定可选的起始时间、结束时间和步长",
+      codeDesc:"",
       anchor:{
         id:"basic",
-        title:"固定时间点"
+        title:"基本用法"
       }
     }
   }

@@ -1,42 +1,44 @@
 <template>
-  <div>
-    <boss-download data="./index.vue" filename="download.vue">
-      <boss-button>点击下载</boss-button>
-    </boss-download>
-  </div>
+    <boss-table :sourceData="tableData" :select-on-indeterminate="false" ref="table">
+      <boss-table-column type="selection"></boss-table-column>
+      <boss-table-column prop="date" label="日期" width="180"></boss-table-column>
+      <boss-table-column prop="name" label="姓名" width="180"></boss-table-column>
+      <boss-table-column prop="address" label="地址"></boss-table-column>
+    </boss-table>
 </template>
-
 <script>
-  export default {
-    data () {
-      return {
-        count: 10,
-        loading:false
-      }
-    },
-    methods: {
-      load () {
-        this.loading = true
-        setTimeout(() => {
-          this.loading = false
-          this.count += 10
-        }, 1000);
-      }
-    }
-  }
+export default {
+  data() {
+    return {
+      tableData: [
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1518 弄"
+        },
+        {
+          date: "2016-05-04",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1517 弄"
+        },
+        {
+          date: "2016-05-01",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1519 弄"
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄"
+        }
+      ]
+    };
+  },
+  mounted(){
+    this.$refs.table.toggleRowSelection(this.tableData[0]);
+  },
+  created() {},
+  methods: {}
+};
 </script>
-<style lang="scss">
-.infinite-list {
-  height: 300px;
-  overflow: hidden;
-  .infinite-list-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    background: #e8f3fe;
-    margin: 10px 0;
-    color: #7dbcfc;
-  }
-}
-</style>
+
