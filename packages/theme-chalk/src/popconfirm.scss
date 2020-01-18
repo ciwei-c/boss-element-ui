@@ -1,16 +1,9 @@
-@import "mixins/mixins";
-@import "common/var";
-
-@include b(popconfirm) {
-  @include e(main) {
-    display: flex;
-    align-items: center;
+@if $--theme == element {
+  :root {
+    @import "theme/element/popconfirm";
   }
-  @include e(icon) {
-    margin-right: 5px;
-  }
-  @include e(action) {
-    text-align: right; 
-    margin: 0
+} @else if $--theme == ant {
+  :root {
+    @import "theme/ant/popconfirm";
   }
 }

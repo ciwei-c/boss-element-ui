@@ -1,20 +1,9 @@
-@import "mixins/mixins";
-
-@include b(steps) {
-  display: flex;
-
-  @include m(simple) {
-    padding: 13px 8%;
-    border-radius: 4px;
-    background: $--background-color-base;
+@if $--theme == element {
+  :root {
+    @import "theme/element/steps";
   }
-
-  @include m(horizontal) {
-    white-space: nowrap;
-  }
-
-  @include m(vertical) {
-    height: 100%;
-    flex-flow: column;
+} @else if $--theme == ant {
+  :root {
+    @import "theme/ant/steps";
   }
 }

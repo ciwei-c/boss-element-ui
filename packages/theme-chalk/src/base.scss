@@ -1,2 +1,9 @@
-@import "common/transition.scss";
-@import "icon.scss";
+@if $--theme == element {
+  :root {
+    @import "theme/element/base";
+  }
+} @else if $--theme == ant {
+  :root {
+    @import "theme/ant/base";
+  }
+}

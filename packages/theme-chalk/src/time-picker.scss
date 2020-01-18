@@ -1,8 +1,9 @@
-@import "./date-picker/picker.scss";
-@import "./date-picker/picker-panel.scss";
-@import "./date-picker/time-spinner.scss";
-@import "./date-picker/time-picker.scss";
-@import "./date-picker/time-range-picker.scss";
-@import "./input.scss";
-@import "./scrollbar.scss";
-@import "./popper";
+@if $--theme == element {
+  :root {
+    @import "theme/element/time-picker";
+  }
+} @else if $--theme == ant {
+  :root {
+    @import "theme/ant/time-picker";
+  }
+}

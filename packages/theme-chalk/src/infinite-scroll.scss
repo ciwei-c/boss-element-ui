@@ -1,0 +1,9 @@
+@if $--theme == element {
+  :root {
+    @import "theme/element/infinite-scroll";
+  }
+} @else if $--theme == ant {
+  :root {
+    @import "theme/ant/infinite-scroll";
+  }
+}

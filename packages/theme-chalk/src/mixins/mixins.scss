@@ -188,3 +188,8 @@
   }
 };
 
+@mixin root {
+  @at-root {
+    @content
+  }
+}

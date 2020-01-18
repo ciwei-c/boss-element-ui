@@ -1,87 +1,9 @@
-@import "./table.scss";
-@import "./mixins/mixins.scss";
-
-@include b(select-table) {
-  width: 260px; 
-  display: inline-block;
-  position: relative;
-  padding: 5px 0;
-  .boss-input {
-    > input {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-    .boss-input__icon {
-      cursor: pointer;
-    }
+@if $--theme == element {
+  :root {
+    @import "theme/element/select-table";
   }
-  &:hover{
-    .boss-input__inner {
-      border-color: $--color-text-placeholder;
-    }
-    .is-clearable {
-      .boss-icon-close {
-        display: inline-block;
-      }
-      .boss-icon-arrow-down {
-        display: none;
-      }
-    }
-  }
-
-  @include e(popper){
-    border: 1px solid $--border-color-light;
-    box-shadow: $--box-shadow-light;
-    background: $--color-white;
-    border-radius: 4px;
-    padding: 10px;
-    line-height: 30px;
-    margin: 5px 0;
-    position: absolute !important;
-  }
-
-  @include e(multiple-tags){
-    position: absolute;
-    line-height: normal;
-    white-space: normal;
-    z-index: 1;
-    top: 50%;
-    transform: translateY(-50%);
-    width: calc(100% - 30px);
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    .boss-tag {
-      max-width: 100%;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      margin: 2px 0 2px 6px;
-    }
-  }
-  
-  @include e(multiple-tags){
-    @include m(collapsetags){
-      .boss-tag {
-        max-width: calc(100% - 60px);
-      }
-    }
-  }
-
-  .is-focus .boss-input__inner {
-    border-color: $--select-input-focus-border-color;
-  }
-  .boss-input__icon.boss-icon-close {
-    display: none;
-  }
-  .reverse-icon {
-    transform: rotate(180deg);
-    transition: 0.3s;
-  }
-
-  @include e(bottom){
-    text-align: right;
-    padding: 0 10px;
+} @else if $--theme == ant {
+  :root {
+    @import "theme/ant/select-table";
   }
 }

@@ -1,7 +1,9 @@
-@import "mixins/mixins";
-
-@include b(aside) {
-  overflow: auto;
-  box-sizing: border-box;
-  flex-shrink: 0;
+@if $--theme == element {
+  :root {
+    @import "theme/element/aside";
+  }
+} @else if $--theme == ant {
+  :root {
+    @import "theme/ant/aside";
+  }
 }
