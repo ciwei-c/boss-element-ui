@@ -12,7 +12,7 @@
   } @else {
     @warn "Undefeined points: `#{$map}`";
   }
-}
+};
 
 /* Scrollbar
  -------------------------- */
@@ -47,7 +47,7 @@
       }
     }
   }
-}
+};
 
 /* Placeholder
  -------------------------- */
@@ -63,7 +63,7 @@
   &:-ms-input-placeholder {
     @content
   }
-}
+};
 
 /* BEM
  -------------------------- */
@@ -73,7 +73,7 @@
   .#{$B} {
     @content;
   }
-}
+};
 
 @mixin e($element) {
   $E: $element !global;
@@ -98,7 +98,7 @@
       }
     }
   }
-}
+};
 
 @mixin m($modifier) {
   $selector: &;
@@ -112,7 +112,7 @@
       @content;
     }
   }
-}
+};
 
 @mixin configurable-m($modifier, $E-flag: false) {
   $selector: &;
@@ -129,7 +129,7 @@
       }
     }
   }
-}
+};
 
 @mixin spec-selector($specSelector: '', $element: $E, $modifier: false, $block: $B) {
   $modifierCombo: '';
@@ -143,7 +143,7 @@
       @content
     }
   }
-}
+};
 
 @mixin meb($modifier: false, $element: $E, $block: $B) {
   $selector: &;
@@ -160,7 +160,7 @@
       }
     }
   }
-}
+};
 
 @mixin when($state) {
   @at-root {
@@ -168,11 +168,11 @@
       @content;
     }
   }
-}
+};
 
 @mixin extend-rule($name) {
   @extend #{'%shared-'+$name};
-}
+};
 
 @mixin share-rule($name) {
   $rule-name: '%shared-'+$name;
@@ -180,11 +180,11 @@
   @at-root #{$rule-name} {
     @content
   }
-}
+};
 
 @mixin pseudo($pseudo) {
   @at-root #{&}#{':#{$pseudo}'} {
     @content
   }
-}
+};
 

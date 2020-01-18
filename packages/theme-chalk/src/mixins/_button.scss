@@ -1,4 +1,3 @@
-@import "../common/var";
 @import "../common/ant/button.scss";
 @import "../common/element/button.scss";
 
@@ -18,4 +17,4 @@
   &.is-round {
     padding: $padding-vertical $padding-horizontal;
   }
-}
+};

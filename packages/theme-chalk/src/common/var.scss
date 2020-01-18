@@ -16,5 +16,7 @@ $--theme:element !default;
 
 // If the $--theme is not one of element and ant or is not undefined，the element theme will be used
 @else {
-  $--global:register-element();
+  html {
+    @import "./element/index.scss";
+  }
 }
