@@ -78,7 +78,7 @@ export default {
   methods: {
     handleClick(evt) {
       this.$emit("click", evt);
-      this.wave(this.$el)
+      this.wave(this.$el);
     }
   }
 };

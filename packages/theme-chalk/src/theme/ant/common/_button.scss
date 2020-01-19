@@ -4,116 +4,178 @@
 @import "color/color-palette.scss";
 
 @mixin button-plain($color) {
-  color: $color;
-  background:  $--background-color-base;
-  border-color:  $--border-color-base;
-  
+  @include button-color($color, $--background-color-base, $--border-color-base);
+
   &:hover {
-    background: color-palette($color, 5);
-    border-color: color-palette($color, 5);
-    color: $--color-white;
+    @include button-color($--color-white, color-palette($color, 5), color-palette($color, 5));
   }
 
   &:focus {
-    color: $color;
-    background: $--background-color-base;
-    border-color: $color;
+    @include button-color($color, $--background-color-base, $color);
   }
-  
 
   &:active {
-    background: color-palette($color, 7);
-    border-color: color-palette($color, 7);
-    color: $--color-white;
+    @include button-color($--color-white, color-palette($color, 7), color-palette($color, 7));
     outline: none;
   }
 
+  @include button-disabled(
+    $--button-disabled-font-color,
+    $--button-disabled-background-color,
+    $--button-disabled-border-color
+  );
+}
+
+@mixin button-disabled($color, $background, $border) {
   &.is-disabled {
     &,
     &:hover,
     &:focus,
     &:active {
-      color: $--button-disabled-font-color;
-      background-color: $--button-disabled-background-color;
-      border-color: $--button-disabled-border-color;
+      @include button-color($color, $background, $border);
     }
+    cursor: not-allowed;
+    background-image: none;
   }
 }
 
 @mixin button-ghost($color) {
-  color: $color;
-  background:  transparent;
-  border-color:  $color;
+  @include button-color($color, transparent, $color);
 
-  &:hover {
-    background: transparent;
-    border-color: $color;
-    color: color-palette($color, 5);
-  }
-
+  &:hover,
   &:focus {
-    color: $color;
-    background: transparent;
-    border-color: color-palette($color, 5);
+    @include button-color(color-palette($color, 5), transparent, color-palette($color, 5));
   }
-  
 
   &:active {
-    background: transparent;
-    border-color: color-palette($color, 7);
-    color: color-palette($color, 7);
+    @include button-color(color-palette($color, 7), transparent, color-palette($color, 7));
     outline: none;
   }
 
-  &.is-disabled {
-    &,
+  @include button-disabled($--button-disabled-font-color, transparent, $--button-disabled-border-color);
+}
+
+@mixin button-color($color, $background, $border) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+  > a:only-child {
+    color: currentColor;
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: transparent;
+      content: "";
+    }
+  }
+}
+
+@mixin button-default() {
+  box-shadow: $--button-shadow;
+  @include button-color(
+    $--button-default-font-color,
+    $--button-default-background-color,
+    $--button-default-border-color
+  );
+  &:hover,
+  &:focus {
+    @include button-color($--color-blue-5, $--button-default-background-color, $--color-blue-5);
+  }
+
+  &:active {
+    @include button-color($--color-blue-7, $--button-default-background-color, $--color-blue-7);
+    outline: none;
+  }
+
+  @include when(ghost) {
+    background: transparent !important;
+    &.is-default-color {
+      color: $--color-white;
+      &:hover,
+      &:focus {
+        @include button-color($--color-blue-5, transparent, $--color-blue-5);
+      }
+
+      &:active {
+        @include button-color($--color-blue-7, transparent, $--color-blue-7);
+        outline: none;
+      }
+    }
+  }
+
+  @include button-size(
+    $--button-padding-vertical,
+    $--button-padding-horizontal,
+    $--button-font-size,
+    $--button-border-radius
+  );
+
+  @include when(plain) {
     &:hover,
-    &:focus,
+    &:focus {
+      @include button-color($--color-blue-5, $--color-white, $--color-blue-5);
+    }
+
     &:active {
-      color: $--button-disabled-font-color;
-      background-color: transparent !important;
-      border-color: $--button-disabled-border-color;
+      @include button-color($--color-blue-7, $--color-white, $--color-blue-7);
+      outline: none;
+    }
+  }
+
+  @include when(active) {
+    @include button-color($--color-blue-7, $--color-white, $--color-blue-7);
+  }
+
+  @include when(disabled) {
+    @include button-disabled(
+      $--button-disabled-font-color,
+      $--button-disabled-background-color,
+      $--button-disabled-border-color
+    );
+
+    &.boss-button--text {
+      background-color: transparent;
+    }
+
+    &.is-plain {
+      &,
+      &:hover,
+      &:focus {
+        @include button-disabled(
+          $--button-disabled-font-color,
+          $--button-disabled-background-color,
+          $--button-disabled-border-color
+        );
+      }
     }
   }
 }
 
 @mixin button-variant($color, $background-color, $border-color) {
-  color: $color;
-  background-color: color-palette($background-color, 5);
-  border-color: color-palette($background-color, 5);
-  box-shadow: $--button-shadow;
-  transition: $--all-transition;
-  
+  @include button-color($color, $background-color, $border-color);
+
   &:hover,
   &:focus {
-    background: color-palette($background-color, 5);
-    border-color: color-palette($border-color, 5);
-    color: $color;
+    @include button-color($color, color-palette($background-color, 5), color-palette($border-color, 5));
   }
-  
+
   &:active {
-    background: color-palette($background-color, 7);
-    border-color: color-palette($border-color, 7);
-    color: $color;
+    @include button-color($color, color-palette($background-color, 7), color-palette($border-color, 7));
     outline: none;
   }
 
   &.is-active {
-    background: color-palette($background-color, 7);
-    border-color: color-palette($border-color, 7);
-    color: $color;
+    @include button-color($color, color-palette($background-color, 7), color-palette($border-color, 7));
   }
 
-  &.is-disabled {
-    &,
-    &:hover,
-    &:focus,
-    &:active {
-      color: $--button-disabled-font-color;
-      background-color: $--button-disabled-background-color;
-      border-color: $--button-disabled-border-color;
-    }
-  }
+  @include button-disabled(
+    $--button-disabled-font-color,
+    $--button-disabled-background-color,
+    $--button-disabled-border-color
+  );
 
   &.is-plain {
     @include button-plain($background-color);
@@ -124,28 +186,23 @@
   }
 }
 
-@if $--theme == ant {
-  @include b(button) {
-    @include m(dashed) {
-      border-style: dashed;
-    }
-    @include when(ghost){
-      background: transparent !important;
-      &.is-default-color {
-        color: $--color-white;
-        &:hover,
-        &:focus {
-          color: $--color-primary;
-          border-color: $--color-primary;
-        }
+@mixin button-text() {
+  @include button-color($--color-primary, transparent, transparent);
+  padding-left: 0;
+  padding-right: 0;
 
-        &:active {
-          color: color-palette($--color-primary, 7);
-          border-color: color-palette($--color-primary, 7);
-          outline: none;
-        }
-      }
-    }
+  &:hover,
+  &:focus {
+    @include button-color($--color-blue-5, transparent, transparent);
+  }
+  &:active {
+    @include button-color($--color-blue-7, transparent, transparent);
+  }
+
+  &.is-disabled,
+  &.is-disabled:hover,
+  &.is-disabled:focus {
+    border-color: transparent;
   }
 }
 
@@ -156,4 +213,4 @@
   &.is-round {
     padding: $padding-vertical $padding-horizontal;
   }
-};
+}

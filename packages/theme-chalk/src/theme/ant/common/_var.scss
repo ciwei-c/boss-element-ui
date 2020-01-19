@@ -578,7 +578,7 @@
   /// fontSize||Font|1
   $--button-font-size: $--font-size-base !default !global;
   /// fontWeight||Font|1
-  $--button-font-weight: $--font-weight-primary !default !global;
+  $--button-font-weight: 400 !default !global;
   /// borderRadius||Border|2
   $--button-border-radius: $--border-radius-base !default !global;
   /// padding||Spacing|3
@@ -625,35 +625,39 @@
   $--button-disabled-border-color: $--border-color-base !default !global;
 
   /// color||Color|0
-  $--button-primary-border-color: $--color-primary !default !global;
+  $--button-primary-border-color: $--color-blue-6 !default !global;
   /// color||Color|0
   $--button-primary-font-color: $--color-white !default !global;
   /// color||Color|0
-  $--button-primary-background-color: $--color-primary !default !global;
+  $--button-primary-background-color: $--color-blue-6 !default !global;
+
   /// color||Color|0
-  $--button-success-border-color: $--color-success !default !global;
+  $--button-success-border-color: $--color-green-6 !default !global;
   /// color||Color|0
   $--button-success-font-color: $--color-white !default !global;
   /// color||Color|0
-  $--button-success-background-color: $--color-success !default !global;
+  $--button-success-background-color: $--color-green-6 !default !global;
+
   /// color||Color|0
-  $--button-warning-border-color: $--color-warning !default !global;
+  $--button-warning-border-color: $--color-yellow-6 !default !global;
   /// color||Color|0
   $--button-warning-font-color: $--color-white !default !global;
   /// color||Color|0
-  $--button-warning-background-color: $--color-warning !default !global;
+  $--button-warning-background-color: $--color-yellow-6 !default !global;
+
   /// color||Color|0
-  $--button-danger-border-color: $--color-danger !default !global;
+  $--button-danger-border-color: $--color-red-5 !default !global;
   /// color||Color|0
   $--button-danger-font-color: $--color-white !default !global;
   /// color||Color|0
-  $--button-danger-background-color: $--color-danger !default !global;
+  $--button-danger-background-color: $--color-red-5 !default !global;
+  
   /// color||Color|0
-  $--button-info-border-color: $--color-info !default !global;
+  $--button-info-border-color: $--color-gray-5 !default !global;
   /// color||Color|0
   $--button-info-font-color: $--color-white !default !global;
   /// color||Color|0
-  $--button-info-background-color: $--color-info !default !global;
+  $--button-info-background-color: $--color-gray-5 !default !global;
 
   $--button-hover-tint-percent: 20% !default !global;
   $--button-active-shade-percent: 10% !default !global;
