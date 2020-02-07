@@ -7,7 +7,7 @@
     :codeDesc="codeDesc"
   >
     <boss-breadcrumb separator="/">
-      <boss-breadcrumb-item :to="{ path: '/' }">首页</boss-breadcrumb-item>
+      <boss-breadcrumb-item :to="{ path: '/sf' }">首页</boss-breadcrumb-item>
       <boss-breadcrumb-item>
         <a href="/">活动管理</a>
       </boss-breadcrumb-item>

@@ -7,7 +7,7 @@
       <boss-radio v-model="size" label="mini">迷你尺寸</boss-radio>
     </boss-row>
     <boss-row>
-      <boss-button :size="size" disabled>默认按钮</boss-button>
+      <boss-button :size="size" >默认按钮</boss-button>
       <boss-button :size="size" type="primary">主要按钮</boss-button>
       <boss-button :size="size" type="success">成功按钮</boss-button>
       <boss-button :size="size" type="info">信息按钮</boss-button>
@@ -25,7 +25,7 @@
     <boss-row v-if="currentTheme === 'ant'">
       <boss-button :size="size" type="dashed" plain>虚线按钮</boss-button>
     </boss-row>
-    <boss-row style="background:#bec8c8;padding:10px 0" v-if="currentTheme === 'ant'">
+    <boss-row style="background:#bec8c8;padding:10px" v-if="currentTheme === 'ant'">
       <boss-button :size="size" type="primary" ghost>幽灵按钮</boss-button>
       <boss-button :size="size" type="danger" ghost>Danger</boss-button>
       <boss-button :size="size" type="dashed" ghost>虚线按钮</boss-button>
@@ -46,7 +46,6 @@
       <boss-button :size="size" type="info" icon="boss-icon-message" circle></boss-button>
       <boss-button :size="size" type="warning" icon="boss-icon-star-off" circle></boss-button>
       <boss-button :size="size" type="danger" icon="boss-icon-delete" circle></boss-button>
-      <boss-button :size="size" type="text">Link</boss-button>
     </boss-row>
   </demo-sample-panel>
 </template>

@@ -1,5 +1,8 @@
 <template>
-  <div class="boss-ui-demo__router">
+  <div :class="{
+      'boss-ui-demo__router':true,
+      'navs-hide':!navsShow
+    }">
     <div>
       <h2>{{title}}</h2>
       <p>{{desc}}</p>
@@ -14,6 +17,7 @@ export default {
     ...mapState({
       title:state => state.app.title,
       desc:state => state.app.desc,
+      navsShow:state => state.navs.show
     })
   }
 };
@@ -22,6 +26,10 @@ export default {
 .boss-ui-demo__router {
   padding: 50px 320px;
   height: 100%;
+  transition: all .3s;
+  &.navs-hide {
+    padding-left: 50px;
+  }
   h2 {
     font-weight: 400;
     color: #1f2f3d;

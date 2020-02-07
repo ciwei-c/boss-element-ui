@@ -38,7 +38,7 @@ export default {
     },
     {
       route: "/avatar",
-      title: "Avatar 标记",
+      title: "Avatar 头像",
       desc: "用图标、图片或者字符的形式展示用户或事物信息。",
       fileSource:"Data/Avatar"
     }

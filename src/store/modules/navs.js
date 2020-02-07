@@ -1,9 +1,12 @@
-import navs from "./navs/index"
+import navs from "./navs/index";
 export default {
   state: {
-    navs
+    navs,
+    show:false,
   },
   mutations:{
-    
+    'SET_NAVTOGGLE'(state, payload){
+      state.show = !state.show
+    }
   }
 }

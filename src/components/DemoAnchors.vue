@@ -1,18 +1,23 @@
 <template>
-  <div class="boss-ui-demo__anchor">
-    <div class="boss-ui-demo__anchor-ul">
-      <div
-        v-for="(anchor,idx) in anchors"
-        :key="idx"
-        :class="{
+  <boss-scrollbar class="boss-ui-demo__anchor-scroll">
+    <div class="boss-ui-demo__anchor">
+      <div class="boss-ui-demo__anchor-ul">
+        <div
+          v-for="(anchor,idx) in anchors"
+          :key="idx"
+          :class="{
           'boss-ui-demo__anchor-link':true,
           'boss-ui-demo__anchor-link--active':anchor.id === active,
         }"
-      >
-        <div class="boss-ui-demo__anchor-link-title" @click="onClickAnchor(anchor.id)">{{anchor.title}}</div>
+        >
+          <div
+            class="boss-ui-demo__anchor-link-title"
+            @click="onClickAnchor(anchor.id)"
+          >{{anchor.title}}</div>
+        </div>
       </div>
     </div>
-  </div>
+  </boss-scrollbar>
 </template>
 <script>
 import { mapState } from "vuex";
@@ -74,7 +79,10 @@ export default {
     getRelativeTop(id) {
       let top;
       try {
-        top = document.getElementById(id).getBoundingClientRect().top -  document.querySelector(".boss-ui-demo__header").offsetHeight - 50;
+        top =
+          document.getElementById(id).getBoundingClientRect().top -
+          document.querySelector(".boss-ui-demo__header").offsetHeight -
+          50;
       } catch (error) {
         top = 0;
       }
@@ -91,12 +99,23 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.boss-ui-demo__anchor-scroll {
+  .boss-scrollbar__view {
+  }
+}
+</style>
 <style lang="scss" scoped>
-.boss-ui-demo__anchor {
+.boss-ui-demo__anchor-scroll {
   position: fixed;
-  right: 0;
+  height: calc(100% - 200px);
   width: 200px;
-  top: 120px;
+  right: 20px;
+  top: 125px;
+}
+.boss-ui-demo__anchor {
+  width: 200px;
+  // top: 120px;
   &-ul {
     box-sizing: border-box;
     margin: 0;

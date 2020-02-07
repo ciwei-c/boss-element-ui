@@ -1,5 +1,8 @@
 <template>
-  <boss-scrollbar class="boss-ui-demo__nav">
+  <boss-scrollbar class="boss-ui-demo__nav" :style="{
+    width:!navsShow ? 0 : '230px',
+    'margin-left': !navsShow ? 0 : '50px'
+  }">
     <div class="boss-ui-demo__nav-group" v-for="(v,k) in navs" :key="k">
       {{k}}
       <router-link
@@ -23,8 +26,14 @@ export default {
   },
   computed: {
     ...mapState({
-      navs: state => state.navs.navs
+      navs: state => state.navs.navs,
+      navsShow: state => state.navs.show
     })
+  },
+  methods:{
+    onToggleNav(){
+      this.$store.commit("SET_NAVTOGGLE");
+    }
   },
   watch: {
     $route({ path }) {
@@ -56,9 +65,8 @@ export default {
 <style lang="scss" scoped>
 .boss-ui-demo__nav {
   position: fixed;
-  width: 230px;
+  transition:all 0.3s;
   height: 100%;
-  margin-left: 50px;
   box-shadow: 7px 0px 5px -8px rgba(0, 0, 0, 0.1);
   > div {
     position: relative;

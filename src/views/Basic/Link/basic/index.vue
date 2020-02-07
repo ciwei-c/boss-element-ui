@@ -7,7 +7,7 @@
     :codeDesc="codeDesc"
   >
     <div>
-      <boss-link style="margin-right:10px" href="https://element.eleme.io" target="_blank">默认链接</boss-link>
+      <boss-link style="margin-right:10px">默认链接</boss-link>
       <boss-link style="margin-right:10px" type="primary">主要链接</boss-link>
       <boss-link style="margin-right:10px" type="success">成功链接</boss-link>
       <boss-link style="margin-right:10px" type="warning">警告链接</boss-link>

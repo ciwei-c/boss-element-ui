@@ -1,4 +1,4 @@
-import BossUI from "E:/workspace/boss-component/boss-element-ui/component/src";
+import BossUI from "boss-element-ui/src";
 import store from "@/store"
 import Vue from "vue"
 

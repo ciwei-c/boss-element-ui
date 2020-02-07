@@ -2,7 +2,7 @@ let code = `<template>
   <boss-table
     :sourceData="tableData"
     border
-    title="页头"
+    bottom="页尾"
   >
     <boss-table-column
       prop="name"
@@ -13,7 +13,6 @@ let code = `<template>
       label="日期"
     ></boss-table-column>
     <boss-table-column prop="address" label="地址"></boss-table-column>
-    <boss-table-column prop="age" label="年龄"></boss-table-column>
   </boss-table>
 </template>
 <script>
@@ -42,7 +41,7 @@ export default {
           address: "上海市普陀区金沙江路 1516 弄"
         }
       ]
-    }
+    };
   }
 };
 </script>
