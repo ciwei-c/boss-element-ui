@@ -6,7 +6,10 @@
       closable: Boolean,
       type: String,
       hit: Boolean,
-      disableTransitions: Boolean,
+      disableTransitions: {
+        type:Boolean,
+        default:true
+      },
       color: String,
       size: String,
       effect: {

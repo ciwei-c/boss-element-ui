@@ -8,7 +8,26 @@ export default {
       tortose = setTimeout(()=>{
         if(timeout) clearTimeout(timeout);
         el.setAttribute("animating-node",false);
-        let waveColor = document.defaultView.getComputedStyle(el).borderColor;
+        let elStyle = document.defaultView.getComputedStyle(el)
+        let borderColors = [elStyle.borderTopColor,elStyle.borderRightColor,elStyle.borderBottomColor,elStyle.borderLeftColor]
+        let waveColor = "";
+        let colorCountMap = {}
+        borderColors.forEach(color => {
+          if(!colorCountMap[color]) {
+            colorCountMap[color] = 1
+          }else {
+            colorCountMap[color] ++
+          }
+        })
+        waveColor = Object.keys(colorCountMap).map(color=>{
+          return {
+            color,
+            count:colorCountMap[color]
+          }
+        }).sort((a,b)=>{
+          return b.count - a.count
+        })[0].color
+
         if(!styleForPesudo) styleForPesudo = document.createElement("style");
 
         if (
@@ -19,7 +38,6 @@ export default {
           waveColor !== 'transparent'
         ) {
           el.setAttribute("animating-node",true);
-
           styleForPesudo.innerHTML = `
           [animating-node='true']::after{
             --wave-shadow-color: ${waveColor};

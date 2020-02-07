@@ -12,6 +12,7 @@
 
   &:focus {
     @include button-color($color, $--background-color-base, $color);
+    background: $--color-white;
   }
 
   &:active {
@@ -137,7 +138,18 @@
     );
 
     &.boss-button--text {
-      background-color: transparent;
+      &,
+      &:hover,
+      &:focus {
+        @include button-disabled(
+          $--button-disabled-font-color,
+          $--button-disabled-background-color,
+          $--button-disabled-border-color
+        );
+      }
+      background-color: transparent !important;
+      border: none !important;
+      box-shadow:0px 0px 0px 0px;
     }
 
     &.is-plain {

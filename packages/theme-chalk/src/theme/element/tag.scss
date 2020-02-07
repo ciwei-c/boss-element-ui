@@ -113,6 +113,7 @@
       right: 2px;
       top: 50%;
       transform: translateY(-50%);
+      transform-origin: 0 0;
       cursor: pointer;
       font-size: 12px;
       height: 16px;
@@ -138,7 +139,7 @@
       line-height: 26px;
 
       .boss-icon-close {
-        transform: scale(0.8);
+        transform: scale(0.8) translateY(-50%);
       }
     }
 
@@ -148,7 +149,7 @@
       line-height: 22px;
 
       .boss-icon-close {
-        transform: scale(0.8);
+        transform: scale(0.8) translateY(-50%);
       }
     }
 
@@ -159,7 +160,7 @@
 
       .boss-icon-close {
         margin-left: -3px;
-        transform: scale(0.7);
+        transform: scale(0.7) translateY(-50%);
       }
     }
   }

@@ -106,31 +106,47 @@ export default {
                     style={ this.getHeaderCellStyle(rowIndex, cellIndex, columns, column) }
                     class={ this.getHeaderCellClass(rowIndex, cellIndex, columns, column) }
                     key={ column.id }>
-                    <div class={ ['cell', column.filteredValue && column.filteredValue.length > 0 ? 'highlight' : '', column.labelClassName] }>
-                      {
-                        column.renderHeader
-                          ? column.renderHeader.call(this._renderProxy, h, { column, $index: cellIndex, store: this.store, _self: this.$parent.$vnode.context })
-                          : column.label
-                      }
-                      {
-                        column.sortable ? (<span
-                          class="caret-wrapper"
-                          on-click={ ($event) => this.handleSortClick($event, column) }>
-                          <i class="sort-caret ascending"
-                            on-click={ ($event) => this.handleSortClick($event, column, 'ascending') }>
-                          </i>
-                          <i class="sort-caret descending"
-                            on-click={ ($event) => this.handleSortClick($event, column, 'descending') }>
-                          </i>
-                        </span>) : ''
-                      }
-                      {
-                        column.filterable ? (<span
-                          class={['boss-table__column-filter-trigger', column.filterOpened ? 'boss-icon-arrow-up' : 'boss-icon-arrow-down']}
-                          on-click={ ($event) => this.handleFilterClick($event, column) }>
-                        </span>) : ''
-                      }
-                    </div>
+                    {
+                      !column.sortable ?
+                      <div class={ ['cell', column.filteredValue && column.filteredValue.length > 0 ? 'highlight' : '', column.labelClassName] }>
+                        {
+                          column.renderHeader
+                            ? column.renderHeader.call(this._renderProxy, h, { column, $index: cellIndex, store: this.store, _self: this.$parent.$vnode.context })
+                            : column.label
+                        }
+                        {
+                          column.filterable ? (<span
+                            class={['boss-table__column-filter-trigger', column.filterOpened ? 'boss-icon-arrow-up is-filter' : 'boss-icon-arrow-down']}
+                            on-click={ ($event) => this.handleFilterClick($event, column) }>
+                          </span>) : ''
+                        }
+                      </div> :
+                      <div class={ ['cell', column.filteredValue && column.filteredValue.length > 0 ? 'highlight' : '', column.labelClassName] }>
+                        <span class="sort-caret-wrapper" on-click={ ($event) => this.handleSortClick($event, column) }>
+                          {
+                            column.renderHeader
+                              ? column.renderHeader.call(this._renderProxy, h, { column, $index: cellIndex, store: this.store, _self: this.$parent.$vnode.context })
+                              : column.label
+                          }
+                          <span
+                            class="caret-wrapper"
+                            on-click={ ($event) => this.handleSortClick($event, column) }>
+                            <i class="sort-caret ascending"
+                              on-click={ ($event) => this.handleSortClick($event, column, 'ascending') }>
+                            </i>
+                            <i class="sort-caret descending"
+                              on-click={ ($event) => this.handleSortClick($event, column, 'descending') }>
+                            </i>
+                          </span>
+                        </span>
+                        {
+                          column.filterable ? (<span
+                            class={['boss-table__column-filter-trigger', column.filterOpened ? 'boss-icon-arrow-up is-filter' : 'boss-icon-arrow-down']}
+                            on-click={ ($event) => this.handleFilterClick($event, column) }>
+                          </span>) : ''
+                        }
+                      </div>
+                    }
                   </th>))
                 }
                 {

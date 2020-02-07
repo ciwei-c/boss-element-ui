@@ -4,6 +4,7 @@
     :class="[
       'boss-progress--' + type,
       status ? 'is-' + status : '',
+      active ? 'is-active' : '',
       {
         'boss-progress--without-text': !showText,
         'boss-progress--text-inside': textInside,
@@ -59,6 +60,7 @@
         default: 'line',
         validator: val => ['line', 'circle', 'dashboard'].indexOf(val) > -1
       },
+      active:Boolean,
       percentage: {
         type: Number,
         default: 0,
@@ -67,7 +69,7 @@
       },
       status: {
         type: String,
-        validator: val => ['success', 'exception', 'warning'].indexOf(val) > -1
+        validator: val => ['success', 'exception', 'warning', 'active'].indexOf(val) > -1
       },
       strokeWidth: {
         type: Number,
@@ -100,6 +102,9 @@
         const style = {};
         style.width = this.percentage + '%';
         style.backgroundColor = this.getCurrentColor(this.percentage);
+        if(this.strokeLinecap !== "round") {
+          style.borderRadius = 0
+        }
         return style;
       },
       relativeStrokeWidth() {

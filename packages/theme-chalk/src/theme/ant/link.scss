@@ -1,5 +1,6 @@
 @import "../../mixins/mixins";
 @import "common/var";
+@import "common/color/color-palette.scss";
 
 @include root {
   $typeMap: (
@@ -63,17 +64,17 @@
       &.boss-link--#{$type} {
         color: $primaryColor;
         &:hover {
-          color: mix($primaryColor, $--color-white, 80%);
+          color: color-palette($primaryColor, 5);
         }
         &:after {
           border-color: $primaryColor;
         }
         @include when(disabled) {
-          color: mix($primaryColor, $--color-white, 50%);
+          color: color-palette($primaryColor, 4);
         }
         @include when(underline) {
           &:hover:after {
-            border-color: $primaryColor;
+            border-color: color-palette($primaryColor, 5);
           }
         }
       }

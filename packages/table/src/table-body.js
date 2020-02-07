@@ -337,6 +337,9 @@ export default {
       if(styles && typeof styles === 'object') {
         display = styles.display === 'none' ? false : true
       }
+      if(this.store.states.selection.indexOf(row) > -1) {
+        rowClasses.push('boss-table__row--selected')
+      }
       return (<tr
         v-show={display}
         style={styles}
@@ -388,7 +391,7 @@ export default {
             return (
               <td
                 style={this.getCellStyle($index, cellIndex, row, column)}
-                class={[this.getCellClass($index, cellIndex, row, column), editable ? "boss-table__editable-column" : ""]}
+                class={[column.order ? 'boss-table__column--sorting' : '',this.getCellClass($index, cellIndex, row, column), editable ? "boss-table__editable-column" : ""]}
                 rowspan={rowspan}
                 colspan={colspan}
                 on-mouseenter={($event) => this.handleCellMouseEnter($event, row)}

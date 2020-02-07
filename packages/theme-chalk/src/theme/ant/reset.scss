@@ -1,9 +1,11 @@
 @import "common/var";
+@import "common/color/color-palette";
 @import "../../mixins/mixins";
 @include root {
   body {
-    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial,
-      sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
     font-weight: 400;
     font-size: $--font-size-base;
     color: $--color-black;
@@ -16,11 +18,11 @@
 
     &:hover,
     &:focus {
-      color: mix($--color-white, $--color-primary, $--button-hover-tint-percent);
+      color: color-palette($--color-primary, 5);
     }
 
     &:active {
-      color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+      color: color-palette($--color-primary, 7);
     }
   }
 

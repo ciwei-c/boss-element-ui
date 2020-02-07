@@ -1,6 +1,6 @@
 @import "../../mixins/mixins";
 @import "common/var";
-@import "../../common/transition";
+@import "./common/transition";
 @import "checkbox";
 
 @include root {
@@ -108,7 +108,7 @@
       font-size: 14px;
 
       transform: rotate(0deg);
-      transition: transform 0.3s ease-in-out;
+      transition: transform 0.3s;
 
       &.expanded {
         transform: rotate(90deg);

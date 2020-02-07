@@ -37,6 +37,7 @@ export const cellForced = {
     },
     renderCell: function(h, { row, column, store, $index }) {
       return <boss-checkbox
+        role="boss-table-column--selection-checkbox"
         nativeOn-click={ (event) => event.stopPropagation() }
         value={ store.isSelected(row) }
         disabled={ column.selectable ? !column.selectable.call(null, row, $index) : false }

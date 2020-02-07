@@ -1,6 +1,6 @@
 @import "../../../mixins/mixins";
 @import "../common/var";
-@import "../../../common/transition.scss";
+@import ".././common/transition.scss";
 
 @include b(date-editor) {
   position: relative;

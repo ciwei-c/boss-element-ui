@@ -1,6 +1,6 @@
 @import "../../mixins/mixins";
 @import "common/var";
-@import "../../common/transition";
+@import "./common/transition";
 @import "checkbox";
 
 @include root {

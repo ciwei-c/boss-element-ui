@@ -49,7 +49,9 @@
       font-size: 12px;
       transition: transform 0.2s ease-in-out;
       height: 20px;
-
+      &:hover {
+        color: $--color-primary;
+      }
       @include m(expanded) {
         transform: rotate(90deg);
       }
@@ -64,7 +66,7 @@
     }
 
     @include e(expanded-cell) {
-      background-color: $--color-white;
+      background-color: $--table-expanded-row-bg;
 
       // 纯属为了增加权重
       &[class*="cell"] {
@@ -72,7 +74,7 @@
       }
 
       &:hover {
-        background-color: transparent !important;
+        background-color: $--table-expanded-row-bg !important;
       }
     }
 
@@ -110,8 +112,10 @@
 
     thead {
       color: $--table-header-font-color;
-      font-weight: 500;
-
+      // font-weight: 500;
+      th {
+        font-weight: 500;
+      }
       &.is-group {
         th {
           background: $--background-color-base;
@@ -121,7 +125,7 @@
 
     th,
     td {
-      padding: 12px 0;
+      padding: 16px 0;
       min-width: 0;
       box-sizing: border-box;
       text-overflow: ellipsis;
@@ -153,6 +157,9 @@
     @include e(column) {
       @include m(selection) {
         padding-left: 14px;
+      }
+      @include m(sorting){
+        background: $--table-body-sort-bg;
       }
     }
     @include m(medium) {
@@ -186,6 +193,10 @@
       }
     }
 
+    tr.boss-table__row--selected {
+      background: $--table-row-selected-background-color;
+    }
+
     th.is-leaf,
     td {
       border-bottom: $--table-border;
@@ -193,6 +204,50 @@
 
     th.is-sortable {
       cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+      &:hover {
+        background: $--table-sort-hover-background-color;
+      }
+      &.ascending {
+        background: $--table-header-sort-bg;
+      }
+      &.descending {
+        background: $--table-header-sort-bg;
+      }
+      &:active {
+        .ascending {
+          border-bottom-color: $--table-sort-caret-border-color;
+        }
+        .descending {
+          border-top-color: $--table-sort-caret-border-color;
+        }
+      }
+      .sort-caret-wrapper {
+        display: inline-block;
+        &:hover::before {
+          background: rgba(0, 0, 0, 0.04);
+        }
+        &:hover + .boss-table__column-filter-trigger {
+          background: $--table-sort-hover-background-color;
+        }
+        &::before {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background: transparent;
+          -webkit-transition: all 0.3s;
+          transition: all 0.3s;
+          content: '';
+        }
+      }
+      > .cell {
+        position: static;
+        display: flex;
+        align-items: center;
+      }
     }
 
     th {
@@ -205,12 +260,14 @@
         box-sizing: border-box;
         position: relative;
         vertical-align: middle;
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 16px;
+        padding-right: 16px;
         width: 100%;
 
         &.highlight {
-          color: $--color-primary;
+          .boss-table__column-filter-trigger {
+            color: $--color-primary;
+          }
         }
       }
 
@@ -243,8 +300,8 @@
       white-space: normal;
       word-break: break-all;
       line-height: 23px;
-      padding-left: 10px;
-      padding-right: 10px;
+      padding-left: 16px;
+      padding-right: 16px;
 
       &.boss-tooltip {
         white-space: nowrap;
@@ -296,7 +353,7 @@
         border-right: $--table-border;
 
         &:first-child .cell {
-          padding-left: 10px;
+          padding-left: 16px;
         }
       }
 
@@ -450,7 +507,7 @@
       display: inline-flex;
       flex-direction: column;
       align-items: center;
-      height: 34px;
+      // height: 34px;
       width: 24px;
       vertical-align: middle;
       cursor: pointer;
@@ -461,27 +518,26 @@
     .sort-caret {
       width: 0;
       height: 0;
-      border: solid 5px transparent;
-      position: absolute;
-      left: 7px;
+      border: solid 4px transparent;
+      // position: absolute;
+      left: 8px;
 
       &.ascending {
         border-bottom-color: $--color-text-placeholder;
-        top: 5px;
+        margin-bottom: 4px;
       }
 
       &.descending {
         border-top-color: $--color-text-placeholder;
-        bottom: 7px;
       }
     }
 
     .ascending .sort-caret.ascending {
-      border-bottom-color: $--color-primary;
+      border-bottom-color: $--color-primary !important;
     }
 
     .descending .sort-caret.descending {
-      border-top-color: $--color-primary;
+      border-top-color: $--color-primary !important;
     }
 
     .hidden-columns {
@@ -533,9 +589,22 @@
     }
 
     @include e(column-filter-trigger) {
-      display: inline-block;
       cursor: pointer;
+      position: absolute;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 100%;
+      top: 0;
+      z-index: 9;
+      transition: all 0.3s;
 
+      &:hover,
+      &.is-filter {
+        background: rgba(0, 0, 0, 0.04);
+      }
       & i {
         color: $--color-info;
         font-size: 12px;
@@ -583,7 +652,7 @@
       }
       &-button {
         display: none !important;
-        position: absolute;
+        position: absolute !important;
         right: 10px;
         top: 50%;
         transform: translateY(-50%);
