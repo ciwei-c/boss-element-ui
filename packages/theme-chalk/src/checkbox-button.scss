@@ -1,9 +1,0 @@
-@if $--theme == element {
-  :root {
-    @import "theme/element/checkbox-button";
-  }
-} @else if $--theme == ant {
-  :root {
-    @import "theme/ant/checkbox-button";
-  }
-}

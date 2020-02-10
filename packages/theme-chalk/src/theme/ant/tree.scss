@@ -41,7 +41,7 @@
           cursor: pointer;
           display: flex;
           align-items: center;
-          height: 26px;
+          height: 24px;
           &:hover {
             background-color: $--tree-search-hover-background-color;
           }
@@ -76,8 +76,10 @@
     @include e(content) {
       display: flex;
       align-items: center;
-      height: 26px;
+      height: 24px;
       cursor: pointer;
+      padding-top: 4px;
+      padding-bottom: 4px;
 
       & > .boss-tree-node__expand-icon {
         padding: 6px;

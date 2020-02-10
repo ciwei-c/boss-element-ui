@@ -1,9 +1,0 @@
-@if $--theme == element {
-  :root {
-    @import "theme/element/dropdown";
-  }
-} @else if $--theme == ant {
-  :root {
-    @import "theme/ant/dropdown";
-  }
-}
