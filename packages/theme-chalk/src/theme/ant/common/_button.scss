@@ -5,7 +5,7 @@
 
 @mixin button-plain($color) {
   @include button-color($color, $--background-color-base, $--border-color-base);
-
+  // background-color: color-palette-test($--color-primary, 2);
   &:hover {
     @include button-color($--color-white, color-palette($color, 5), color-palette($color, 5));
   }

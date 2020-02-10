@@ -1,19 +1,19 @@
 @import "../../mixins/mixins";
 @import "common/var";
 
-@mixin genTheme($backgroundColorWeight, $borderColorWeight, $fontColorWeight, $hoverColorWeight) {
-  background-color: mix($--tag-primary-color, $--color-white, $backgroundColorWeight);
-  border-color: mix($--tag-primary-color, $--color-white, $borderColorWeight);
-  color: mix($--tag-primary-color, $--color-white, $fontColorWeight);
+@mixin genTheme() {
+  background-color: $--color-blue-1;
+  border-color: $--color-blue-3;
+  color: $--color-blue-6;
 
   @include when(hit) {
     border-color: $--tag-primary-color;
   }
 
   &.boss-tag--info {
-    background-color: mix($--tag-info-color, $--color-white, $backgroundColorWeight);
-    border-color: mix($--tag-info-color, $--color-white, $borderColorWeight);
-    color: mix($--tag-info-color, $--color-white, $fontColorWeight);
+    background-color: $--color-gray-1;
+    border-color: $--color-gray-3;
+    color: $--color-gray-6;
 
     @include when(hit) {
       border-color: $--tag-info-color;
@@ -21,9 +21,9 @@
   }
 
   &.boss-tag--success {
-    background-color: mix($--tag-success-color, $--color-white, $backgroundColorWeight);
-    border-color: mix($--tag-success-color, $--color-white, $borderColorWeight);
-    color: mix($--tag-success-color, $--color-white, $fontColorWeight);
+    background-color: $--color-green-1;
+    border-color: $--color-green-3;
+    color: $--color-green-6;
 
     @include when(hit) {
       border-color: $--tag-success-color;
@@ -31,9 +31,9 @@
   }
 
   &.boss-tag--warning {
-    background-color: mix($--tag-warning-color, $--color-white, $backgroundColorWeight);
-    border-color: mix($--tag-warning-color, $--color-white, $borderColorWeight);
-    color: mix($--tag-warning-color, $--color-white, $fontColorWeight);
+    background-color: $--color-yellow-1;
+    border-color: $--color-yellow-3;
+    color: $--color-yellow-6;
 
     @include when(hit) {
       border-color: $--tag-warning-color;
@@ -41,9 +41,9 @@
   }
 
   &.boss-tag--danger {
-    background-color: mix($--tag-danger-color, $--color-white, $backgroundColorWeight);
-    border-color: mix($--tag-danger-color, $--color-white, $borderColorWeight);
-    color: mix($--tag-danger-color, $--color-white, $fontColorWeight);
+    background-color: $--color-red-1;
+    border-color: $--color-red-3;
+    color: $--color-red-6;
 
     @include when(hit) {
       border-color: $--tag-danger-color;
@@ -92,7 +92,7 @@
 }
 @include root {
   @include b(tag) {
-    @include genTheme(10%, 20%, 100%, 100%);
+    @include genTheme();
     @include close-icon();
     display: inline-block;
     padding: $--tag-padding;
@@ -128,13 +128,14 @@
         display: block;
       }
     }
-
+    
     @include m(dark) {
-      @include genTheme(100%, 100%, 0, 80%);
+      @include genTheme();
     }
 
     @include m(plain) {
-      @include genTheme(0, 40%, 100%, 100%);
+      // @include genTheme();
+      background-color:transparent !important;
     }
 
     @include m(medium) {

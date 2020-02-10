@@ -49,7 +49,7 @@ $darkColorCount:4;
     $hue:$hue - 360;
   }
 
-  @return round($hue);
+  @return $hue;
 };
 
 @function get-saturation($hsv, $i, $isLight){
@@ -57,11 +57,11 @@ $darkColorCount:4;
   $S:map-get($hsv, 'S');
 
   @if $isLight {
-    $saturation:round($S * 100) - $saturationStep * $i;
+    $saturation:$S * 100 - $saturationStep * $i;
   } @else if $i == $darkColorCount {
-    $saturation:round($S * 100) + $saturationStep;
+    $saturation:$S * 100 + $saturationStep;
   } @else {
-    $saturation:round($S * 100) + $saturationStep2 * $i;
+    $saturation:$S * 100 + $saturationStep2 * $i;
   };
 
   @if $saturation > 100 {
@@ -76,7 +76,7 @@ $darkColorCount:4;
     $saturation:6;
   }
   
-  @return round($saturation);
+  @return $saturation;
 };
 
 @function get-value($hsv, $i, $isLight){
@@ -88,5 +88,8 @@ $darkColorCount:4;
     $value:round($V * 100) - $brightnessStep2 * $i;
   };
 
+  @if $value / 100 > 1 {
+    $value:100
+  }
   @return $value;
 };

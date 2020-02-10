@@ -1,30 +1,38 @@
 @function get-hsv($color){
-  $R:red($color);
-  $G:green($color);
-  $B:blue($color);
+  $r:red($color);
+  $g:green($color);
+  $b:blue($color);
 
-  $max:max($R, $G, $B);
-  $min:min($R, $G, $B);
+  $r1:$r / 255;
+  $g1:$g / 255;
+  $b1:$b / 255;
 
-  $H:0;
-  $S:($max - $min) / $max;
-  $V:$max / 255;
+  $max:max($r1, $g1, $b1);
+  $min:min($r1, $g1, $b1);
 
-  @if $R == $max {
-    $H:($G - $B) / ($max - $min)
-  } @else if $G == $max {
-    $H:2 + ($B - $R)/($max - $min) 
+  $dis:$max - $min;
+
+  $h:0;
+  $s:0;
+  $v:$max;
+
+  @if $dis == 0 {
+    $h:0;
+  }@else if $max == $r1 {
+    $h:60 * ( (($g1 - $b1) / $dis) + 0 )
+  }@else if $max == $g1 {
+    $h:60 * ( (($b1 - $r1) / $dis) + 2 )
+  }@else if $max == $b1 {
+    $h:60 * ( (($r1 - $g1) / $dis) + 4)
+  }
+
+  @if $dis == 0 {
+    $s:0;
   } @else {
-    $H:4 + ($R - $G)/($max - $min)  
+    $s:$dis / $max;
   }
-
-  $H:$H * 60;
-
-  @if $H < 0 {
-    $H:$H + 360
-  }
-
-  $map:('H':$H, 'S':$S, 'V':$V);
+  
+  $map:('H':$h, 'S':$s, 'V':$v);
 
   @return $map;
 };
@@ -35,46 +43,33 @@
 }
 
 @function hsv-to-rgb($hsv){
-  $H:map-get($hsv,'H');
-  $S:map-get($hsv,'S');
-  $V:map-get($hsv,'V');
-
-  $h:round($H);
-  $s:round($S * 255);
-  $v:round($V * 255);
-
-  $rgbmap:();
-
-  @if s == 0 {
-    $rgbmap:set-rgb-map($v, $v, $v);
-  } @else {
-    $t1:$v;
-    $t2:(255 - $s) * $v / 255;
-    $t3:($t1 - $t2) * ($h % 60) / 60;
-
-    @if $h == 360 {
-      $h:0;
-    } 
-    @if $h < 60 {
-      $rgbmap:set-rgb-map($t1, $t2 + $t3, $t2);
-    }@else if $h < 120 {
-      $rgbmap:set-rgb-map($t1 - $t3, $t1, $t2);
-    }@else if $h < 180 {
-      $rgbmap:set-rgb-map($t2, $t1, $t2 + $t3 );
-    }@else if $h < 240 {
-      $rgbmap:set-rgb-map($t2, $t1 - $t3, $t1 );
-    }@else if $h < 300 {
-      $rgbmap:set-rgb-map($t2 + $t3, $t2, $t1 );
-    }@else if $h < 360 { 
-      $rgbmap:set-rgb-map($t1, $t2, $t1 - $t3 );
-    }@else { 
-      $rgbmap:set-rgb-map(0,0,0);
-    }
-  }
+  $h:map-get($hsv,'H');
+  $s:map-get($hsv,'S');
+  $v:map-get($hsv,'V');
   
-  $r:round(map-get($rgbmap, 'r'));
-  $g:round(map-get($rgbmap, 'g'));
-  $b:round(map-get($rgbmap, 'b'));
+  $h1: floor($h / 60) % 6;
+  $f: $h / 60 - $h1;
+  $p: $v * (1 - $s);
+  $q: $v * (1 - $f * $s);
+  $t: $v * (1 - (1 - $f) * $s);
+  $rgbmap:();
+  @if $h1 == 0 {
+    $rgbmap:set-rgb-map($v, $t, $p);
+  }@else if $h1 == 1 {
+    $rgbmap:set-rgb-map($q, $v, $p);
+  }@else if $h1 == 2 {
+    $rgbmap:set-rgb-map($p, $v, $t);
+  }@else if $h1 == 3 {
+    $rgbmap:set-rgb-map($p, $q, $v);
+  }@else if $h1 == 4 {
+    $rgbmap:set-rgb-map($t, $p, $v);
+  }@else if $h1 == 5 {
+    $rgbmap:set-rgb-map($v, $p, $q);
+  }
+
+  $r:round(map-get($rgbmap, 'r') * 255);
+  $g:round(map-get($rgbmap, 'g') * 255);
+  $b:round(map-get($rgbmap, 'b') * 255);
 
   @return rgb($r, $g, $b);
 }

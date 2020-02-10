@@ -712,7 +712,7 @@
   /// color||Color|0
   $--table-header-font-color: $--color-heading !default !global;
   /// color||Color|0
-  $--table-row-hover-background-color: #e6f7ff !default !global;
+  $--table-row-hover-background-color: $--color-blue-1 !default !global;
   $--table-row-selected-background-color: $--background-color-light !default !global;
   $--table-current-row-background-color: $--background-color-light !default !global;
   /// color||Color|0
@@ -806,13 +806,13 @@
   /* Tree
   -------------------------- */
   /// color||Color|0
-  $--tree-node-hover-background-color: $--background-color-base !default !global;
+  $--tree-node-hover-background-color: $--color-blue-1 !default !global;
   /// color||Color|0
   $--tree-search-hover-background-color: $--background-color-base !default !global;
   /// color||Color|0
   $--tree-font-color: $--color-text-regular !default !global;
   /// color||Color|0
-  $--tree-expand-icon-color: $--color-text-placeholder !default !global;
+  $--tree-expand-icon-color: $--color-text-regular !default !global;
 
   /* Dropdown
   -------------------------- */
