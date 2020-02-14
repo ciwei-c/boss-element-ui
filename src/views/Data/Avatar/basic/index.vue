@@ -9,18 +9,18 @@
     <boss-row>
       <boss-col :span="12">
         <boss-row style="display: flex;align-items: center;">
-          <boss-col :span="6" class="block"><boss-avatar :size="50" :src="circleUrl"></boss-avatar></boss-col>
-          <boss-col :span="6" class="block" v-for="size in sizeList" :key="size">
+          <div style="margin-right:20px" class="block"><boss-avatar :size="64" :src="circleUrl"></boss-avatar></div>
+          <div style="margin-right:20px" class="block" v-for="size in sizeList" :key="size">
             <boss-avatar :size="size" :src="circleUrl"></boss-avatar>
-          </boss-col>
+          </div>
         </boss-row>
       </boss-col>  
       <boss-col :span="12">
         <boss-row style="display: flex;align-items: center;">
-          <boss-col :span="6" class="block"><boss-avatar shape="square" :size="50" :src="squareUrl"></boss-avatar></boss-col>
-          <boss-col :span="6" class="block" v-for="size in sizeList" :key="size">
+          <div style="margin-right:20px" :span="9" class="block"><boss-avatar shape="square" :size="64" :src="squareUrl"></boss-avatar></div>
+          <div style="margin-right:20px" :span="5" class="block" v-for="size in sizeList" :key="size">
             <boss-avatar shape="square" :size="size" :src="squareUrl"></boss-avatar>
-          </boss-col>
+          </div>
         </boss-row>
       </boss-col> 
     </boss-row>

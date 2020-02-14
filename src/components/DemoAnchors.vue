@@ -27,6 +27,9 @@ export default {
   },
   watch: {
     $route() {
+      document
+        .querySelector(".boss-ui-demo__scrollbar__wrap.boss-scrollbar__wrap")
+        .scrollTo(0, 0);
       this.active = "";
       this.$nextTick(() => {
         setTimeout(() => {
@@ -52,7 +55,14 @@ export default {
     scrollWrap() {
       return document.querySelector(this.scrollWrapCls);
     },
-    ...mapState({ anchors: state => state.app.anchors })
+    ...mapState({
+      anchors: state => {
+        return state.app.anchors.concat({
+          id: "api",
+          title: "API"
+        });
+      }
+    })
   },
   destroyed() {
     document.querySelector(this.scrollWrapCls).onscroll = null;
@@ -99,12 +109,6 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-.boss-ui-demo__anchor-scroll {
-  .boss-scrollbar__view {
-  }
-}
-</style>
 <style lang="scss" scoped>
 .boss-ui-demo__anchor-scroll {
   position: fixed;

@@ -2,7 +2,7 @@ let code = `<template>
   <boss-row>
     <boss-row>
       <boss-radio v-model="size" label="default">默认尺寸</boss-radio>
-      <boss-radio v-model="size" label="medium">中尺寸</boss-radio>
+      <boss-radio v-model="size" label="medium">大尺寸</boss-radio>
       <boss-radio v-model="size" label="small">小尺寸</boss-radio>
       <boss-radio v-model="size" label="mini">迷你尺寸</boss-radio>
     </boss-row>

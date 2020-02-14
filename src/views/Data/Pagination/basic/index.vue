@@ -27,3 +27,9 @@ export default {
   mixins: [code]
 };
 </script>
+<style lang="scss" scoped>
+.demonstration {
+  margin: 10px 0;
+  display: inline-block;
+}
+</style>

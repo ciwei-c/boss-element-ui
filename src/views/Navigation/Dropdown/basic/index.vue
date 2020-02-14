@@ -28,10 +28,6 @@ export default {
 };
 </script>
 <style>
-.boss-dropdown-link {
-  cursor: pointer;
-  color: #409eff;
-}
 .boss-icon-arrow-down {
   font-size: 12px;
 }
