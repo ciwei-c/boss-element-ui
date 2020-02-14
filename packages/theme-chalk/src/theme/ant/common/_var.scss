@@ -15,6 +15,21 @@
   $--border-transition-base: border-color .2s cubic-bezier(.645,.045,.355,1) !default !global;
   $--color-transition-base: color .2s cubic-bezier(.645,.045,.355,1) !default !global;
 
+  $--ease-base-out: cubic-bezier(0.7, 0.3, 0.1, 1);
+  $--ease-base-in: cubic-bezier(0.9, 0, 0.3, 0.7);
+  $--ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+  $--ease-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  $--ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+  $--ease-out-back: cubic-bezier(0.12, 0.4, 0.29, 1.46);
+  $--ease-in-back: cubic-bezier(0.71, -0.46, 0.88, 0.6);
+  $--ease-in-out-back: cubic-bezier(0.71, -0.46, 0.29, 1.46);
+  $--ease-out-circ: cubic-bezier(0.08, 0.82, 0.17, 1);
+  $--ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.34);
+  $--ease-in-out-circ: cubic-bezier(0.78, 0.14, 0.15, 0.86);
+  $--ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+  $--ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  $--ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+
   /* Color
   -------------------------- */
   /// color|1|Brand Color|0
@@ -60,7 +75,7 @@
   /// color|1|Font Color|2
   $--color-text-secondary: rgba($--color-black, 0.45) !default !global;
   /// color|1|Font Color|2
-  $--color-text-placeholder: rgba(0, 0, 0, 0.25) !default !global;
+  $--color-text-placeholder: rgba(191,191,191,1) !default !global;
   /// color|1|Border Color|3
   $--border-color-base: #d9d9d9 !default !global;
   /// color|1|Border Color|3
@@ -142,8 +157,8 @@
 
   /* Link
   -------------------------- */
-  $--link-color: $--color-primary-light-2 !default !global;
-  $--link-hover-color: $--color-primary !default !global;
+  $--link-color: $--color-primary !default !global;
+  $--link-hover-color: colorPalette($--link-color, 5)!default !global;
 
   /* Border
   -------------------------- */
@@ -226,8 +241,8 @@
   $--checkbox-font-weight: $--font-weight-primary !default !global;
   /// color||Color|0
   $--checkbox-font-color: $--color-text-regular !default !global;
-  $--checkbox-input-height: 14px !default !global;
-  $--checkbox-input-width: 14px !default !global;
+  $--checkbox-input-height: 16px !default !global;
+  $--checkbox-input-width: 16px !default !global;
   /// borderRadius||Border|2
   $--checkbox-border-radius: $--border-radius-small !default !global;
   /// color||Color|0
@@ -236,10 +251,10 @@
 
   /// color||Color|0
   $--checkbox-disabled-border-color: $--border-color-base !default !global;
-  $--checkbox-disabled-input-fill: #edf2fc !default !global;
+  $--checkbox-disabled-input-fill: $--background-color-base !default !global;
   $--checkbox-disabled-icon-color: $--color-text-placeholder !default !global;
 
-  $--checkbox-disabled-checked-input-fill: $--border-color-extra-light !default !global;
+  $--checkbox-disabled-checked-input-fill: $--background-color-base !default !global;
   $--checkbox-disabled-checked-input-border-color: $--border-color-base !default !global;
   $--checkbox-disabled-checked-icon-color: $--color-text-placeholder !default !global;
 
@@ -499,12 +514,13 @@
   /// height||Other|4
   $--input-width: 140px !default !global;
   /// height||Other|4
-  $--input-height: 40px !default !global;
+  $--input-height: 32px !default !global;
   $--input-border: $--border-base !default !global;
   $--input-border-color: $--border-color-base !default !global;
+  $--input-border-focus-shadow: 0 0 0 2px rgba($--color-primary, 0.2) !default !global;
   /// borderRadius||Border|2
   $--input-border-radius: $--border-radius-base !default !global;
-  $--input-border-color-hover: $--border-color-hover !default !global;
+  $--input-border-color-hover: $--color-blue-5 !default !global;
   /// color||Color|0
   $--input-background-color: $--color-white !default !global;
   $--input-fill-disabled: $--disabled-fill-base !default !global;
@@ -515,10 +531,10 @@
   $--input-placeholder-color: $--color-text-placeholder !default !global;
   $--input-max-width: 314px !default !global;
 
-  $--input-hover-border: $--border-color-hover !default !global;
+  $--input-hover-border: $--color-blue-5 !default !global;
   $--input-clear-hover-color: $--color-text-secondary !default !global;
 
-  $--input-focus-border: $--color-primary !default !global;
+  $--input-focus-border: $--color-blue-5 !default !global;
   $--input-focus-fill: $--color-white !default !global;
 
   $--input-disabled-fill: $--disabled-fill-base !default !global;
@@ -527,17 +543,17 @@
   $--input-disabled-placeholder-color: $--color-text-placeholder !default !global;
 
   /// fontSize||Font|1
-  $--input-medium-font-size: 14px !default !global;
+  $--input-medium-font-size: 16px !default !global;
   /// height||Other|4
-  $--input-medium-height: 36px !default !global;
+  $--input-medium-height: 40px !default !global;
   /// fontSize||Font|1
-  $--input-small-font-size: 13px !default !global;
+  $--input-small-font-size: 14px !default !global;
   /// height||Other|4
   $--input-small-height: 32px !default !global;
   /// fontSize||Font|1
-  $--input-mini-font-size: 12px !default !global;
+  $--input-mini-font-size: 14px !default !global;
   /// height||Other|4
-  $--input-mini-height: 28px !default !global;
+  $--input-mini-height: 24px !default !global;
 
   /* Cascader
   -------------------------- */
@@ -729,24 +745,30 @@
   /* Pagination
   -------------------------- */
   /// fontSize||Font|1
-  $--pagination-font-size: 13px !default !global;
+  $--pagination-font-size: 14px !default !global;
   /// color||Color|0
   $--pagination-background-color: $--color-white !default !global;
   /// color||Color|0
   $--pagination-font-color: $--color-text-primary !default !global;
-  $--pagination-border-radius: 3px !default !global;
+  $--pagination-border-radius: 4px !default !global;
+  $--pagination-border: $--border-base !default !global;
+  $--pagination-more-color: rgba(#000, 0.25);
   /// color||Color|0
   $--pagination-button-color: $--color-text-primary !default !global;
   /// height||Other|4
-  $--pagination-button-width: 35.5px !default !global;
+  $--pagination-button-width: 32px !default !global;
   /// height||Other|4
-  $--pagination-button-height: 28px !default !global;
+  $--pagination-button-height: 32px !default !global;
   /// color||Color|0
+  $--pagination-disabled-color: $--color-text-placeholder !default !global;
+  $--pagination-disabled-background: $--background-color-base !default !global;
   $--pagination-button-disabled-color: $--color-text-placeholder !default !global;
+  $--pagination-disabled-button-disabled-color: $--color-text-secondary !default !global;
   /// color||Color|0
   $--pagination-button-disabled-background-color: $--color-white !default !global;
   /// color||Color|0
   $--pagination-hover-color: $--color-primary !default !global;
+  $--pagination-active-disabled-background: #dbdbdb !default !global;
 
   /* Popup
   -------------------------- */
@@ -808,7 +830,7 @@
   /// color||Color|0
   $--tree-node-hover-background-color: $--color-blue-1 !default !global;
   /// color||Color|0
-  $--tree-search-hover-background-color: $--background-color-base !default !global;
+  $--tree-search-hover-background-color: $--color-blue-1 !default !global;
   /// color||Color|0
   $--tree-font-color: $--color-text-regular !default !global;
   /// color||Color|0
@@ -1053,9 +1075,9 @@
   /// size|1|Avatar Size|3
   $--avatar-large-size: 40px !default !global;
   /// size|1|Avatar Size|3
-  $--avatar-medium-size: 36px !default !global;
+  $--avatar-medium-size: 32px !default !global;
   /// size|1|Avatar Size|3
-  $--avatar-small-size: 28px !default !global;
+  $--avatar-small-size: 24px !default !global;
 
   /* Break-point
   --------------------------*/

@@ -9,7 +9,8 @@
       'is-current': node.isCurrent,
       'is-hidden': !node.visible,
       'is-focusable': !node.disabled,
-      'is-checked': !node.disabled && node.checked
+      'is-checked': !node.disabled && node.checked,
+      'is-showline': showLine
     }"
     role="treeitem"
     tabindex="-1"
@@ -22,9 +23,9 @@
     @dragend.stop="handleDragEnd"
     @drop.stop="handleDrop"
     ref="node"
+    :style="{ 'margin-left': tree.indent + 'px' }"
   >
-    <div class="boss-tree-node__content"
-      :style="{ 'padding-left': (node.level - 1) * tree.indent + 'px' }">
+    <div class="boss-tree-node__content">
       <span
         @click.stop="handleExpandIconClick"
         :class="[
@@ -62,6 +63,7 @@
           v-for="child in node.childNodes"
           :render-after-expand="renderAfterExpand"
           :show-checkbox="showCheckbox"
+          :show-line="showLine"
           :key="getNodeKey(child)"
           :node="child"
           @node-expand="handleChildNodeExpand">
@@ -90,6 +92,7 @@
           return {};
         }
       },
+      showLine:Boolean,
       props: {},
       renderContent: Function,
       renderAfterExpand: {

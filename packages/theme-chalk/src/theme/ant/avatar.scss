@@ -13,11 +13,14 @@
     height: $--avatar-large-size;
     line-height: $--avatar-large-size;
     font-size: $--avatar-text-font-size;
-
+    &.is-image {
+      background-color: transparent;
+    }
     > img {
       display: inline-block;
       height: 100%;
       vertical-align: middle;
+      margin-top: -4px;
     }
 
     @include m(circle) {

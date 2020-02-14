@@ -1,22 +1,22 @@
 <script>
 export default {
-  name: 'BossAvatar',
+  name: "BossAvatar",
 
   props: {
     size: {
       type: [Number, String],
       validator(val) {
-        if (typeof val === 'string') {
-          return ['large', 'medium', 'small'].includes(val);
+        if (typeof val === "string") {
+          return ["large", "medium", "small"].includes(val);
         }
-        return typeof val === 'number';
+        return typeof val === "number";
       }
     },
     shape: {
       type: String,
-      default: 'circle',
+      default: "circle",
       validator(val) {
-        return ['circle', 'square'].includes(val);
+        return ["circle", "square"].includes(val);
       }
     },
     icon: String,
@@ -26,7 +26,7 @@ export default {
     error: Function,
     fit: {
       type: String,
-      default: 'cover'
+      default: "cover"
     }
   },
 
@@ -38,22 +38,25 @@ export default {
 
   computed: {
     avatarClass() {
-      const { size, icon, shape } = this;
-      let classList = ['boss-avatar'];
+      const { size, icon, shape, src, isImageExist } = this;
+      let classList = ["boss-avatar"];
 
-      if (size && typeof size === 'string') {
+      if (size && typeof size === "string") {
         classList.push(`boss-avatar--${size}`);
       }
 
       if (icon) {
-        classList.push('boss-avatar--icon');
+        classList.push("boss-avatar--icon");
       }
 
       if (shape) {
         classList.push(`boss-avatar--${shape}`);
       }
 
-      return classList.join(' ');
+      if (src && isImageExist) {
+        classList.push("is-image");
+      }
+      return classList.join(" ");
     }
   },
 
@@ -69,16 +72,19 @@ export default {
       const { icon, src, alt, isImageExist, srcSet, fit } = this;
 
       if (isImageExist && src) {
-        return <img
-          src={src}
-          onError={this.handleError}
-          alt={alt}
-          srcSet={srcSet}
-          style={{ 'object-fit': fit }}/>;
+        return (
+          <img
+            src={src}
+            onError={this.handleError}
+            alt={alt}
+            srcSet={srcSet}
+            style={{ "object-fit": fit }}
+          />
+        );
       }
 
       if (icon) {
-        return (<i class={icon} />);
+        return <i class={icon} />;
       }
 
       return this.$slots.default;
@@ -88,20 +94,20 @@ export default {
   render() {
     const { avatarClass, size } = this;
 
-    const sizeStyle = typeof size === 'number' ? {
-      height: `${size}px`,
-      width: `${size}px`,
-      lineHeight: `${size}px`
-    } : {};
+    const sizeStyle =
+      typeof size === "number"
+        ? {
+            height: `${size}px`,
+            width: `${size}px`,
+            lineHeight: `${size}px`
+          }
+        : {};
 
     return (
-      <span class={ avatarClass } style={ sizeStyle }>
-        {
-          this.renderAvatar()
-        }
+      <span class={avatarClass} style={sizeStyle}>
+        {this.renderAvatar()}
       </span>
     );
   }
-
 };
 </script>

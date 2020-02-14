@@ -23,17 +23,13 @@
       @include when(fixed) {
         position: absolute;
         top: 0;
-        right: #{1 + $--badge-size / 2};
-        transform: translateY(-50%) translateX(100%);
-
-        @include when(dot) {
-          right: 5px;
-        }
+        right:0;
+        transform: translateY(-50%) translateX(50%);
       }
 
       @include when(dot) {
-        height: 8px;
-        width: 8px;
+        height: 6px;
+        width: 6px;
         padding: 0;
         right: 0;
         border-radius: 50%;

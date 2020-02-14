@@ -8,9 +8,37 @@
     white-space: nowrap;
     padding: 2px 5px;
     color: $--pagination-font-color;
-    font-weight: bold;
+    font-family: Arial;
     @include utils-clearfix;
-
+    @include m(disabled) {
+      .number {
+        background: $--pagination-disabled-background;
+        color: $--pagination-disabled-color;
+        &:hover {
+          background: $--pagination-disabled-background !important;
+          color: $--pagination-disabled-color !important;
+          border: $--pagination-border;
+        }
+        &.active {
+          &,
+          &:hover {
+            background: $--pagination-active-disabled-background !important;
+            color: $--color-white !important;
+            border: $--pagination-border;
+          }
+        }
+      }
+      .btn-prev,
+      .btn-next {
+        background: $--pagination-disabled-background !important;
+        color: $--pagination-disabled-button-disabled-color !important;
+      }
+      .more,
+      .boss-pagination__jump,
+      .boss-pagination__total {
+        cursor: not-allowed !important;
+      }
+    }
     span:not([class*="suffix"]),
     button {
       display: inline-block;
@@ -61,6 +89,11 @@
         color: $--pagination-button-disabled-color;
         background-color: $--pagination-button-disabled-background-color;
         cursor: not-allowed;
+        &:hover {
+          color: $--pagination-button-disabled-color;
+          background-color: $--pagination-button-disabled-background-color;
+          border-color: $--border-color-base;
+        }
       }
     }
 
@@ -72,20 +105,22 @@
       cursor: pointer;
       margin: 0;
       color: $--pagination-button-color;
+      border: $--pagination-border;
+      border-radius: $--pagination-border-radius;
 
       .boss-icon {
         display: block;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: bold;
+      }
+      &:hover {
+        color: $--pagination-hover-color;
+        border-color: $--pagination-hover-color;
       }
     }
 
     .btn-prev {
-      padding-right: 12px;
-    }
-
-    .btn-next {
-      padding-left: 12px;
+      margin-right: 8px;
     }
 
     .boss-pager li.disabled {
@@ -98,19 +133,24 @@
       .btn-next,
       .boss-pager li,
       .boss-pager li.btn-quicknext,
-      .boss-pager li.btn-quickprev,
-      .boss-pager li:last-child {
+      .boss-pager li.btn-quickprev {
         border-color: transparent;
-        font-size: 12px;
+        font-size: 14px;
         line-height: 22px;
-        height: 22px;
-        min-width: 22px;
+        height: 24px;
+        min-width: 24px;
       }
-
+      .btn-prev {
+        margin-right: 0px;
+        border: 0;
+      }
+      .btn-next {
+        margin-left: 0px;
+        border: 0;
+      }
       .arrow.disabled {
         visibility: hidden;
       }
-
       .more::before,
       li.more::before {
         line-height: 24px;
@@ -118,10 +158,34 @@
 
       span:not([class*="suffix"]),
       button {
-        height: 22px;
-        line-height: 22px;
+        height: 24px;
+        line-height: 24px;
       }
-
+      button:hover,
+      button:disabled:hover {
+        border: 0;
+      }
+      .boss-pagination__total {
+        margin-right: 2px;
+      }
+      .boss-pagination__jump {
+        margin-left: 0;
+      }
+      .boss-pagination__sizes{
+        margin: -1px 0 0 0;
+      }
+      
+      .boss-pager li {
+        transition: all 0.1s;
+        margin: 0;
+        &:hover {
+          border-color:transparent;
+        }
+        &.active:hover {
+          border-color: $--pagination-hover-color;
+        }
+      }
+      
       @include e(editor) {
         height: 22px;
         &.boss-input .boss-input__inner {
@@ -189,51 +253,6 @@
         margin: 0;
       }
     }
-
-    @include when(background) {
-      .btn-prev,
-      .btn-next,
-      .boss-pager li {
-        margin: 0 5px;
-        background-color: $--color-info-lighter;
-        color: $--color-text-regular;
-        min-width: 30px;
-        border-radius: 2px;
-
-        &.disabled {
-          color: $--color-text-placeholder;
-        }
-      }
-
-      .btn-prev,
-      .btn-next {
-        padding: 0;
-
-        &:disabled {
-          color: $--color-text-placeholder;
-        }
-      }
-
-      .boss-pager li:not(.disabled) {
-        &:hover {
-          color: $--pagination-hover-color;
-        }
-
-        &.active {
-          background-color: $--color-primary;
-          color: $--color-white;
-        }
-      }
-
-      &.boss-pagination--small {
-        .btn-prev,
-        .btn-next,
-        .boss-pager li {
-          margin: 0 3px;
-          min-width: 22px;
-        }
-      }
-    }
   }
 
   @include b(pager) {
@@ -246,22 +265,28 @@
     margin: 0;
 
     .more::before {
-      line-height: 30px;
+      line-height: calc(#{$--pagination-button-height} - 2px);
     }
-
+    .more {
+      border: none !important;
+      &.boss-icon-more {
+        color: $--pagination-more-color;
+      }
+    }
     li {
-      padding: 0 4px;
+      margin-right: 8px;
       background: $--pagination-background-color;
       vertical-align: top;
       display: inline-block;
       font-size: $--pagination-font-size;
       min-width: $--pagination-button-width;
       height: $--pagination-button-height;
-      line-height: $--pagination-button-height;
+      line-height: calc(#{$--pagination-button-height} - 2px);
+      border-radius: $--pagination-border-radius;
       cursor: pointer;
       box-sizing: border-box;
       text-align: center;
-      margin: 0;
+      border: $--pagination-border;
 
       &.btn-quicknext,
       &.btn-quickprev {
@@ -281,16 +306,14 @@
         cursor: pointer;
       }
 
-      &.active + li {
-        border-left: 0;
-      }
-
       &:hover {
         color: $--pagination-hover-color;
+        border-color: $--pagination-hover-color;
       }
 
       &.active {
         color: $--pagination-hover-color;
+        border-color: $--pagination-hover-color;
         cursor: default;
       }
     }

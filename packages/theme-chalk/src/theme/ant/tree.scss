@@ -9,7 +9,6 @@
     cursor: default;
     background: $--color-white;
     color: $--tree-font-color;
-
     @include e(empty-block) {
       position: relative;
       min-height: 60px;
@@ -32,7 +31,7 @@
       left: 0;
       right: 0;
       height: 1px;
-      background-color: $--color-primary;
+      background-color: $--color-blue-1;
     }
 
     @include e(search) {
@@ -46,7 +45,7 @@
             background-color: $--tree-search-hover-background-color;
           }
           &.is-current {
-            background: mix($--color-white, $--color-primary, 92%);
+            background: $--color-blue-2;
           }
         }
         &-icon {
@@ -55,20 +54,32 @@
       }
     }
   }
-
   @include b(tree-node) {
     white-space: nowrap;
     outline: none;
-    // &:focus {
-      /* focus */
-      // > .boss-tree-node__content {
-      //   background-color: $--tree-node-hover-background-color;
-      // }
-    // }
 
+    @include when(showline) {
+      &:not(:last-child) {
+        position: relative;
+        &::before {
+          position: absolute;
+          left: 12px;
+          top: 26px;
+          width: 1px;
+          height: calc(100% - 22px);
+          border-left: 1px solid $--border-color-base;
+          content: " ";
+        }
+      }
+    }
+    @include when(last-treeitem){
+      &::before {
+        display: none;
+      }
+    }
     @include when(drop-inner) {
       > .boss-tree-node__content .boss-tree-node__label {
-        background-color: $--color-primary;
+        background-color: $--color-blue-2;
         color: #fff;
       }
     }
@@ -157,7 +168,9 @@
     }
   }
 
-  .boss-tree--highlight-current .boss-tree-node.is-current > .boss-tree-node__content {
+  .boss-tree--highlight-current
+    .boss-tree-node.is-current
+    > .boss-tree-node__content {
     .boss-tree-node__label {
       background-color: $--color-blue-2;
     }

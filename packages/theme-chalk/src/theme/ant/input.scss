@@ -8,7 +8,6 @@
     width: 100%;
     vertical-align: bottom;
     font-size: $--font-size-base;
-
     @include e(inner) {
       display: block;
       resize: vertical;
@@ -22,7 +21,8 @@
       background-image: none;
       border: $--input-border;
       border-radius: $--input-border-radius;
-      transition: $--border-transition-base;
+      transition: all 0.3s;
+      font-family: inherit;
 
       &::placeholder {
         color: $--input-placeholder-color;
@@ -34,6 +34,7 @@
 
       &:focus {
         outline: none;
+        box-shadow: $--input-border-focus-shadow;
         border-color: $--input-focus-border;
       }
     }
@@ -82,7 +83,7 @@
       color: $--input-icon-color;
       font-size: $--input-font-size;
       cursor: pointer;
-      transition: $--color-transition-base;
+      transition: all 0.3s;
 
       &:hover {
         color: $--input-clear-hover-color;
@@ -103,8 +104,13 @@
         padding: 0 5px;
       }
     }
-
+    &:hover {
+      .boss-input__inner {
+        border-color: $--input-hover-border;
+      }
+    }
     @include e(inner) {
+      font-family: inherit;
       -webkit-appearance: none;
       background-color: $--input-background-color;
       background-image: none;
@@ -117,8 +123,8 @@
       height: $--input-height;
       line-height: $--input-height;
       outline: none;
-      padding: 0 15px;
-      transition: $--border-transition-base;
+      padding: 4px 11px;
+      transition: all 0.3s;
       width: 100%;
 
       &::placeholder {
@@ -131,6 +137,7 @@
 
       &:focus {
         outline: none;
+        box-shadow: $--input-border-focus-shadow;
         border-color: $--input-focus-border;
       }
     }
@@ -166,7 +173,32 @@
       text-align: center;
       transition: all 0.3s;
       line-height: $--input-height;
-
+      &.boss-input__pwd {
+        display: block !important;
+        &:hover {
+          color: #333;
+          &.boss-input__pwd--hide {
+            &::after {
+              background-color: #333;
+            }
+          }
+        }
+        &.boss-input__pwd--hide {
+          position: relative;
+          &::after {
+            content: "";
+            position: absolute;
+            height: 16px;
+            width: 1px;
+            background-color: $--input-icon-color;
+            border-right: 1px solid #fff;
+            transition: background-color 0.3s;
+            left: 47%;
+            top: 47%;
+            transform: translate(0%, -44%) rotate(39deg);
+          }
+        }
+      }
       &:after {
         content: "";
         height: 100%;
@@ -232,6 +264,7 @@
       font-size: $--input-medium-font-size;
 
       @include e(inner) {
+        padding: 6px 11px;
         height: $--input-medium-height;
         line-height: $--input-medium-height;
       }
@@ -276,6 +309,16 @@
     > .boss-input__inner {
       vertical-align: middle;
       display: table-cell;
+      &:focus,
+      &:hover {
+        border-width: 1px !important;
+        position: relative;
+        z-index: 1;
+        border-color: $--input-focus-border;
+      }
+      &:focus {
+        box-shadow: $--input-border-focus-shadow;
+      }
     }
 
     @include e((append, prepend)) {
@@ -306,8 +349,6 @@
         border-color: transparent;
         background-color: transparent;
         color: inherit;
-        border-top: 0;
-        border-bottom: 0;
       }
 
       .boss-button,
@@ -333,8 +374,19 @@
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
-      .boss-select .boss-input.is-focus .boss-input__inner {
-        border-color: transparent;
+      .boss-select .boss-input .boss-input__inner {
+        transition: all 0.3s;
+        &:focus,
+        &:hover {
+          border: 1px solid $--input-focus-border !important;
+          border-top-left-radius: $--input-border-radius;
+          border-bottom-left-radius: $--input-border-radius;
+          position: relative;
+          z-index: 1;
+        }
+        &:focus {
+          box-shadow: $--input-border-focus-shadow;
+        }
       }
     }
 
@@ -343,8 +395,17 @@
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }
-      .boss-select .boss-input.is-focus .boss-input__inner {
-        border-color: transparent;
+      .boss-select .boss-input .boss-input__inner {
+        transition: all 0.3s;
+        &:focus,
+        &:hover {
+          border: 1px solid $--input-focus-border !important;
+          position: relative;
+          z-index: 1;
+        }
+        &:focus {
+          box-shadow: $--input-border-focus-shadow;
+        }
       }
     }
   }

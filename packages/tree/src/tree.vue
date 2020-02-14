@@ -20,9 +20,13 @@
     />
     <boss-tree-node
       v-show="nodeVisible"
-      v-for="child in root.childNodes"
+      v-for="(child,idx) in root.childNodes"
+      :class="{
+        'is-last-treeitem':idx === root.childNodes.length - 1
+      }"
       :node="child"
       :props="props"
+      :show-line="showLine"
       :render-after-expand="renderAfterExpand"
       :show-checkbox="showCheckbox"
       :key="getNodeKey(child)"
@@ -81,6 +85,10 @@
       method:String,
       requestReader:Function,
       jsonReader:Object,
+      showLine:{
+        type:Boolean,
+        default:false
+      },
       data: {
         type: Array
       },

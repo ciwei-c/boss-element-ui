@@ -73,7 +73,8 @@ export default {
 
     let template = <div class={['boss-pagination', {
       'is-background': this.background,
-      'boss-pagination--small': this.small
+      'boss-pagination--small': this.small,
+      'boss-pagination--disabled':this.disabled
     }] }></div>;
     const TEMPLATE_MAP = {
       prev: <prev></prev>,
