@@ -554,6 +554,11 @@
   $--input-mini-font-size: 14px !default !global;
   /// height||Other|4
   $--input-mini-height: 24px !default !global;
+  /// width||Other|4
+  $--input-number-crease-width: 22px !default !global;
+  $--input-number-width: 90px !default !global;
+  /// color||Other|4
+  $--input-number-crease-background-color: $--color-white !default !global;
 
   /* Cascader
   -------------------------- */

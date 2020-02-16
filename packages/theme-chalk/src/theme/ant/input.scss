@@ -104,11 +104,6 @@
         padding: 0 5px;
       }
     }
-    &:hover {
-      .boss-input__inner {
-        border-color: $--input-hover-border;
-      }
-    }
     @include e(inner) {
       font-family: inherit;
       -webkit-appearance: none;
@@ -322,8 +317,8 @@
     }
 
     @include e((append, prepend)) {
-      background-color: $--background-color-base;
-      color: $--color-info;
+      background-color: $--background-color-light;
+      color: $--color-text-regular;
       vertical-align: middle;
       display: table-cell;
       position: relative;

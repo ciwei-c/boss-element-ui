@@ -8,23 +8,25 @@
       { 'is-without-controls': !controls },
       { 'is-controls-right': controlsAtRight }
     ]">
-    <span
-      class="boss-input-number__decrease"
-      role="button"
-      v-if="controls"
-      v-repeat-click="decrease"
-      :class="{'is-disabled': minDisabled}"
-      @keydown.enter="decrease">
-      <i :class="`boss-icon-${controlsAtRight ? 'arrow-down' : 'minus'}`"></i>
-    </span>
-    <span
-      class="boss-input-number__increase"
-      role="button"
-      v-if="controls"
-      v-repeat-click="increase"
-      :class="{'is-disabled': maxDisabled}"
-      @keydown.enter="increase">
-      <i :class="`boss-icon-${controlsAtRight ? 'arrow-up' : 'plus'}`"></i>
+    <span class="boss-input-number__increase__wrap boss-input-number__decrease__wrap">
+      <span
+        class="boss-input-number__decrease"
+        role="button"
+        v-if="controls"
+        v-repeat-click="decrease"
+        :class="{'is-disabled': minDisabled}"
+        @keydown.enter="decrease">
+        <i :class="`boss-icon-${controlsAtRight ? 'arrow-down' : 'minus'}`"></i>
+      </span>
+      <span
+        class="boss-input-number__increase"
+        role="button"
+        v-if="controls"
+        v-repeat-click="increase"
+        :class="{'is-disabled': maxDisabled}"
+        @keydown.enter="increase">
+        <i :class="`boss-icon-${controlsAtRight ? 'arrow-up' : 'plus'}`"></i>
+      </span>
     </span>
     <boss-input
       ref="input"
