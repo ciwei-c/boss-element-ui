@@ -29,6 +29,7 @@
       :show-line="showLine"
       :render-after-expand="renderAfterExpand"
       :show-checkbox="showCheckbox"
+      :is-top-node="true"
       :key="getNodeKey(child)"
       :render-content="renderContent"
       @node-expand="handleNodeExpand">

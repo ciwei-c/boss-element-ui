@@ -14,23 +14,29 @@
     margin: 5px 0;
 
     @include when(multiple) {
-      & .boss-select-dropdown__item.selected {
-        color: $--select-option-selected-font-color;
-        background-color: $--select-dropdown-background;
-
-        &.hover {
-          background-color: $--select-option-hover-background;
-        }
-
+      & .boss-select-dropdown__item {
         &::after {
           position: absolute;
           right: 20px;
-          font-family: "element-icons";
+          color: transparent;
+          font-family: "bosssoft-icons";
           content: "\e6da";
           font-size: 12px;
+          text-shadow: 0 0.1px 0, 0.1px 0 0, 0 -0.1px 0, -0.1px 0;
           font-weight: bold;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
+          transition: all 0.2s;
+        }
+      }
+      & .boss-select-dropdown__item {
+        &:hover::after{
+          color: rgba(#000, 0.87);
+        }
+      }
+      & .boss-select-dropdown__item.selected {
+        &::after {
+          color: $--color-primary;
         }
       }
     }

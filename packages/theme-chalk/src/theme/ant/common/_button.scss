@@ -215,6 +215,11 @@
   &.is-disabled:focus {
     border-color: transparent;
   }
+
+  &::after {
+    content: none !important;
+    display: none !important;
+  }
 }
 
 @mixin button-size($padding-vertical, $padding-horizontal, $font-size, $border-radius) {

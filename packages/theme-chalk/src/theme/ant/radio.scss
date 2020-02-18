@@ -3,6 +3,12 @@
 @import "common/_button";
 @import "common/_var";
 
+@mixin check-icon($--width) {
+  width: $--width - 8px;
+  height: $--width - 8px;
+  top: ($--width - ($--width - 8px)) / 2 - 1px;
+  left: ($--width - ($--width - 8px)) / 2 - 1px;
+}
 @include root {
   @include b(radio) {
     color: $--radio-font-color;
@@ -30,7 +36,9 @@
 
       &.is-disabled {
         cursor: not-allowed;
-        border-color: $--border-color-lighter;
+        border-color: $--border-color-base;
+        background-color: $--disabled-fill-base;
+        color: $--disabled-color-base;
       }
 
       & + .boss-radio.is-bordered {
@@ -39,6 +47,11 @@
     }
 
     @include m(medium) {
+      @include e(inner) {
+        &::after {
+          @include check-icon($--radio-bordered-medium-input-width);
+        }
+      }
       &.is-bordered {
         padding: $--radio-bordered-medium-padding;
         border-radius: $--button-medium-border-radius;
@@ -53,6 +66,11 @@
       }
     }
     @include m(small) {
+      @include e(inner) {
+        &::after {
+          @include check-icon($--radio-bordered-small-input-width);
+        }
+      }
       &.is-bordered {
         padding: $--radio-bordered-small-padding;
         border-radius: $--button-small-border-radius;
@@ -67,6 +85,11 @@
       }
     }
     @include m(mini) {
+      @include e(inner) {
+        &::after {
+          @include check-icon($--radio-bordered-mini-input-width);
+        }
+      }
       &.is-bordered {
         padding: $--radio-bordered-mini-padding;
         border-radius: $--button-mini-border-radius;
@@ -113,7 +136,6 @@
           .boss-radio__inner {
             background-color: $--radio-disabled-checked-input-fill;
             border-color: $--radio-disabled-checked-input-border-color;
-
             &::after {
               background-color: $--radio-disabled-checked-icon-color;
             }
@@ -127,23 +149,33 @@
 
       @include when(checked) {
         .boss-radio__inner {
+          transition: all 0.3s;
           border-color: $--radio-checked-input-border-color;
-          background: $--radio-checked-icon-color;
 
+          &::before {
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 100%;
+            height: 100%;
+            border: 1px solid $--color-primary;
+            border-radius: 50%;
+            animation: radioEffect 0.36s ease-in-out;
+            animation-fill-mode: both;
+            content: "";
+          }
           &::after {
-            transform: translate(-50%, -50%) scale(1);
+            transform: scale(1);
+            opacity: 1;
           }
         }
-
-        & + .boss-radio__label {
-          color: $--radio-checked-font-color;
-        }
       }
+    }
 
-      @include when(focus) {
-        .boss-radio__inner {
-          border-color: $--radio-input-border-color-hover;
-        }
+    @include when(focus) {
+      .boss-radio__inner {
+        transition: all 0.3s;
+        box-shadow: 0 0 0 3px rgba($--color-primary, 0.08);
       }
     }
     @include e(inner) {
@@ -162,16 +194,14 @@
       }
 
       &::after {
-        width: 4px;
-        height: 4px;
+        @include check-icon($--radio-input-width);
         border-radius: $--radio-input-border-radius;
-        background-color: $--color-white;
+        background-color: $--radio-checked-icon-color;
         content: "";
         position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%) scale(0);
-        transition: transform 0.15s ease-in;
+        transform: scale(0);
+        opacity: 0;
+        transition: all 0.3s $--ease-in-out-circ;
       }
     }
 
@@ -187,16 +217,20 @@
       margin: 0;
     }
 
-    &:focus:not(.is-focus):not(:active):not(.is-disabled) {
-      /*获得焦点时 样式提醒*/
-      .boss-radio__inner {
-        box-shadow: 0 0 2px 2px $--radio-input-border-color-hover;
-      }
-    }
-
     @include e(label) {
       font-size: $--radio-font-size;
       padding-left: 10px;
+    }
+
+    @keyframes radioEffect {
+      0% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(1.6);
+        opacity: 0;
+      }
     }
   }
 }

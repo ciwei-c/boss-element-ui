@@ -23,7 +23,7 @@
     @dragend.stop="handleDragEnd"
     @drop.stop="handleDrop"
     ref="node"
-    :style="{ 'margin-left': tree.indent + 'px' }"
+    :style="{ 'margin-left': isTopNode ? '' : tree.indent + 'px' }"
   >
     <div class="boss-tree-node__content">
       <span
@@ -92,6 +92,7 @@
           return {};
         }
       },
+      isTopNode:Boolean,
       showLine:Boolean,
       props: {},
       renderContent: Function,

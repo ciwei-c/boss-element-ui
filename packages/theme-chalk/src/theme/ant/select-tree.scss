@@ -99,5 +99,29 @@
       transform: rotate(180deg);
       transition: 0.3s;
     }
+    
+    .boss-tag {
+      box-sizing: border-box;
+      border-color: transparent;
+      margin:2px 0 2px 6px;
+      font-size: inherit !important;
+      background-color: #fafafa !important;
+      border-radius: 2px;
+      border: 1px solid #e8e8e8 !important;
+      color: $--color-text-regular !important;
+      &:hover {
+        opacity: 1 !important;
+      }
+      &__close.boss-icon-close {
+        color: $--color-text-secondary !important;
+        &:hover{
+          color: rgba(0, 0, 0, 0.75) !important;
+        }
+        &::before {
+          display: block;
+          transform: translate(0, 0.5px);
+        }
+      }
+    }
   }
 }

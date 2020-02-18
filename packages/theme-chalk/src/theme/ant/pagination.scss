@@ -124,7 +124,7 @@
     }
 
     .boss-pager li.disabled {
-      color: $--color-text-placeholder;
+      color: $--pagination-disabled-color;
       cursor: not-allowed;
     }
 
@@ -294,7 +294,7 @@
         color: $--pagination-button-color;
 
         &.disabled {
-          color: $--color-text-placeholder;
+          color: $--pagination-disabled-color;
         }
       }
 

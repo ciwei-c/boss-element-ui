@@ -25,7 +25,7 @@
       margin: 0;
       position: relative;
       cursor: pointer;
-      transition: $--all-transition;
+      transition: all .3s;
 
       @include button-size($--button-padding-vertical, $--button-padding-horizontal, $--button-font-size, 0);
 
@@ -41,7 +41,11 @@
         }
       }
     }
-
+    @include when(active){
+      &:focus-within {
+        outline: 3px solid rgba($--color-primary, 0.06);
+      }
+    }
     &:first-child {
       .boss-radio-button__inner {
         border-left: $--border-base;
@@ -63,6 +67,10 @@
           border-color: $--radio-button-checked-border-color;
           box-shadow: -1px 0 0 0 $--radio-button-checked-border-color;
         }
+        &:hover:not(:disabled) + .boss-radio-button__inner{
+          background-color: $--radio-button-checked-hover-background-color;
+          border-color: $--radio-button-checked-hover-border-color;
+        }
       }
 
       &:disabled {
@@ -76,10 +84,24 @@
         }
         &:checked + .boss-radio-button__inner {
           background-color: $--radio-button-disabled-checked-fill;
+          color: $--radio-button-disabled-checked-color;
         }
       }
     }
-
+    
+    @include when(plain) {
+      @include e(orig-radio) {
+        &:checked:not(:disabled) {
+          & + .boss-radio-button__inner {
+            color: $--radio-button-plain-checked-font-color;
+            background-color: transparent;
+          }
+          &:hover + .boss-radio-button__inner{
+            color: $--radio-button-plain-checked-hover-font-color;
+          }
+        }
+      }
+    }
     &:last-child {
       .boss-radio-button__inner {
         border-radius: 0 $--border-radius-base $--border-radius-base 0;
@@ -121,11 +143,6 @@
           0
         );
       }
-    }
-
-    &:focus:not(.is-focus):not(:active):not(.is-disabled) {
-      /*获得焦点时 样式提醒*/
-      box-shadow: 0 0 2px 2px $--radio-button-checked-border-color;
     }
   }
 }

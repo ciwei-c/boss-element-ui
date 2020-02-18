@@ -1,0 +1,33 @@
+@import "./motion.scss";
+@import "../var";
+@mixin fade-motion($className, $keyframeName) {
+  @include make-motion($className, $keyframeName);
+  .boss-#{className}-enter,
+  .boss-#{className}-appear {
+    opacity: 0;
+    animation-timing-function: linear;
+  }
+  .boss-#{className}-leave {
+    animation-timing-function: linear;
+  }
+}
+
+@include fade-motion(fade, antFade);
+
+@keyframes antFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes antFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

@@ -118,11 +118,7 @@
       align-items: center;
       flex-wrap: wrap;
     }
-
-    .boss-tag__close {
-      margin-top: -2px;
-    }
-
+    
     .boss-tag {
       box-sizing: border-box;
       border-color: transparent;
@@ -131,8 +127,6 @@
 
       &__close.boss-icon-close {
         background-color: $--color-text-placeholder;
-        right: -7px;
-        top: 0;
         color: $--color-white;
 
         &:hover {

@@ -3,13 +3,15 @@
     class="boss-select-tree"
     v-clickoutside="handleClose"
     @click.stop="togglePanel"
+    :class="[size ? 'boss-select-tree--' + size : '']"
   >
     <boss-input 
+      :size="size"
       :class="{ 'is-focus': visible, 'is-clearable':clearable && (multiple ? !!value.length : !!value) }"
       :value="!multiple ? inputValue : ''"
       @focus="onFocus"
       @blur="onBlur"
-      :innerStyle="{height: inputHeight ? `${inputHeight}px` : 'auto'}"
+      :innerStyle="{height: inputHeight ? `${inputHeight}px` : ''}"
       @change="onChange"
       ref="reference"
       :placeholder="!multiple ? placeholder : (value.length ? '' : placeholder)"
@@ -94,6 +96,7 @@ export default {
         return () => true
       }
     },
+    size:String,
     clearable:Boolean,
     load:Function,
     multiple:Boolean,

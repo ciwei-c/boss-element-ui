@@ -3,13 +3,15 @@
     class="boss-select-table"
     @click.stop="togglePanel"
     v-clickoutside="handleClose"
+    :class="[size ? 'boss-select-table--' + size : '']"
   >
     <boss-input
       :class="{ 'is-focus': visible, 'is-clearable':clearable && (multiple ? !!value.length : !!value) }"
       :value="!multiple ? inputValue : ''"
-      :innerStyle="{height: inputHeight ? `${inputHeight}px` : 'auto'}"
+      :innerStyle="{height: inputHeight ? `${inputHeight}px` : ''}"
       @focus="onFocus"
       @blur="onBlur"
+      :size="size"
       @change="onChange"
       readonly
       :clearable="clearable"
@@ -61,6 +63,7 @@ export default {
     multiple: Boolean,
     rowKey:String,
     collapseTags:Boolean,
+    size:String,
     placement:{
       type:String,
       default:"bottom-start"

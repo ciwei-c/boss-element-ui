@@ -4,6 +4,7 @@
     :class="[
       size ? 'boss-radio-button--' + size : '',
       { 'is-active': value === label },
+      { 'is-plain': plain },
       { 'is-disabled': isDisabled },
       { 'is-focus': focus }
     ]"
@@ -54,7 +55,8 @@
     props: {
       label: {},
       disabled: Boolean,
-      name: String
+      name: String,
+      plain:Boolean
     },
     data() {
       return {
