@@ -44,7 +44,7 @@ export default {
   data(){
     return {
       code,
-      codeDesc:"只需要把boss-checkbox元素替换为boss-checkbox-button元素即可。此外，Element 还提供了size属性。",
+      codeDesc:"只需要把boss-checkbox元素替换为boss-checkbox-button元素即可。此外，还提供了size属性。",
       anchor:{
         id:"button",
         title:"按钮样式"

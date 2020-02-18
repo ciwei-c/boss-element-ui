@@ -1,18 +1,41 @@
-<template>
-  <demo-sample-panel
-    :title="anchor.title"
-    :panel-id="anchor.id"
-    :code="code"
-    :codeDesc="codeDesc"
-    desc="下拉树基础用法"
-  >
-    <boss-select-tree :data="data" node-key="label" v-model="value" placeholder="请从树中选择数据"/>
-  </demo-sample-panel>
+let code = `<template>
+  <boss-row>
+    <boss-row>默认尺寸</boss-row>
+    <boss-select-tree :data="data" node-key="label" v-model="value" placeholder="请从树中选择数据" />
+  </boss-row>
+  <boss-row>
+    <boss-row>大尺寸</boss-row>
+    <boss-select-tree
+      :data="data"
+      node-key="label"
+      v-model="value"
+      placeholder="请从树中选择数据"
+      size="medium"
+    />
+  </boss-row>
+  <boss-row>
+    <boss-row>小尺寸</boss-row>
+    <boss-select-tree
+      :data="data"
+      node-key="label"
+      v-model="value"
+      placeholder="请从树中选择数据"
+      size="small"
+    />
+  </boss-row>
+  <boss-row>
+    <boss-row>迷你尺寸</boss-row>
+    <boss-select-tree
+      :data="data"
+      node-key="label"
+      v-model="value"
+      placeholder="请从树中选择数据"
+      size="mini"
+    />
+  </boss-row>
 </template>
 <script>
-import code from "./code";
 export default {
-  mixins: [code],
   data() {
     return {
       value: "一级 1",
@@ -77,3 +100,16 @@ export default {
   }
 };
 </script>
+`
+export default {
+  data(){
+    return {
+      code,
+      codeDesc:"",
+      anchor:{
+        id:"size",
+        title:"尺寸"
+      }
+    }
+  }
+}

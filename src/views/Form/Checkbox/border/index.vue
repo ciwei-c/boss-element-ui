@@ -39,7 +39,7 @@ export default {
       checked3: false,
       checked4: true,
       checkboxGroup1: [],
-      checkboxGroup2: []
+      checkboxGroup2: ['备选项1']
     };
   }
 };
