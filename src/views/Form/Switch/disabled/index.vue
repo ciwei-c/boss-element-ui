@@ -6,7 +6,7 @@
     :codeDesc="codeDesc"
     desc=""
   >
-    <boss-switch v-model="value"></boss-switch>
+    <boss-switch v-model="value" disabled></boss-switch>
   </demo-sample-panel>
 </template>
 <script>

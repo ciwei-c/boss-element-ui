@@ -1,5 +1,5 @@
 let code = `<template>
-  <boss-switch v-model="value"></boss-switch>
+  <boss-switch v-model="value" disabled></boss-switch>
 </template>
 <script>
 export default {
@@ -17,8 +17,8 @@ export default {
       code,
       codeDesc:"绑定 v-model 到一个 Boolean 类型的变量",
       anchor:{
-        id:"basic",
-        title:"基础用法"
+        id:"disabled",
+        title:"禁用状态"
       }
     }
   }

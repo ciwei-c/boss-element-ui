@@ -12,7 +12,10 @@
       >
         <pre v-highlightjs="code"><code class="html"></code></pre>
       </div>
-      <div class="boss-ui-demo__sample-panel-control" @click="visibleCode = !visibleCode">
+      <div class="boss-ui-demo__sample-panel-control" @click="visibleCode = !visibleCode" :style="{
+        position:visibleCode?'sticky':'',
+        bottom:0
+      }">
         <div class="boss-ui-demo__sample-panel-control-desc" v-html="codeDesc"></div>
         <div style="display:flex;align-items:center">
           <i
