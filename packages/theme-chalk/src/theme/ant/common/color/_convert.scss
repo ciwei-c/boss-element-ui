@@ -1,3 +1,7 @@
+@function hsv($h, $s, $v){
+  $map:('H':$h, 'S':$s, 'V':$v);
+  @return hsv-to-rgb($map);
+}
 @function get-hsv($color){
   $r:red($color);
   $g:green($color);

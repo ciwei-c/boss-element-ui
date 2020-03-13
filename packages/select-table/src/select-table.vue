@@ -49,6 +49,7 @@
 import Clickoutside from "boss-element-ui/src/utils/clickoutside";
 import BossInput from "boss-element-ui/packages/input";
 import Popper from "boss-element-ui/src/utils/vue-popper";
+import { addResizeListener, removeResizeListener } from 'boss-element-ui/src/utils/resize-event';
 import TablePopper from "./table-popper";
 import Emitter from 'boss-element-ui/src/mixins/emitter';
 import BossTag from "boss-element-ui/packages/tag";
@@ -92,6 +93,12 @@ export default {
       return this.popperVm && this.popperVm.visible
     }
   },
+  beforeDestroy() {
+    if (this.$el && this.resetInputHeight) removeResizeListener(this.$el, this.resetInputHeight);
+  },
+  mounted(){
+    addResizeListener(this.$el, this.resetInputHeight);
+  },
   watch:{
     value:{
       immediate:true,
@@ -99,16 +106,6 @@ export default {
         this.$nextTick(()=>{
           this.inputValue = this.getValue(this.value)
           this.resetInputHeight()
-        })
-      }
-    },
-    inputHeight:{
-      immediate:true,
-      handler(){
-        this.$nextTick(()=>{
-          if(this.visible){
-            this.updatePopper()
-          }
         })
       }
     }
@@ -200,6 +197,7 @@ export default {
           let height = this.$refs.tags.$el.offsetHeight + 6
           this.inputHeight = height
         }
+        this.updatePopper()
       })
     }
   }

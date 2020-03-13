@@ -17,21 +17,30 @@
       position: relative;
       cursor: pointer;
       vertical-align: middle;
-
+      transition: all 0.3s;
       &.show-input {
         margin-right: 160px;
         width: auto;
       }
-
+      &:hover {
+        background-color: $--slider-runway-hover-background-color;
+        @include e(bar) {
+          background-color: $--slider-main-hover-background-color;
+        }
+        @include e(button) {
+          border-color: $--slider-main-hover-background-color;
+        }
+      }
       &.disabled {
         cursor: default;
+        cursor: not-allowed;
 
         .boss-slider__bar {
           background-color: $--slider-disable-color;
         }
 
         .boss-slider__button {
-          border-color: $--slider-disable-color;
+          border-color: $--slider-disable-color !important;
         }
 
         .boss-slider__button-wrapper {
@@ -87,6 +96,7 @@
       background-color: $--slider-main-background-color;
       border-top-left-radius: $--slider-border-radius;
       border-bottom-left-radius: $--slider-border-radius;
+      transition: background 0.3s;
       position: absolute;
     }
 
@@ -104,17 +114,16 @@
       @include utils-vertical-center;
 
       .boss-tooltip {
-        vertical-align: middle;
         display: inline-block;
       }
 
       &:hover,
       &.hover {
-        cursor: grab;
+        cursor: pointer;
       }
 
       &.dragging {
-        cursor: grabbing;
+        cursor: pointer;
       }
     }
 
@@ -130,16 +139,17 @@
       &:hover,
       &.hover,
       &.dragging {
-        transform: scale(1.2);
+        transform: scale(1);
+        border-color: $--slider-button-hover-color !important;
       }
 
       &:hover,
       &.hover {
-        cursor: grab;
+        cursor: pointer;
       }
 
       &.dragging {
-        cursor: grabbing;
+        cursor: pointer;
       }
     }
 
@@ -149,9 +159,10 @@
       width: $--slider-height;
       border-radius: $--border-radius-circle;
       background-color: $--slider-stop-background-color;
+      border: 2px solid $--slider-stop-border-color;
       transform: translateX(-50%);
+      top: -2px;
     }
-
     @include e(marks) {
       top: 0;
       left: 12px;
@@ -164,6 +175,9 @@
         font-size: 14px;
         color: $--color-info;
         margin-top: 15px;
+      }
+      &-stop {
+        border: 2px solid $--slider-stop-mark-border-color;
       }
     }
 

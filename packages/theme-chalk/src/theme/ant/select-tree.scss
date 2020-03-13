@@ -7,20 +7,7 @@
     display: inline-block;
     position: relative;
     padding: 5px 0;
-    .boss-input {
-      > input {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
-      .boss-input__icon {
-        cursor: pointer;
-      }
-    }
     &:hover {
-      .boss-input__inner {
-        border-color: $--color-text-placeholder;
-      }
       .is-clearable {
         .boss-icon-close {
           display: inline-block;
@@ -61,15 +48,6 @@
     @include e(filter) {
       padding: 5px 10px;
       border-bottom: 1px solid $--border-color-base;
-    }
-
-    @include e(popper) {
-      border: 1px solid $--border-color-light;
-      box-shadow: $--box-shadow-light;
-      background: $--color-white;
-      border-radius: 4px;
-      line-height: 30px;
-      margin: 5px 0;
     }
 
     @include e(scrollbar) {

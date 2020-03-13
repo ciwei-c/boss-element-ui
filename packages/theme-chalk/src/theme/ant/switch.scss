@@ -66,13 +66,22 @@
       cursor: pointer;
       transition: border-color 0.3s, background-color 0.3s;
       vertical-align: middle;
-
-      &:after {
+      &:not(.is-disabled):active {
+        &:before {
+          width:  $--switch-button-size + 6px;
+        }
+      }
+      &.is-disabled {
+        &::after {
+          display: none;
+        }
+      }
+      &:before {
         content: "";
         position: absolute;
         top: 1px;
         left: 1px;
-        border-radius: $--border-radius-circle;
+        border-radius: $--switch-button-size;
         transition: all 0.3s;
         width: $--switch-button-size;
         height: $--switch-button-size;
@@ -84,15 +93,20 @@
       .boss-switch__core {
         border-color: $--switch-on-color;
         background-color: $--switch-on-color;
-        &::after {
+        &::before {
           left: 100%;
           margin-left: -$--switch-button-size - 1px;
+        }
+        &:not(.is-disabled):active {
+          &::before {
+            margin-left: -$--switch-button-size - 6px - 1px;
+          }
         }
       }
     }
 
     @include when(disabled) {
-      opacity: 0.6;
+      opacity: 0.4;
     }
 
     @include m(wide) {

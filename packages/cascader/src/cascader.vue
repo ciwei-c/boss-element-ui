@@ -202,7 +202,7 @@ export default {
     size: String,
     placeholder: {
       type: String,
-      default: () => t('el.cascader.placeholder')
+      default: () => t('boss.cascader.placeholder')
     },
     disabled: Boolean,
     clearable: Boolean,

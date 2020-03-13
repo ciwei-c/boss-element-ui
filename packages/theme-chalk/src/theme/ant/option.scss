@@ -3,10 +3,6 @@
 
 @include root {
   @include b(select-dropdown) {
-    .popper__arrow {
-      display: none !important;
-    }
-    margin-top: 2px !important;
     &:hover {
       & .selected {
         background-color: #fafafa;

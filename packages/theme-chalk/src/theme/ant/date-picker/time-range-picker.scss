@@ -9,7 +9,7 @@
     @include e(content) {
       position: relative;
       text-align: center;
-      padding: 10px;
+      padding: 8px 12px;
     }
 
     @include e(cell) {

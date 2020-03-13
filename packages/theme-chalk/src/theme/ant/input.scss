@@ -369,18 +369,23 @@
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
-      .boss-select .boss-input .boss-input__inner {
-        transition: all 0.3s;
-        &:focus,
-        &:hover {
-          border: 1px solid $--input-focus-border !important;
+      .boss-select .boss-input {
+        &.is-focus .boss-input__inner{
+          box-shadow: $--input-border-focus-shadow;
+        }
+        .boss-input__inner {
           border-top-left-radius: $--input-border-radius;
           border-bottom-left-radius: $--input-border-radius;
-          position: relative;
-          z-index: 1;
-        }
-        &:focus {
-          box-shadow: $--input-border-focus-shadow;
+          transition: all 0.3s;
+          &:focus,
+          &:hover {
+            border: 1px solid $--input-focus-border !important;
+            position: relative;
+            z-index: 1;
+          }
+          &:focus {
+            box-shadow: $--input-border-focus-shadow;
+          }
         }
       }
     }
@@ -390,16 +395,21 @@
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }
-      .boss-select .boss-input .boss-input__inner {
-        transition: all 0.3s;
-        &:focus,
-        &:hover {
-          border: 1px solid $--input-focus-border !important;
-          position: relative;
-          z-index: 1;
-        }
-        &:focus {
+      .boss-select .boss-input {
+        &.is-focus .boss-input__inner{
           box-shadow: $--input-border-focus-shadow;
+        }
+        .boss-input__inner {
+          transition: all 0.3s;
+          &:focus,
+          &:hover {
+            border: 1px solid $--input-focus-border !important;
+            position: relative;
+            z-index: 1;
+          }
+          &:focus {
+            box-shadow: $--input-border-focus-shadow;
+          }
         }
       }
     }
@@ -410,5 +420,38 @@
     display: none;
     width: 0;
     height: 0;
+  }
+  
+  .boss-input {
+    &.is-focus .boss-input__inner{
+      box-shadow: $--input-border-focus-shadow;
+      border-color: $--select-input-focus-border-color;
+    }
+    .boss-input__inner {
+      transition: all 0.3s;
+      &:focus,
+      &:hover {
+        border: 1px solid $--input-focus-border !important;
+        position: relative;
+      }
+      &:focus {
+        box-shadow: $--input-border-focus-shadow;
+      }
+    }
+    > input {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .boss-input__icon {
+      cursor: pointer;
+    }
+    .boss-input__suffix {
+      .boss-icon-circle-close {
+        &:before {
+          content: "\e79d";
+        }
+      }
+    }
   }
 }

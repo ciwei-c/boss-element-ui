@@ -12,7 +12,6 @@
   @include b(select) {
     display: inline-block;
     position: relative;
-
     .boss-select__tags > span {
       display: contents;
     }
@@ -33,6 +32,20 @@
     }
 
     .boss-input {
+      &.is-focus .boss-input__inner{
+        box-shadow: $--input-border-focus-shadow;
+      }
+      .boss-input__inner {
+        transition: all 0.3s;
+        &:focus,
+        &:hover {
+          border: 1px solid $--input-focus-border !important;
+          position: relative;
+        }
+        &:focus {
+          box-shadow: $--input-border-focus-shadow;
+        }
+      }
       & .boss-select__caret {
         color: $--select-input-color;
         font-size: $--select-input-font-size;
@@ -81,7 +94,7 @@
       border: none;
       outline: none;
       padding: 0;
-      margin-left: 15px;
+      margin-left: 10px;
       color: $--select-multiple-input-color;
       font-size: $--select-font-size;
       appearance: none;

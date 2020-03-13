@@ -35,7 +35,10 @@
         margin-left: 5px;
       }
     }
-
+    
+    &.is-round {
+      border-radius: 32px;
+    }
     @include when(loading) {
       position: relative;
       pointer-events: none;
@@ -103,6 +106,9 @@
       @include when(circle) {
         padding: $--button-medium-padding-vertical;
       }
+      &.is-round {
+        border-radius: 40px;
+      }
     }
     @include m(small) {
       @include button-size(
@@ -114,6 +120,9 @@
       @include when(circle) {
         padding: $--button-small-padding-vertical;
       }
+      &.is-round {
+        border-radius: 32px;
+      }
     }
     @include m(mini) {
       @include button-size(
@@ -124,6 +133,9 @@
       );
       @include when(circle) {
         padding: $--button-mini-padding-vertical;
+      }
+      &.is-round {
+        border-radius: 24px;
       }
     }
     @include m(text) {
@@ -159,13 +171,12 @@
         border-top-left-radius: $--button-border-radius;
         border-bottom-left-radius: $--button-border-radius;
 
-        &.is-round {
-          border-radius: 20px;
-        }
-
         &.is-circle {
           border-radius: 50%;
         }
+      }
+      &.is-round {
+        border-radius: 20px;
       }
       &:not(:first-child):not(:last-child) {
         border-radius: 0;

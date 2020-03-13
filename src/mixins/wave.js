@@ -2,33 +2,37 @@ let styleForPesudo = null;
 let timeout = null;
 let tortose = null;
 export default {
-  methods:{
-    wave(el){
-      if(tortose) return;
-      tortose = setTimeout(()=>{
-        if(timeout) clearTimeout(timeout);
-        el.setAttribute("animating-node",false);
-        let elStyle = document.defaultView.getComputedStyle(el)
-        let borderColors = [elStyle.borderTopColor,elStyle.borderRightColor,elStyle.borderBottomColor,elStyle.borderLeftColor]
+  methods: {
+    wave(el, color) {
+      if (tortose) return;
+      tortose = setTimeout(() => {
+        if (timeout) clearTimeout(timeout);
+        el.setAttribute("animating-node", false);
         let waveColor = "";
-        let colorCountMap = {}
-        borderColors.forEach(color => {
-          if(!colorCountMap[color]) {
-            colorCountMap[color] = 1
-          }else {
-            colorCountMap[color] ++
-          }
-        })
-        waveColor = Object.keys(colorCountMap).map(color=>{
-          return {
-            color,
-            count:colorCountMap[color]
-          }
-        }).sort((a,b)=>{
-          return b.count - a.count
-        })[0].color
+        if (color) {
+          waveColor = color
+        } else {
+          let elStyle = document.defaultView.getComputedStyle(el)
+          let borderColors = [elStyle.borderTopColor, elStyle.borderRightColor, elStyle.borderBottomColor, elStyle.borderLeftColor]
+          let colorCountMap = {}
+          borderColors.forEach(color => {
+            if (!colorCountMap[color]) {
+              colorCountMap[color] = 1
+            } else {
+              colorCountMap[color]++
+            }
+          })
+          waveColor = Object.keys(colorCountMap).map(color => {
+            return {
+              color,
+              count: colorCountMap[color]
+            }
+          }).sort((a, b) => {
+            return b.count - a.count
+          })[0].color
+        }
 
-        if(!styleForPesudo) styleForPesudo = document.createElement("style");
+        if (!styleForPesudo) styleForPesudo = document.createElement("style");
 
         if (
           waveColor &&
@@ -37,7 +41,7 @@ export default {
           !/rgba\(\d*, \d*, \d*, 0\)/.test(waveColor) && // any transparent rgba color
           waveColor !== 'transparent'
         ) {
-          el.setAttribute("animating-node",true);
+          el.setAttribute("animating-node", true);
           styleForPesudo.innerHTML = `
           [animating-node='true']::after{
             --wave-shadow-color: ${waveColor};
@@ -47,7 +51,7 @@ export default {
           }
           timeout = setTimeout(() => {
             timeout = null;
-            el.setAttribute("animating-node",false);
+            el.setAttribute("animating-node", false);
           }, 500);
         } else {
           styleForPesudo.innerHTML = `
@@ -56,7 +60,7 @@ export default {
           }`;
         }
         tortose = null;
-      },30)
+      }, 30)
     }
   }
 }

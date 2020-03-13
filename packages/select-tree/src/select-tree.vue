@@ -61,6 +61,7 @@ import Clickoutside from "boss-element-ui/src/utils/clickoutside";
 import BossInput from "boss-element-ui/packages/input";
 import BossTreePopper from "./tree-popper"
 import Popper from 'boss-element-ui/src/utils/vue-popper';
+import { addResizeListener, removeResizeListener } from 'boss-element-ui/src/utils/resize-event';
 import BossTag from "boss-element-ui/packages/tag";
 import SelectTreeTag from "./select-tree-tag"
 export default {
@@ -134,16 +135,6 @@ export default {
           this.resetInputHeight()
         })
       }
-    },
-    inputHeight:{
-      immediate:true,
-      handler(){
-        this.$nextTick(()=>{
-          if(this.visible){
-            this.updatePopper()
-          }
-        })
-      }
     }
   },
   computed:{
@@ -151,7 +142,11 @@ export default {
       return this.popperVm && this.popperVm.visible
     }
   },
-  created(){
+  beforeDestroy() {
+    if (this.$el && this.resetInputHeight) removeResizeListener(this.$el, this.resetInputHeight);
+  },
+  mounted(){
+    addResizeListener(this.$el, this.resetInputHeight);
   },
   methods:{
     getValue(node){
@@ -234,6 +229,7 @@ export default {
           let height = this.$refs.tags.getHeight() + 6
           this.inputHeight = height
         }
+        this.updatePopper()
       })
     }
   }

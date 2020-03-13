@@ -3,10 +3,10 @@
 
 @include root {
   @include b(date-range-picker) {
-    width: 646px;
-
+    width: 560px;
+    
     &.has-sidebar {
-      width: 756px;
+      width: 670px;
     }
 
     table {
@@ -20,12 +20,17 @@
 
     .boss-picker-panel__content {
       margin: 0;
+      padding: 0;
     }
-
+    .boss-date-table {
+      padding: 8px 12px;
+    }
     @include e(header) {
       position: relative;
       text-align: center;
       height: 28px;
+      padding: 5px 8px;
+      border-bottom: solid 1px $--border-color-lighter;
 
       [class*="arrow-left"] {
         float: left;
@@ -36,7 +41,8 @@
       }
 
       div {
-        font-size: 16px;
+        font-size: 14px;
+        color: $--datepicker-header-font-color;
         font-weight: 500;
         margin-right: 50px;
       }
@@ -49,9 +55,6 @@
       margin: 0;
       padding: 16px;
 
-      @include when(left) {
-        border-right: 1px solid $--datepicker-inner-border-color;
-      }
       .boss-date-range-picker__header {
         div {
           margin-left: 50px;

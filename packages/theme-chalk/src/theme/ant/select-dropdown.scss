@@ -4,15 +4,6 @@
 
 @include root {
   @include b(select-dropdown) {
-    position: absolute;
-    z-index: #{$--index-top + 1};
-    border: $--select-dropdown-border;
-    border-radius: $--border-radius-base;
-    background-color: $--select-dropdown-background;
-    box-shadow: $--select-dropdown-shadow;
-    box-sizing: border-box;
-    margin: 5px 0;
-
     @include when(multiple) {
       & .boss-select-dropdown__item {
         &::after {

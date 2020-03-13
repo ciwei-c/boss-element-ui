@@ -1,4 +1,5 @@
 @import "color/_color-palette.scss";
+@import "color/convert";
 @import "wave";
   /* BOSS-ELEMENT-UI Chalk Variables */
   // ant theme
@@ -169,7 +170,7 @@
   $--border-color-hover: $--color-text-placeholder !default !global;
   $--border-base: $--border-width-base $--border-style-base $--border-color-base !default !global;
   /// borderRadius|1|Radius|0
-  $--border-radius-base: 4px !default !global;
+  $--border-radius-base: 2px !default !global;
   /// borderRadius|1|Radius|0
   $--border-radius-small: 2px !default !global;
   /// borderRadius|1|Radius|0
@@ -179,7 +180,7 @@
 
   // Box-shadow
   /// boxShadow|1|Shadow|1
-  $--box-shadow-base: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04) !default !global;
+  $--box-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.15) !default !global;
   // boxShadow|1|Shadow|1
   $--box-shadow-dark: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .12) !default !global;
   /// boxShadow|1|Shadow|1
@@ -441,7 +442,7 @@
   /// color||Color|0
   $--messagebox-title-color: $--color-text-primary !default !global;
   $--msgbox-width: 420px !default !global;
-  $--msgbox-border-radius: 4px !default !global;
+  $--msgbox-border-radius: $--border-radius-base !default !global;
   /// fontSize||Font|1
   $--messagebox-font-size: $--font-size-large !default !global;
   /// fontSize||Font|1
@@ -575,18 +576,19 @@
   /* Cascader
   -------------------------- */
   /// color||Color|0
-  $--cascader-menu-font-color: $--color-text-regular !default !global;
+  $--cascader-menu-font-color: #314659 !default !global;
   /// color||Color|0
-  $--cascader-menu-selected-font-color: $--color-primary !default !global;
+  $--cascader-menu-selected-font-color: #314659 !default !global;
+  $--cascader-menu-selected-background-color: #fafafa !default !global;
   $--cascader-menu-fill: $--fill-base !default !global;
   $--cascader-menu-font-size: $--font-size-base !default !global;
   $--cascader-menu-radius: $--border-radius-base !default !global;
   $--cascader-menu-border: solid 1px $--border-color-light !default !global;
   $--cascader-menu-shadow: $--box-shadow-light !default !global;
-  $--cascader-node-background-hover: $--background-color-base !default !global;
-  $--cascader-node-color-disabled:$--color-text-placeholder !default !global;
+  $--cascader-node-background-hover: $--color-blue-1 !default !global;
+  $--cascader-node-color-disabled:$--disabled-color-base !default !global;
   $--cascader-color-empty:$--color-text-placeholder !default !global;
-  $--cascader-tag-background: #f0f2f5 !default !global;
+  $--cascader-tag-background: #fafafa !default !global;
 
   /* Group
   -------------------------- */
@@ -712,13 +714,13 @@
   $--switch-off-color: $--border-color-base !default !global;
   /// fontSize||Font|1
   $--switch-font-size: $--font-size-base !default !global;
-  $--switch-core-border-radius: 10px !default !global;
+  $--switch-core-border-radius: 100px !default !global;
   // height||Other|4 TODO: width 代码写死的40px 所以下面这三个属性都没意义
-  $--switch-width: 40px !default !global;
+  $--switch-width: 44px !default !global;
   // height||Other|4
-  $--switch-height: 20px !default !global;
+  $--switch-height: 22px !default !global;
   // height||Other|4
-  $--switch-button-size: 16px !default !global;
+  $--switch-button-size: 18px !default !global;
 
   /* Dialog
   -------------------------- */
@@ -767,7 +769,7 @@
   $--pagination-background-color: $--color-white !default !global;
   /// color||Color|0
   $--pagination-font-color: $--color-text-primary !default !global;
-  $--pagination-border-radius: 4px !default !global;
+  $--pagination-border-radius: $--border-radius-base !default !global;
   $--pagination-border: $--border-base !default !global;
   $--pagination-more-color: rgba(#000, 0.25);
   /// color||Color|0
@@ -814,13 +816,13 @@
   /* Tooltip
   -------------------------- */
   /// color|1|Color|0
-  $--tooltip-fill: $--color-text-primary !default !global;
+  $--tooltip-fill: rgba(0, 0, 0, 0.75) !default !global;
   /// color|1|Color|0
   $--tooltip-color: $--color-white !default !global;
   /// fontSize||Font|1
   $--tooltip-font-size: 12px !default !global;
   /// color||Color|0
-  $--tooltip-border-color: $--color-text-primary !default !global;
+  $--tooltip-border-color: $--tooltip-fill !default !global;
   $--tooltip-arrow-size: 6px !default !global;
   /// padding||Spacing|3
   $--tooltip-padding: 10px !default !global;
@@ -839,7 +841,7 @@
   $--tag-danger-color: $--color-danger !default !global;
   /// fontSize||Font|1
   $--tag-font-size: 12px !default !global;
-  $--tag-border-radius: 4px !default !global;
+  $--tag-border-radius: $--border-radius-base !default !global;
   $--tag-padding: 0 8px !default !global;
 
   /* Tree
@@ -875,32 +877,36 @@
   --------------------------*/
   /// color||Color|0
   $--card-border-color: $--border-color-lighter !default !global;
-  $--card-border-radius: 4px !default !global;
+  $--card-border-radius: $--border-radius-base !default !global;
   /// padding||Spacing|3
   $--card-padding: 20px !default !global;
 
   /* Slider
   --------------------------*/
   /// color||Color|0
-  $--slider-main-background-color: $--color-primary !default !global;
+  $--slider-main-background-color: $--color-blue-3 !default !global;
+  $--slider-main-hover-background-color: $--color-blue-4 !default !global;
   /// color||Color|0
-  $--slider-runway-background-color: $--border-color-light !default !global;
-  $--slider-button-hover-color: mix($--color-primary, black, 97%) !default !global;
+  $--slider-runway-background-color: $--background-color-base !default !global;
+  $--slider-runway-hover-background-color: #e1e1e1 !default !global;
+  $--slider-button-hover-color: $--color-blue-6 !default !global;
   $--slider-stop-background-color: $--color-white !default !global;
-  $--slider-disable-color: $--color-text-placeholder !default !global;
+  $--slider-stop-border-color: hsv(0, 0, 0.94) !default !global;
+  $--slider-stop-mark-border-color: #8cc8ff !default !global;
+  $--slider-disable-color: $--disabled-color-base !default !global;
   $--slider-margin: 16px 0 !default !global;
   $--slider-border-radius: 3px !default !global;
   /// height|1|Other|4
-  $--slider-height: 6px !default !global;
+  $--slider-height: 4px !default !global;
   /// height||Other|4
-  $--slider-button-size: 16px !default !global;
-  $--slider-button-wrapper-size: 36px !default !global;
-  $--slider-button-wrapper-offset: -15px !default !global;
+  $--slider-button-size: 10px !default !global;
+  $--slider-button-wrapper-size: 14px !default !global;
+  $--slider-button-wrapper-offset: -6px !default !global;
 
   /* Steps
   --------------------------*/
   $--steps-border-color: $--disabled-border-base !default !global;
-  $--steps-border-radius: 4px !default !global;
+  $--steps-border-radius: $--border-radius-base !default !global;
   $--steps-padding: 20px !default !global;
 
   /* Menu
@@ -930,14 +936,14 @@
   /// color|1|Color|0
   $--datepicker-off-font-color: $--color-text-placeholder !default !global;
   /// color||Color|0
-  $--datepicker-header-font-color: $--color-text-regular !default !global;
+  $--datepicker-header-font-color: $--color-heading !default !global;
   $--datepicker-icon-color: $--color-text-primary !default !global;
   $--datepicker-border-color: $--disabled-border-base !default !global;
   $--datepicker-inner-border-color: #e4e4e4 !default !global;
   /// color||Color|0
-  $--datepicker-inrange-background-color: $--border-color-extra-light !default !global;
+  $--datepicker-inrange-background-color: $--color-blue-1 !default !global;
   /// color||Color|0
-  $--datepicker-inrange-hover-background-color: $--border-color-extra-light !default !global;
+  $--datepicker-inrange-hover-background-color: $--color-blue-2 !default !global;
   /// color||Color|0
   $--datepicker-active-color: $--color-primary !default !global;
   /// color||Color|0

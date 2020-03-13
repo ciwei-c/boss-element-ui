@@ -4,14 +4,14 @@
 
 @include root {
   @include b(date-picker) {
-    width: 322px;
+    width: 280px;
 
     &.has-sidebar.has-time {
-      width: 434px;
+      width: 398px;
     }
 
     &.has-sidebar {
-      width: 438px;
+      width: 394px;
     }
 
     &.has-time .boss-picker-panel__body-wrapper {
@@ -19,7 +19,7 @@
     }
 
     .boss-picker-panel__content {
-      width: 292px;
+      width: 256px;
     }
 
     table {
@@ -44,13 +44,14 @@
     }
 
     @include e(header) {
-      margin: 12px;
+      padding: 5px 8px;
       text-align: center;
+      border-bottom: solid 1px $--border-color-lighter;
 
       @include m(bordered) {
-        margin-bottom: 0;
-        padding-bottom: 12px;
-        border-bottom: solid 1px $--border-color-lighter;
+        // margin-bottom: 0;
+        // padding-bottom: 12px;
+        // border-bottom: solid 1px $--border-color-lighter;
 
         & + .boss-picker-panel__content {
           margin-top: 0;
@@ -59,13 +60,13 @@
     }
 
     @include e(header-label) {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 500;
       padding: 0 5px;
       line-height: 22px;
       text-align: center;
       cursor: pointer;
-      color: $--color-text-regular;
+      color: $--datepicker-header-font-color;
 
       &:hover {
         color: $--datepicker-hover-font-color;

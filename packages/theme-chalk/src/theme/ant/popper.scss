@@ -3,10 +3,15 @@
 
 @include root {
   @include b(popper) {
+    margin-top: 2px !important;
+    background-color: $--select-dropdown-background !important;
+    box-shadow: $--select-dropdown-shadow !important;
+    border-radius: $--border-radius-base !important;
+    box-sizing: border-box;
     .popper__arrow,
     .popper__arrow::after {
       position: absolute;
-      display: block;
+      display: none;
       width: 0;
       height: 0;
       border-color: transparent;

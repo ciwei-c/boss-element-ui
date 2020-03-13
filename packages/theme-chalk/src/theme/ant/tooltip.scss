@@ -9,7 +9,7 @@
     }
     @include e(popper) {
       position: absolute;
-      border-radius: 4px;
+      border-radius: $--border-radius-base;
       padding: $--tooltip-padding;
       z-index: $--index-popper;
       font-size: $--tooltip-font-size;
@@ -42,7 +42,7 @@
 
       &[x-placement^="top"] .popper__arrow {
         bottom: -$--tooltip-arrow-size;
-        border-top-color: $--tooltip-border-color;
+        border-top-color: transparent;
         border-bottom-width: 0;
 
         &::after {
@@ -60,7 +60,7 @@
       &[x-placement^="bottom"] .popper__arrow {
         top: -$--tooltip-arrow-size;
         border-top-width: 0;
-        border-bottom-color: $--tooltip-border-color;
+        border-bottom-color: transparent;
 
         &::after {
           top: 1px;
@@ -76,7 +76,7 @@
 
       &[x-placement^="right"] .popper__arrow {
         left: -$--tooltip-arrow-size;
-        border-right-color: $--tooltip-border-color;
+        border-right-color: transparent;
         border-left-width: 0;
 
         &::after {
@@ -94,7 +94,7 @@
       &[x-placement^="left"] .popper__arrow {
         right: -$--tooltip-arrow-size;
         border-right-width: 0;
-        border-left-color: $--tooltip-border-color;
+        border-left-color: transparent;
 
         &::after {
           right: 1px;

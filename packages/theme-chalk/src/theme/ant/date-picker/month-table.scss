@@ -2,7 +2,7 @@
 @import "../../../mixins/mixins";
 @include root {
   @include b(month-table) {
-    font-size: 12px;
+    font-size: 14px;
     margin: -1px;
     border-collapse: collapse;
 
@@ -16,16 +16,16 @@
         box-sizing: border-box;
       }
       &.today {
-        .cell {
-          color: $--color-primary;
-          font-weight: bold;
-        }
         &.start-date .cell,
         &.end-date .cell {
           color: $--color-white;
         }
       }
-
+      &:hover {
+        .cell {
+          background: $--background-color-base;
+        }
+      }
       &.disabled .cell {
         background-color: $--background-color-base;
         cursor: not-allowed;
@@ -38,15 +38,12 @@
 
       .cell {
         width: 60px;
-        height: 36px;
+        height: 24px;
         display: block;
-        line-height: 36px;
+        line-height: 24px;
         color: $--datepicker-font-color;
         margin: 0 auto;
-        border-radius: 18px;
-        &:hover {
-          color: $--datepicker-hover-font-color;
-        }
+        border-radius: $--border-radius-base;
       }
 
       &.in-range div {
@@ -77,7 +74,8 @@
       }
 
       &.current:not(.disabled) .cell {
-        color: $--datepicker-active-color;
+        background: $--color-primary;
+        color: $--color-white;
       }
     }
   }
