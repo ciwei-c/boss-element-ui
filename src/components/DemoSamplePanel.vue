@@ -8,7 +8,8 @@
       </div>
       <div
         class="boss-ui-demo__sample-panel-code"
-        :style="{height:visibleCode?`${codeHeight}px`:0,opacity:visibleCode?1:0}"
+        v-if="visibleCodeRender"
+        :style="{height:visibleCode?`${codeHeight}px`:0,opacity:visibleCode ? 1:0}"
       >
         <pre v-highlightjs="code"><code class="html"></code></pre>
       </div>
@@ -42,13 +43,23 @@ export default {
   data() {
     return {
       visibleCode: false,
+      visibleCodeRender: false,
       codeHeight: 0
     };
   },
   watch: {
     visibleCode(val) {
-      if (val)
-        this.codeHeight = this.$el.querySelector("code.hljs").offsetHeight;
+      if (val){
+        this.visibleCodeRender = val
+        this.$nextTick(()=>{
+          this.codeHeight = this.$el.querySelector("code.hljs").offsetHeight;
+        })
+      } else {
+        this.codeHeight = 0
+        setTimeout(() => {
+          this.visibleCodeRender = val
+        }, 300);
+      }
     }
   }
 };
