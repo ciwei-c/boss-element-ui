@@ -6,16 +6,14 @@
     :codeDesc="codeDesc"
     desc
   >
-    <div style="display:flex">
-      <div style="flex:1">
-        <h4>有默认值</h4>
-        <boss-color-picker v-model="color1"></boss-color-picker>
-      </div>
-      <div style="flex:1">
-        <h4>无默认值</h4>
-        <boss-color-picker v-model="color2"></boss-color-picker>
-      </div>
-    </div>
+    <boss-row>
+      <boss-row>有默认值</boss-row>
+      <boss-color-picker v-model="color1"></boss-color-picker>
+    </boss-row>
+    <boss-row>
+      <boss-row>无默认值</boss-row>
+      <boss-color-picker v-model="color2"></boss-color-picker>
+    </boss-row>
   </demo-sample-panel>
 </template>
 <script>

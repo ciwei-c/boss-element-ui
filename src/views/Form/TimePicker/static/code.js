@@ -25,7 +25,7 @@ export default {
       code,
       codeDesc:"分别通过 start、end 和 step 指定可选的起始时间、结束时间和步长",
       anchor:{
-        id:"options",
+        id:"static",
         title:"固定时间点"
       }
     }

@@ -1,5 +1,5 @@
 let code = `<template>
-  <boss-form ref="form" :model="form" label-width="80px">
+  <boss-form ref="form" :model="form" label-width="80px" style="width:460px">
     <boss-form-item label="活动名称">
       <boss-input v-model="form.name"></boss-input>
     </boss-form-item>

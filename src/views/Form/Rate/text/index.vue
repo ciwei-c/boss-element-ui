@@ -4,9 +4,9 @@
     :panel-id="anchor.id"
     :code="code"
     :codeDesc="codeDesc"
-    desc="基本用法"
+    desc="用辅助文字直接地表达对应分数"
   >
-    <boss-time-picker placeholder="选择时间" v-model="value" style="width: 100%;"></boss-time-picker>
+    <boss-rate v-model="value" show-text></boss-rate>
   </demo-sample-panel>
 </template>
 <script>
@@ -15,7 +15,7 @@ export default {
   mixins: [code],
   data() {
     return {
-      value: ""
+      value: null
     };
   }
 };

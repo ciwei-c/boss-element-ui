@@ -1,5 +1,5 @@
 let code = `<template>
-  <boss-form ref="form" :model="form" label-width="80px">
+  <boss-form ref="form" :model="form" label-width="80px" style="width:460px">
     <boss-form-item label="活动名称">
       <boss-input v-model="form.name"></boss-input>
     </boss-form-item>
@@ -13,7 +13,7 @@ let code = `<template>
       <boss-col :span="11">
         <boss-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></boss-date-picker>
       </boss-col>
-      <boss-col class="line" :span="2">-</boss-col>
+      <boss-col class="line" :span="2" style="text-align:center">-</boss-col>
       <boss-col :span="11">
         <boss-time-picker placeholder="选择时间" v-model="form.date2" style="width: 100%;"></boss-time-picker>
       </boss-col>

@@ -1,14 +1,12 @@
 let code = `<template>
-  <div style="display:flex;">
-    <div style="flex:1">
-      <h4>默认不区分颜色</h4>
-      <boss-rate v-model="value1"></boss-rate>
-    </div>
-    <div style="flex:1">
-      <h4>区分颜色</h4>
-      <boss-rate v-model="value2" :colors="colors"></boss-rate>
-    </div>
-  </div>
+  <boss-row>
+    <boss-row>默认不区分颜色</boss-row>
+    <boss-rate v-model="value1"></boss-rate>
+  </boss-row>
+  <boss-row>
+    <boss-row>区分颜色</boss-row>
+    <boss-rate v-model="value2" :colors="colors"></boss-rate>
+  </boss-row>
 </template>
 <script>
 export default {

@@ -10,8 +10,9 @@
       :model="ruleForm"
       :rules="rules"
       ref="ruleForm"
-      label-width="100px"
+      label-width="105px"
       class="demo-ruleForm"
+      style="width:460px"
     >
       <boss-form-item label="活动名称" prop="name">
         <boss-input v-model="ruleForm.name"></boss-input>
@@ -33,7 +34,7 @@
             ></boss-date-picker>
           </boss-form-item>
         </boss-col>
-        <boss-col class="line" :span="2">-</boss-col>
+        <boss-col class="line" :span="2" style="text-align:center">-</boss-col>
         <boss-col :span="11">
           <boss-form-item prop="date2">
             <boss-time-picker placeholder="选择时间" v-model="ruleForm.date2" style="width: 100%;"></boss-time-picker>
