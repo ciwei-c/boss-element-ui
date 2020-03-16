@@ -611,7 +611,6 @@ export default {
       return obj;
     }
   },
-
   created() {
     // vue-popper
     this.popperOptions = {

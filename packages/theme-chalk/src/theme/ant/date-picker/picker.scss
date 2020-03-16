@@ -3,14 +3,16 @@
 @import ".././common/transition.scss";
 
 @include root {
+  .boss-date-editor-wrap {
+    width: 220px;
+  }
   @include b(date-editor) {
     position: relative;
     display: inline-block;
     text-align: left;
-
     &.boss-input,
     &.boss-input__inner {
-      width: 220px;
+      width: 100%;
     }
 
     @include m((monthrange)) {

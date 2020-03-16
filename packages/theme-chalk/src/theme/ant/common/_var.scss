@@ -636,14 +636,14 @@
 
   /// fontSize||Font|1
   $--button-small-font-size: 14px !default !global;
-  $--button-small-border-radius: #{$--border-radius-base - 1} !default !global;
+  $--button-small-border-radius:$--border-radius-base !default !global;
   /// padding||Spacing|3
   $--button-small-padding-vertical: 8px !default !global;
   /// padding||Spacing|3
   $--button-small-padding-horizontal: 15px !default !global;
   /// fontSize||Font|1
   $--button-mini-font-size: 12px !default !global;
-  $--button-mini-border-radius: #{$--border-radius-base - 1} !default !global;
+  $--button-mini-border-radius: $--border-radius-base !default !global;
   /// padding||Spacing|3
   $--button-mini-padding-vertical: 5px !default !global;
   /// padding||Spacing|3
@@ -925,9 +925,9 @@
   /// fontSize||Font|1
   $--rate-font-size: $--font-size-base !default !global;
   /// height||Other|3
-  $--rate-icon-size: 18px !default !global;
+  $--rate-icon-size: 22px !default !global;
   /// margin||Spacing|2
-  $--rate-icon-margin: 6px !default !global;
+  $--rate-icon-margin: 8px !default !global;
   $--rate-icon-color: $--color-text-placeholder !default !global;
 
   /* DatePicker
@@ -949,6 +949,8 @@
   /// color||Color|0
   $--datepicker-hover-font-color: $--color-primary !default !global;
   $--datepicker-cell-hover-color: #fff !default !global;
+  $--timepicker-split-border-color: hsv(0, 0, 0.94) !default !global;
+  $--timepicker-active-background-color: $--color-blue-1 !default !global;
 
   /* Loading
   --------------------------*/
@@ -1004,14 +1006,15 @@
 
   /* Transfer
   --------------------------*/
-  $--transfer-border-color: $--border-color-lighter !default !global;
+  $--transfer-border-color: $--border-color-base !default !global;
+  $--transfer-border-split: hsv(0, 0, 0.94) !default !global;
   $--transfer-border-radius: $--border-radius-base !default !global;
   /// height||Other|4
   $--transfer-panel-width: 200px !default !global;
   /// height||Other|4
   $--transfer-panel-header-height: 40px !default !global;
   /// color||Color|0
-  $--transfer-panel-header-background-color: $--background-color-base !default !global;
+  $--transfer-panel-header-background-color: $--color-white !default !global;
   /// height||Other|4
   $--transfer-panel-footer-height: 40px !default !global;
   /// height||Other|4

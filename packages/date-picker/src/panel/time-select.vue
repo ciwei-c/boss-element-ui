@@ -94,16 +94,19 @@
         this.$emit('pick', null);
       },
 
-      scrollToOption(selector = '.selected') {
+      scrollToOption(selector = '.selected', fixed) {
         const menu = this.$refs.popper.querySelector('.boss-picker-panel__content');
         scrollIntoView(menu, menu.querySelector(selector));
-      },
+        if(fixed) menu.scrollTop = menu.scrollTop + fixed;
+      }, 
 
       handleMenuEnter() {
         const selected = this.items.map(item => item.value).indexOf(this.value) !== -1;
         const hasDefault = this.items.map(item => item.value).indexOf(this.defaultValue) !== -1;
         const option = (selected && '.selected') || (hasDefault && '.default') || '.time-select-item:not(.disabled)';
-        this.$nextTick(() => this.scrollToOption(option));
+        this.$nextTick(() => 
+          this.scrollToOption(option, 17)
+        );
       },
 
       scrollDown(step) {

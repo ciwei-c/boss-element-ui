@@ -50,10 +50,10 @@
 
     @include m(medium) {
       .boss-form-item__label {
-        line-height: 36px;
+        line-height: 40px;
       }
       .boss-form-item__content {
-        line-height: 36px;
+        line-height: 40px;
       }
     }
     @include m(small) {
@@ -72,10 +72,10 @@
     }
     @include m(mini) {
       .boss-form-item__label {
-        line-height: 28px;
+        line-height: 24px;
       }
       .boss-form-item__content {
-        line-height: 28px;
+        line-height: 24px;
       }
       &.boss-form-item {
         margin-bottom: 18px;
@@ -98,13 +98,19 @@
       vertical-align: middle;
       float: left;
       font-size: $--form-label-font-size;
-      color: $--color-text-regular;
-      line-height: 40px;
-      padding: 0 12px 0 0;
+      color: $--color-heading;
+      line-height: 32px;
+      padding: 0;
       box-sizing: border-box;
+      &::after {
+        content: ":";
+        position: relative;
+        top: -0.5px;
+        margin: 0 8px 0 2px;
+      }
     }
     @include e(content) {
-      line-height: 40px;
+      line-height: 32px;
       position: relative;
       font-size: 14px;
       @include utils-clearfix;
@@ -114,7 +120,7 @@
       }
     }
     @include e(error) {
-      color: $--color-danger;
+      color: $--color-red-5;
       font-size: 12px;
       line-height: 1;
       padding-top: 4px;
@@ -136,7 +142,7 @@
         & > .boss-form-item__label:before,
         & .boss-form-item__label-wrap > .boss-form-item__label:before {
           content: "*";
-          color: $--color-danger;
+          color: $--color-red-5;
           margin-right: 4px;
         }
       }
@@ -147,7 +153,7 @@
       & .boss-textarea__inner {
         &,
         &:focus {
-          border-color: $--color-danger;
+          border-color: $--color-red-5;
         }
       }
       & .boss-input-group__append,
@@ -157,7 +163,7 @@
         }
       }
       .boss-input__validateIcon {
-        color: $--color-danger;
+        color: $--color-red-5;
       }
     }
 

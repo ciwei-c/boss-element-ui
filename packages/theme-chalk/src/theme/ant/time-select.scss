@@ -14,6 +14,7 @@
   .time-select .boss-picker-panel__content {
     max-height: 200px;
     margin: 0;
+    padding: 0;
   }
 
   .time-select-item {
@@ -23,8 +24,7 @@
   }
 
   .time-select-item.selected:not(.disabled) {
-    color: $--color-primary;
-    font-weight: bold;
+    background-color: $--timepicker-active-background-color;
   }
 
   .time-select-item.disabled {
@@ -34,7 +34,6 @@
 
   .time-select-item:hover {
     background-color: $--background-color-base;
-    font-weight: bold;
     cursor: pointer;
   }
 }
