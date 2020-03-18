@@ -69,6 +69,7 @@
       .boss-input__inner {
         padding-right: 25px;
         border-radius: $--pagination-border-radius;
+        height: 32px;
       }
     }
 
@@ -129,6 +130,11 @@
     }
 
     @include m(small) {
+      .boss-select .boss-input {
+        .boss-input__inner {
+          height: 24px;
+        }
+      }
       .btn-prev,
       .btn-next,
       .boss-pager li,

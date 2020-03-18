@@ -3,47 +3,64 @@
 
 @include root {
   @include b(divider) {
-    background-color: $--border-color-base;
-    position: relative;
+    display: table;
+    border-top: 1px solid  $--border-color-split-hsv;
+    &--left,
+    &--right,
+    &--center {
+      border-top: none;
+      &::after,
+      &::before {
+        content: " ";
+        position: relative;
+        top: 50%;
+        display: table-cell;
+        width: 50%;
+        border-top: 1px solid  $--border-color-split-hsv;
+        transform: translateY(50%);
+      }
+    }
+    @include m(left) {
+      &::before {
+        width: 5%;
+      }
+      &::after {
+        width: 95%;
+      }
+    }
+    @include m(right) {
+      &::before {
+        width: 95%;
+      }
+      &::after {
+        width: 5%;
+      }
+    }
 
     @include m(horizontal) {
-      display: block;
-      height: 1px;
       width: 100%;
       margin: 24px 0;
     }
 
     @include m(vertical) {
+      border-top: none;
       display: inline-block;
       width: 1px;
-      height: 1em;
+      height: 0.9em;
       margin: 0 8px;
       vertical-align: middle;
       position: relative;
+      background-color: $--border-color-split-hsv;
     }
 
     @include e(text) {
-      position: absolute;
-      background-color: $--color-white;
-      padding: 0 20px;
+      background-color: transparent;
+      padding: 0 1em;
       font-weight: 500;
-      color: $--color-text-primary;
-      font-size: 14px;
-
-      @include when(left) {
-        left: 20px;
-        transform: translateY(-50%);
-      }
-
-      @include when(center) {
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-      }
-
-      @include when(right) {
-        right: 20px;
-        transform: translateY(-50%);
-      }
+      white-space: nowrap;
+      display: inline-block;
+      color: $--color-heading;
+      font-size: 16px;
     }
   }
 }

@@ -109,6 +109,10 @@
   $directions: rtl, ltr, ttb, btt;
 
   @include b(drawer) {
+    &,
+    & *{
+      outline: none !important;
+    } 
     position: absolute;
     box-sizing: border-box;
     background-color: $--dialog-background-color;
@@ -135,11 +139,12 @@
 
     &__header {
       align-items: center;
-      color: rgb(114, 118, 123);
+      padding: 16px 24px;
+      font-size: 16px;
+      color: $--color-heading;
+      font-weight: 500;
       display: flex;
-      margin-bottom: 32px;
-      padding: $--dialog-padding-primary;
-      padding-bottom: 0;
+      border-bottom: 1px solid $--border-color-split-hsv;
       & > :first-child {
         flex: 1;
       }
@@ -149,11 +154,11 @@
       margin: 0;
       flex: 1;
       line-height: inherit;
-      font-size: 1rem;
     }
 
     &__close-btn {
       border: none;
+      display: none;
       cursor: pointer;
       font-size: $--font-size-extra-large;
       color: inherit;
@@ -162,6 +167,7 @@
 
     &__body {
       flex: 1;
+      padding: 24px;
       & > * {
         box-sizing: border-box;
       }

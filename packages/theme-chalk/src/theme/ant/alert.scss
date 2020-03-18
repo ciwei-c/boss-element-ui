@@ -13,24 +13,27 @@
     overflow: hidden;
     opacity: 1;
     display: flex;
-    align-items: center;
     transition: opacity 0.2s;
 
     @include when(light) {
       .boss-alert__closebtn {
-        color: $--color-text-placeholder;
+        color: $--color-text-secondary;
       }
     }
 
     @include when(dark) {
-      .boss-alert__closebtn {
-        color: $--color-white;
-      }
-      .boss-alert__description {
+      .boss-alert__closebtn, 
+      .boss-alert__title {
         color: $--color-white;
       }
     }
 
+    .boss-alert__description {
+      color: $--color-text-primary;
+    }
+    .boss-alert__title {
+      color: $--color-heading;
+    }
     @include when(center) {
       justify-content: center;
     }
@@ -38,78 +41,74 @@
     @include m(success) {
       &.is-light {
         background-color: $--alert-success-color;
-        color: $--color-success;
-
-        .boss-alert__description {
+        border: 1px solid $--alert-success-border-color;
+        .boss-alert__icon {
           color: $--color-success;
         }
       }
 
       &.is-dark {
-        background-color: $--color-success;
-        color: $--color-white;
+        background-color: $--alert-success-dark-background;
       }
     }
 
     @include m(info) {
       &.is-light {
         background-color: $--alert-info-color;
-        color: $--color-info;
+        border: 1px solid $--alert-info-border-color;
+        .boss-alert__icon {
+          color: $--color-info;
+        }
       }
-
       &.is-dark {
-        background-color: $--color-info;
-        color: $--color-white;
-      }
-
-      .boss-alert__description {
-        color: $--color-info;
+        background-color: $--alert-info-dark-background;
       }
     }
 
     @include m(warning) {
       &.is-light {
         background-color: $--alert-warning-color;
-        color: $--color-warning;
-
-        .boss-alert__description {
+        border: 1px solid $--alert-warning-border-color;
+        .boss-alert__icon {
           color: $--color-warning;
         }
       }
-
       &.is-dark {
-        background-color: $--color-warning;
-        color: $--color-white;
+        background-color: $--alert-warning-dark-background;
       }
     }
 
     @include m(error) {
       &.is-light {
         background-color: $--alert-danger-color;
-        color: $--color-danger;
-
-        .boss-alert__description {
+        border: 1px solid $--alert-danger-border-color;
+        .boss-alert__icon {
           color: $--color-danger;
         }
       }
-
       &.is-dark {
-        background-color: $--color-danger;
-        color: $--color-white;
+        background-color: $--alert-danger-dark-background;
       }
     }
 
     @include e(content) {
       display: table-cell;
-      padding: 0 8px;
+      padding-right:8px;
     }
 
     @include e(icon) {
       font-size: $--alert-icon-size;
       width: $--alert-icon-size;
+      margin-right:8px;
+      margin-top: 2px;
       @include when(big) {
         font-size: $--alert-icon-large-size;
         width: $--alert-icon-large-size;
+        margin-top: 8px;
+        & + .boss-alert__content {
+          padding-top: 12px;
+          padding-bottom: 10px;
+        }
       }
     }
 
@@ -117,7 +116,10 @@
       font-size: $--alert-title-font-size;
       line-height: 18px;
       @include when(bold) {
-        font-weight: bold;
+        font-size: 16px;
+        & + .boss-alert__description {
+          font-size: 14px;
+        }
       }
     }
 

@@ -2,7 +2,7 @@
   <div
     v-bind="data.attrs"
     v-on="listeners"
-    :class="[data.staticClass, 'boss-divider', `boss-divider--${props.direction}`]"
+    :class="[data.staticClass, 'boss-divider', `boss-divider--${props.direction}`, slots().default && props.direction !== 'vertical' ? `boss-divider--${props.contentPosition}` : '']"
   >
     <div
       v-if="slots().default && props.direction !== 'vertical'"

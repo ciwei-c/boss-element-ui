@@ -40,10 +40,10 @@
       </boss-checkbox-group>
       <p
         class="boss-transfer-panel__empty"
-        v-show="hasNoMatch">{{ t('el.transfer.noMatch') }}</p>
+        v-show="hasNoMatch">{{ t('boss.transfer.noMatch') }}</p>
       <p
         class="boss-transfer-panel__empty"
-        v-show="data.length === 0 && !hasNoMatch">{{ t('el.transfer.noData') }}</p>
+        v-show="data.length === 0 && !hasNoMatch">{{ t('boss.transfer.noData') }}</p>
     </div>
     <p class="boss-transfer-panel__footer" v-if="hasFooter">
       <slot></slot>

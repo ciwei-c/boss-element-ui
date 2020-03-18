@@ -4,7 +4,7 @@
       <div class="boss-image__placeholder"></div>
     </slot>
     <slot v-else-if="error" name="error">
-      <div class="boss-image__error">{{ t('el.image.error') }}</div>
+      <div class="boss-image__error">{{ t('boss.image.error') }}</div>
     </slot>
     <img
       v-else

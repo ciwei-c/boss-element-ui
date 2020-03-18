@@ -7,15 +7,24 @@
     flex-shrink: 1;
 
     @include pseudo(last-of-type) {
-      @include e(line) {
-        display: none;
+      @include e(main) {
+        width: auto !important;
+        & .boss-step__title::after {
+          display: none;
+        }
       }
-
+      @include e(head) {
+        &::after {
+          display: none;
+        }
+      }
       // 只有未设置 space 的情况下才自适应宽度
       @include when(flex) {
-        flex-basis: auto !important;
-        flex-shrink: 0;
-        flex-grow: 0;
+        &:not(.is-simple){
+          flex-basis: auto !important;
+          flex-shrink: 0;
+          flex-grow: 0;
+        }
       }
 
       @include e((main, description)) {
@@ -25,31 +34,45 @@
 
     @include e(head) {
       position: relative;
-      width: 100%;
 
       @include when(process) {
-        color: $--color-text-primary;
-        border-color: $--color-text-primary;
+        border-color: $--color-primary;
+        & .boss-step__icon.is-text {
+          color: $--color-white;
+          background: $--color-primary;
+        }
       }
 
       @include when(wait) {
-        color: $--color-text-placeholder;
-        border-color: $--color-text-placeholder;
+        color: $--color-text-secondary;
+        border-color:  $--disabled-color-base;
+        & .boss-step__icon {
+          color: $--disabled-color-base;
+        }
       }
 
       @include when(success) {
         color: $--color-success;
         border-color: $--color-success;
+        &::after {
+          background: $--color-success !important;
+        }
       }
 
       @include when(error) {
         color: $--color-danger;
         border-color: $--color-danger;
+        &::after {
+          background: $--color-danger !important;
+        }
       }
 
       @include when(finish) {
         color: $--color-primary;
         border-color: $--color-primary;
+        &::after {
+          background: $--color-primary !important;
+        }
       }
     }
 
@@ -59,8 +82,8 @@
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      width: 24px;
-      height: 24px;
+      width: 32px;
+      height: 32px;
       font-size: 14px;
       box-sizing: border-box;
       background: $--color-white;
@@ -68,12 +91,12 @@
 
       @include when(text) {
         border-radius: 50%;
-        border: 2px solid;
+        border: 1px solid;
         border-color: inherit;
       }
 
       @include when(icon) {
-        width: 40px;
+        width: 32px;
       }
     }
 
@@ -81,7 +104,6 @@
       display: inline-block;
       user-select: none;
       text-align: center;
-      font-weight: bold;
       line-height: 1;
       color: inherit;
 
@@ -96,58 +118,50 @@
       }
     }
 
-    @include e(line) {
-      position: absolute;
-      border-color: inherit;
-      background-color: $--color-text-placeholder;
-    }
-
-    @include e(line-inner) {
-      display: block;
-      border-width: 1px;
-      border-style: solid;
-      border-color: inherit;
-      transition: 0.15s ease-out;
-      box-sizing: border-box;
-      width: 0;
-      height: 0;
-    }
-
     @include e(main) {
       white-space: normal;
       text-align: left;
+      padding-left: 8px;
     }
 
     @include e(title) {
       font-size: 16px;
-      line-height: 38px;
+      line-height: 32px;
 
       @include when(process) {
         font-weight: bold;
-        color: $--color-text-primary;
+        color: $--color-heading;
       }
 
       @include when(wait) {
-        color: $--color-text-placeholder;
+        color: $--color-text-secondary;
       }
 
       @include when(success) {
         color: $--color-success;
+        &::after {
+          background: $--color-success !important;
+        }
       }
 
       @include when(error) {
         color: $--color-danger;
+        &::after {
+          background: $--color-danger !important;
+        }
       }
 
       @include when(finish) {
-        color: $--color-primary;
+        color: $--color-text-primary;
+        &::after {
+          background: $--color-primary !important;
+        }
       }
     }
 
     @include e(description) {
-      padding-right: 10%;
       margin-top: -5px;
-      font-size: 12px;
+      font-size: 14px;
       line-height: 20px;
       font-weight: normal;
 
@@ -156,7 +170,7 @@
       }
 
       @include when(wait) {
-        color: $--color-text-placeholder;
+        color: $--color-text-secondary;
       }
 
       @include when(success) {
@@ -168,18 +182,36 @@
       }
 
       @include when(finish) {
-        color: $--color-primary;
+        color: $--color-text-secondary;
       }
     }
 
     @include when(horizontal) {
       display: inline-block;
-
-      @include e(line) {
-        height: 2px;
-        top: 11px;
-        left: 0;
-        right: 0;
+      overflow: hidden;
+      margin-right: 16px !important;
+      @include e(head) {
+        display: inline-block;
+        vertical-align: top;
+      }
+      @include e(main) {
+        display: inline-block;
+        width: calc(100% - 50px);
+      }
+      @include e(title) {
+        position: relative;
+        display: inline-block;
+        padding-right: 16px;
+        margin-bottom: 8px;
+        &::after {
+          content: " ";
+          width: 9999px;
+          top: 50%;
+          left: 100%;
+          position: absolute;
+          height: 1px;
+          background: $--steps-line-color;
+        }
       }
     }
 
@@ -188,65 +220,53 @@
 
       @include e(head) {
         flex-grow: 0;
-        width: 24px;
+        width: 32px;
+        position: relative;
+        &::after {
+          content: " ";
+          width: 1px;
+          top: 40px;
+          left: 50%;
+          position: absolute;
+          height: calc(100% - 48px);
+          background: $--steps-line-color;
+        }
       }
 
       @include e(main) {
-        padding-left: 10px;
         flex-grow: 1;
       }
 
       @include e(title) {
-        line-height: 24px;
+        line-height: 32px;
         padding-bottom: 8px;
-      }
-
-      @include e(line) {
-        width: 2px;
-        top: 0;
-        bottom: 0;
-        left: 11px;
       }
 
       @include e(icon) {
         @include when(icon) {
-          width: 24px;
+          width: 32px;
         }
-      }
-    }
-
-    @include when(center) {
-      @include e(head) {
-        text-align: center;
-      }
-
-      @include e(main) {
-        text-align: center;
-      }
-
-      @include e(description) {
-        padding-left: 20%;
-        padding-right: 20%;
-      }
-
-      @include e(line) {
-        left: 50%;
-        right: -50%;
       }
     }
 
     @include when(simple) {
       display: flex;
       align-items: center;
-
+      padding-bottom: 12px;
+      justify-content: center;
+      margin-right: 16px !important;
       @include e(head) {
         width: auto;
         font-size: 0;
-        padding-right: 10px;
+        @include when(process){
+          border-color: $--color-heading;
+          .boss-step__icon {
+            color: $--color-heading;
+          }
+        }
       }
-
       @include e(icon) {
-        background: transparent;
+        background: transparent !important;
         width: 16px;
         height: 16px;
         font-size: 12px;
@@ -263,49 +283,49 @@
       }
 
       @include e(main) {
-        position: relative;
         display: flex;
         align-items: stretch;
-        flex-grow: 1;
       }
 
       @include e(title) {
         font-size: 16px;
         line-height: 20px;
+        &::before {
+          transition: width .3s;
+          width: 0%;
+          height: 3px;
+          position: absolute;
+          left: 50%;
+          bottom: -1px;
+          transform: translateX(-50%);
+          background: $--color-primary;
+          content: " ";
+        }
+        @include when(process){
+          &::before {
+            width: 100%;
+          }
+        }
       }
 
       @include pseudo("not(:last-of-type)") {
         @include e(title) {
-          max-width: 50%;
           word-break: break-all;
+          flex: 1;
         }
       }
 
       @include e(arrow) {
-        flex-grow: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        &::before,
-        &::after {
-          content: "";
-          display: inline-block;
-          position: absolute;
-          height: 15px;
-          width: 1px;
-          background: $--color-text-placeholder;
-        }
-
-        &::before {
-          transform: rotate(-45deg) translateY(-4px);
-          transform-origin: 0 0;
-        }
-
-        &::after {
-          transform: rotate(45deg) translateY(4px);
-          transform-origin: 100% 100%;
-        }
+        position: absolute;
+        top: calc(50% - 5px);
+        left: 100%;
+        display: inline-block;
+        width: 11px;
+        height: 11px;
+        border: 1px solid $--disabled-color-base;
+        border-bottom: none;
+        border-left: none;
+        transform: rotate(45deg) translate(-50%, -50%);
       }
 
       @include pseudo(last-of-type) {

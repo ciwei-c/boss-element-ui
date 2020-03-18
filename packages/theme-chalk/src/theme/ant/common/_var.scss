@@ -89,7 +89,7 @@
   $--border-color-extra-light: #F2F6FC !default !global;
   /// color|1|Border Color|3
   $--border-color-split:#e8e8e8 !default !global;
-  
+  $--border-color-split-hsv:hsv(0, 0, 0.94) !default !global;
   /* Color Palette
   -------------------------- */
   // primary blue
@@ -415,22 +415,32 @@
 
   /* Alert
   -------------------------- */
-  $--alert-padding: 8px 16px !default !global;
+  $--alert-padding: 8px 15px !default !global;
   /// borderRadius||Border|2
   $--alert-border-radius: $--border-radius-base !default !global;
   /// fontSize||Font|1
-  $--alert-title-font-size: 13px !default !global;
+  $--alert-title-font-size: 14px !default !global;
   /// fontSize||Font|1
   $--alert-description-font-size: 12px !default !global;
   /// fontSize||Font|1
-  $--alert-close-font-size: 12px !default !global;
+  $--alert-close-font-size: 14px !default !global;
   /// fontSize||Font|1
-  $--alert-close-customed-font-size: 13px !default !global;
+  $--alert-close-customed-font-size: 12px !default !global;
 
-  $--alert-success-color: $--color-success-lighter !default !global;
-  $--alert-info-color: $--color-info-lighter !default !global;
-  $--alert-warning-color: $--color-warning-lighter !default !global;
-  $--alert-danger-color: $--color-danger-lighter !default !global;
+  $--alert-success-color: $--color-green-1 !default !global;
+  $--alert-info-color: $--color-gray-1 !default !global;
+  $--alert-warning-color: $--color-yellow-1 !default !global;
+  $--alert-danger-color: $--color-red-1 !default !global;
+
+  $--alert-success-dark-background: $--color-green-7 !default !global;
+  $--alert-info-dark-background: $--color-gray-7 !default !global;
+  $--alert-warning-dark-background: $--color-yellow-7 !default !global;
+  $--alert-danger-dark-background: $--color-red-7 !default !global;
+
+  $--alert-success-border-color: $--color-green-3 !default !global;
+  $--alert-info-border-color: $--color-gray-3 !default !global;
+  $--alert-warning-border-color: $--color-yellow-3 !default !global;
+  $--alert-danger-border-color: $--color-red-2 !default !global;
 
   /// height||Other|4
   $--alert-icon-size: 16px !default !global;
@@ -908,6 +918,7 @@
   $--steps-border-color: $--disabled-border-base !default !global;
   $--steps-border-radius: $--border-radius-base !default !global;
   $--steps-padding: 20px !default !global;
+  $--steps-line-color: hsv(0, 0, 0.94) !default !global;
 
   /* Menu
   --------------------------*/

@@ -103,7 +103,7 @@
             </li>
           </template>
           <slot v-else name="empty">
-            <li class="boss-cascader__empty-text">{{ t('el.cascader.noMatch') }}</li>
+            <li class="boss-cascader__empty-text">{{ t('boss.cascader.noMatch') }}</li>
           </slot>
         </boss-scrollbar>
       </div>
