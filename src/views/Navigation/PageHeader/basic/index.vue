@@ -6,7 +6,7 @@
     desc="基础用法"
     :codeDesc="codeDesc"
   >
-    <boss-page-header @back="goBack" content="详情页面"></boss-page-header>
+    <boss-page-header title="标题" @back="goBack" content="详情页面"></boss-page-header>
   </demo-sample-panel>
 </template>
 <script>

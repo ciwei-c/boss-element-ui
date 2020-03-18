@@ -1,5 +1,5 @@
 let code = `<template>
-  <boss-page-header @back="goBack" content="详情页面"></boss-page-header>
+  <boss-page-header title="标题" @back="goBack" content="详情页面"></boss-page-header>
 </template>
 <script>
 export default {
