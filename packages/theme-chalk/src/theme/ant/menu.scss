@@ -39,7 +39,7 @@
 @include root {
 
   @include b(menu) {
-    border-right: solid 1px #e6e6e6;
+    border-right: solid 1px $--border-color-split-hsv;
     list-style: none;
     position: relative;
     margin: 0;
@@ -47,18 +47,18 @@
     background-color: $--menu-background-color;
     @include utils-clearfix;
     &.boss-menu--horizontal {
-      border-bottom: solid 1px #e6e6e6;
+      border-bottom: solid 1px $--border-color-split-hsv;
     }
 
     @include m(horizontal) {
       border-right: none;
       & > .boss-menu-item {
         float: left;
-        height: 60px;
-        line-height: 60px;
+        height: 48px;
+        line-height: 48px;
         margin: 0;
         border-bottom: 2px solid transparent;
-        color: $--color-text-secondary;
+        color: $--color-text-primary;
 
         a,
         a:hover {
@@ -84,16 +84,18 @@
         &.is-active {
           .boss-submenu__title {
             border-bottom: 2px solid $--color-primary;
-            color: $--color-text-primary;
+            color: $--color-primary;
           }
         }
 
         & .boss-submenu__title {
-          height: 60px;
-          line-height: 60px;
+          height: 48px;
+          line-height: 48px;
           border-bottom: 2px solid transparent;
-          color: $--color-text-secondary;
-
+          color: $--color-text-primary;
+          i {
+            display: none;
+          }
           &:hover {
             background-color: #fff;
           }
@@ -113,11 +115,11 @@
           height: 36px;
           line-height: 36px;
           padding: 0 10px;
-          color: $--color-text-secondary;
+          color: $--color-text-primary;
         }
         & .boss-menu-item.is-active,
         & .boss-submenu.is-active > .boss-submenu__title {
-          color: $--color-text-primary;
+          color: $--color-primary;
         }
       }
       & .boss-menu-item:not(.is-disabled):hover,
@@ -127,7 +129,7 @@
       }
       & > .boss-menu-item.is-active {
         border-bottom: 2px solid $--color-primary;
-        color: $--color-text-primary;
+        color: $--color-primary;
       }
     }
     @include m(collapse) {
@@ -258,9 +260,9 @@
     @include when(disabled) {
       .boss-submenu__title,
       .boss-menu-item {
-        opacity: 0.25;
         cursor: not-allowed;
         background: none !important;
+        color: $--disabled-color-base;
       }
     }
     [class^="boss-icon-"] {

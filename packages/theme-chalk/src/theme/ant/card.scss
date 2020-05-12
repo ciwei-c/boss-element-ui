@@ -7,8 +7,8 @@
     border: 1px solid $--card-border-color;
     background-color: $--color-white;
     overflow: hidden;
-    color: $--color-text-primary;
     transition: 0.3s;
+    line-height: 1.5715;
 
     @include when(always-shadow) {
       box-shadow: $--box-shadow-light;
@@ -22,13 +22,16 @@
     }
 
     @include e(header) {
-      padding: #{$--card-padding - 2 $--card-padding};
+      padding: #{$--card-padding - 4 $--card-padding + 4};
       border-bottom: 1px solid $--card-border-color;
+      font-size: $--font-size-medium;
+      color: $--color-heading;
       box-sizing: border-box;
     }
 
     @include e(body) {
-      padding: $--card-padding;
+      padding: #{$--card-padding + 4};
+      color: $--color-text-primary;
     }
   }
 }

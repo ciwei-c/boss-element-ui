@@ -9,26 +9,34 @@
     min-width: 150px;
     border-radius: $--border-radius-base;
     border: 1px solid $--popover-border-color;
-    padding: $--popover-padding;
     z-index: $--index-popper;
     color: $--color-text-regular;
-    line-height: 1.4;
+    line-height: 1.575;
     text-align: justify;
     font-size: $--popover-font-size;
-    box-shadow: $--box-shadow-light;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05) !important;
     word-break: break-all;
 
-    @include m(plain) {
-      padding: $--popover-padding-large;
+    &[x-placement^="bottom"] {
+      margin-top: #{$--popover-arrow-size + 6} !important;
     }
 
+    @include e(content) {
+      padding: $--popover-content-padding;
+      color: $--color-text-primary;
+    }
     @include e(title) {
       color: $--popover-title-font-color;
+      padding: $--popover-title-padding;
       font-size: $--popover-title-font-size;
-      line-height: 1;
-      margin-bottom: 12px;
+      font-weight: 500;
+      border-bottom: 1px solid $--border-color-split-hsv;
+      color: $--color-heading;
     }
-
+    .popper__arrow,
+    .popper__arrow::after {
+      display: block !important;
+    }
     @include e(reference) {
       &:focus:not(.focusing),
       &:focus:hover {

@@ -33,9 +33,7 @@
 
     @include e(header) {
       position: relative;
-      padding: $--dialog-padding-primary;
-      padding-top: 10px;
-      padding-bottom: 10px;
+      padding: 16px $--dialog-padding-primary;
       border-bottom: $--dialog-header-border;
     }
 
@@ -53,6 +51,7 @@
 
       .boss-dialog__close {
         color: $--color-info;
+        font-size: 18px;
       }
 
       &:focus,
@@ -66,20 +65,19 @@
     @include e(title) {
       line-height: $--dialog-font-line-height;
       font-size: $--dialog-title-font-size;
-      color: $--color-text-primary;
+      color: $--color-heading;
+      font-weight: 500;
     }
 
     @include e(body) {
-      padding: ($--dialog-padding-primary + 10px) $--dialog-padding-primary;
-      color: $--color-text-regular;
+      padding: $--dialog-padding-primary;
+      color: $--color-text-primary;
       font-size: $--dialog-content-font-size;
       word-break: break-all;
     }
 
     @include e(footer) {
-      padding: $--dialog-padding-primary;
-      padding-top: 10px;
-      padding-bottom: 10px;
+      padding: 10px 16px;
       text-align: right;
       box-sizing: border-box;
       border-top: $--dialog-header-border;

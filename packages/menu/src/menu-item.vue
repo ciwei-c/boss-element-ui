@@ -76,7 +76,7 @@
         if (this.mode === 'horizontal' && !this.isNested) {
           style.borderBottomColor = this.active
             ? (this.rootMenu.activeTextColor ? this.activeTextColor : '')
-            : 'transparent';
+            : '';
         }
         return style;
       },

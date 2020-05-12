@@ -190,6 +190,12 @@
   -------------------------- */
   $--fill-base: $--color-white !default !global;
 
+  /* Disable base
+  -------------------------- */
+  $--disabled-fill-base: $--background-color-base !default !global;
+  $--disabled-color-base: rgba($--color-black, 0.25) !default !global;
+  $--disabled-border-base: $--border-color-base !default !global;
+
   /* Typography
   -------------------------- */
   $--font-path: 'fonts' !default !global;
@@ -214,7 +220,7 @@
   $--font-line-height-primary: 24px !default !global;
   /// fontLineHeight|1|Line Height|2
   $--font-line-height-secondary: 16px !default !global;
-  $--font-color-disabled-base: #bbb !default !global;
+  $--font-color-disabled-base: $--disabled-color-base !default !global;
   /* Size
   -------------------------- */
   $--size-base: 14px !default !global;
@@ -224,12 +230,6 @@
   $--index-normal: 1 !default !global;
   $--index-top: 1000 !default !global;
   $--index-popper: 2000 !default !global;
-
-  /* Disable base
-  -------------------------- */
-  $--disabled-fill-base: $--background-color-base !default !global;
-  $--disabled-color-base: rgba($--color-black, 0.25) !default !global;
-  $--disabled-border-base: $--border-color-base !default !global;
 
   /* Icon
   -------------------------- */
@@ -736,8 +736,8 @@
   -------------------------- */
   $--dialog-background-color: $--color-white !default !global;
   $--dialog-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !default !global;
-  $--dialog-header-border:1px solid #e8e8e8 !default !global;
-  $--dialog-footer-border:1px solid #e8e8e8 !default !global;
+  $--dialog-header-border:1px solid $--border-color-split-hsv !default !global;
+  $--dialog-footer-border:1px solid $--border-color-split-hsv !default !global;
   /// fontSize||Font|1
   $--dialog-title-font-size: $--font-size-medium !default !global;
   /// fontSize||Font|1
@@ -745,7 +745,7 @@
   /// fontLineHeight||LineHeight|2
   $--dialog-font-line-height: $--font-line-height-primary !default !global;
   /// padding||Spacing|3
-  $--dialog-padding-primary: 20px !default !global;
+  $--dialog-padding-primary: 24px !default !global;
 
   /* Table
   -------------------------- */
@@ -818,8 +818,10 @@
   /// padding||Spacing|3
   $--popover-padding: 12px !default !global;
   $--popover-padding-large: 18px 20px !default !global;
+  $--popover-content-padding: 12px 16px !default !global;
+  $--popover-title-padding: 5px 16px 4px !default !global;
   /// fontSize||Font|1
-  $--popover-title-font-size: 16px !default !global;
+  $--popover-title-font-size: 14px !default !global;
   /// color||Color|0
   $--popover-title-font-color: $--color-text-primary !default !global;
 
@@ -999,19 +1001,20 @@
   /* Collapse
   --------------------------*/
   /// color||Color|0
-  $--collapse-border-color: $--border-color-lighter !default !global;
+  $--collapse-border-color:  $--border-color-base !default !global;
   /// height||Other|4
-  $--collapse-header-height: 48px !default !global;
+  $--collapse-header-padding: 12px 16px !default !global;
+  $--collapse-header-padding-left: 40px !default !global;
   /// color||Color|0
-  $--collapse-header-background-color: $--color-white !default !global;
+  $--collapse-header-background-color: hsv(0, 0, 0.98) !default !global;
   /// color||Color|0
-  $--collapse-header-font-color: $--color-text-primary !default !global;
+  $--collapse-header-font-color: $--color-heading !default !global;
   /// fontSize||Font|1
-  $--collapse-header-font-size: 13px !default !global;
+  $--collapse-header-font-size: 14px !default !global;
   /// color||Color|0
   $--collapse-content-background-color: $--color-white !default !global;
   /// fontSize||Font|1
-  $--collapse-content-font-size: 13px !default !global;
+  $--collapse-content-font-size: 14px !default !global;
   /// color||Color|0
   $--collapse-content-font-color: $--color-text-primary !default !global;
 
@@ -1049,9 +1052,9 @@
 
   /* Timeline
   --------------------------*/
-  $--timeline-node-size-normal: 12px !default !global;
+  $--timeline-node-size-normal: 10px !default !global;
   $--timeline-node-size-large: 14px !default !global;
-  $--timeline-node-color: $--border-color-light !default !global;
+  $--timeline-node-color: $--border-color-split-hsv !default !global;
 
   /* Backtop
   --------------------------*/
@@ -1087,9 +1090,9 @@
   /* Calendar
   --------------------------*/
   /// border||Other|4
-  $--calendar-border: $--table-border !default !global;
+  $--calendar-border:2px solid $--border-color-split-hsv !default !global;
   /// color||Other|4
-  $--calendar-selected-background-color: #F2F8FE !default !global;
+  $--calendar-selected-background-color: $--color-blue-1 !default !global;
   $--calendar-cell-width: 85px !default !global;
 
   /* Form

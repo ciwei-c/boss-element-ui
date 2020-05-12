@@ -1,11 +1,11 @@
 {
-    "name": "boss-element-ui",
+    "name": "@platform/boss-element-ui",
     "version": "0.0.1",
-    "elversion": "2.13.0",
     "description": "博思软件vue组件",
     "main": "lib/boss-element-ui.common.js",
+    "repository":"http://172.18.169.28/platform-frontend-materials/boss-element-ui",
     "license": "MIT",
-    "author": "huang",
+    "author": "caoguijie<309491435@qq.com>",
     "scripts": {
         "clean": "rimraf lib",
         "build": "npm run clean && webpack --config ./build/webpack.dev.js",

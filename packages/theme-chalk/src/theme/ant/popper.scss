@@ -3,9 +3,10 @@
 
 @include root {
   @include b(popper) {
-    margin-top: 2px !important;
     background-color: $--select-dropdown-background !important;
-    box-shadow: $--select-dropdown-shadow !important;
+    &:not(.boss-popover) {
+      box-shadow: $--select-dropdown-shadow !important;
+    }
     border-radius: $--border-radius-base !important;
     box-sizing: border-box;
     .popper__arrow,
@@ -48,7 +49,8 @@
     }
 
     &[x-placement^="bottom"] {
-      margin-top: #{$--popover-arrow-size + 6};
+      margin-top: 2px;
+      // margin-top: #{$--popover-arrow-size + 6};
     }
 
     &[x-placement^="bottom"] .popper__arrow {

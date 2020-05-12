@@ -1,15 +1,17 @@
 <template>
   <li class="boss-timeline-item">
-    <div class="boss-timeline-item__tail"></div>
+    <div :class="['boss-timeline-item__tail', `boss-timeline-item__tail--${size || ''}`]"></div>
 
     <div v-if="!$slots.dot"
       class="boss-timeline-item__node"
       :class="[
         `boss-timeline-item__node--${size || ''}`,
-        `boss-timeline-item__node--${type || ''}`
+        `boss-timeline-item__node--${type || (color ? '' : 'primary')}`,
+        icon ? 'boss-timeline-item__node--icon' : ''
       ]"
       :style="{
-        backgroundColor: color
+        backgroundColor: color,
+        color:color
       }"
     >
       <i v-if="icon"

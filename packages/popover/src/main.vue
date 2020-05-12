@@ -15,7 +15,9 @@
         :aria-hidden="(disabled || !showPopper) ? 'true' : 'false'"
       >
         <div class="boss-popover__title" v-if="title" v-text="title"></div>
-        <slot>{{ content }}</slot>
+        <div class="boss-popover__content">
+          <slot>{{ content }}</slot>
+        </div>
       </div>
     </transition>
     <slot name="reference"></slot>

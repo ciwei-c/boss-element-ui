@@ -69,7 +69,7 @@ export default {
 
     cellRenderProxy({ text, type }) {
       let render = this.bossCalendar.$scopedSlots.dateCell;
-      if (!render) return <span>{ text }</span>;
+      if (!render) return <span>{ text > 9 ? text : `0${text}` }</span>;
 
       const day = this.getFormateDate(text, type);
       const date = new Date(day);
