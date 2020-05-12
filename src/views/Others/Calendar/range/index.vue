@@ -4,19 +4,14 @@
     :panel-id="anchor.id"
     :code="code"
     :codeDesc="codeDesc"
-    desc=""
+    desc
   >
-    <boss-calendar v-model="value"></boss-calendar>
+    <boss-calendar :range="['2019-03-04', '2019-03-24']"></boss-calendar>
   </demo-sample-panel>
 </template>
 <script>
 import code from "./code";
 export default {
-  mixins: [code],
-  data() {
-    return {
-      value: new Date()
-    };
-  }
+  mixins: [code]
 };
 </script>
