@@ -8,13 +8,15 @@
     <boss-input 
       :size="size"
       :class="{ 'is-focus': visible, 'is-clearable':clearable && (multiple ? !!value.length : !!value) }"
-      :value="!multiple ? inputValue : ''"
+      :value="!multiple ? (isSearching ? searchInputValue : inputValue) : ''"
       @focus="onFocus"
+      @input="onInput"
       @blur="onBlur"
+      :readonly="multiple"
       :innerStyle="{height: inputHeight ? `${inputHeight}px` : ''}"
       @change="onChange"
       ref="reference"
-      :placeholder="!multiple ? placeholder : (value.length ? '' : placeholder)"
+      :placeholder="!multiple ? (isSearching ? (searchPlaceholder || placeholder) : placeholder) : (value.length ? '' : (isSearching ? (searchPlaceholder || placeholder) : placeholder))"
     >
       <i slot="suffix" @click.stop="onClear" :class="{'boss-input__icon':true, 'boss-icon-close':true}" v-if="clearable"></i>
       <i slot="suffix" :class="{'boss-input__icon':true, 'boss-icon-arrow-down':true, 'reverse-icon':visible}"></i>
@@ -25,18 +27,11 @@
       :setValue="setValue"
       :collapseTags="collapseTags"
       :getValue="getValue"
+      :parent="parent"
       :value="value"
+      :isSearching="isSearching"
       :resetInputHeight="resetInputHeight"
     />
-    <!-- <template v-if="multiple && value.length">
-      <div class="boss-select-tree__multiple-tags boss-select-tree__multiple-tags--collapsetags" v-if="collapseTags" ref="collapsetags">
-        <boss-tag type="info" closable @close="onCloseTag(0)">{{ getValue(value[0]) }}</boss-tag>
-        <boss-tag type="info" v-if="value.length > 1">+{{value.length - 1}}</boss-tag>
-      </div>
-      <transition-group class="boss-select-tree__multiple-tags" @after-leave="resetInputHeight" v-else ref="tags">
-        <boss-tag type="info" v-for="(val,idx) in value" :key="idx" closable  @close="onCloseTag(idx)">{{ getValue(val) }}</boss-tag>
-      </transition-group>
-    </template> -->
     <boss-tree-popper 
       ref="tree-popper"
       :data="data"
@@ -93,8 +88,10 @@ export default {
     },
     filterNodeMethod:{
       type:Function,
-      default(){
-        return () => true
+      default(value, data){
+        if (!value) return true;
+        let prop = this.props.label || "label"
+        return data[prop].indexOf(value) !== -1;
       }
     },
     size:String,
@@ -121,6 +118,9 @@ export default {
   data(){
     return {
       inputValue:"",
+      isSearching:false,
+      searchInputValue:"",
+      searchPlaceholder:"",
       inputHeight:0,
       popperVm:null,
       appendVisibleArrow:true
@@ -135,11 +135,27 @@ export default {
           this.resetInputHeight()
         })
       }
+    },
+    visible(val){
+      if(val){
+        this._inputValue = this.inputValue
+        this.searchPlaceholder = this._inputValue
+        this.isSearching = true
+        this.searchInputValue = ""
+        this.$refs["tree-popper"].getTree().filter(this.searchInputValue)
+        this.inputValue = ""
+      }else{
+        this.isSearching = false
+        if(!this.inputValue) this.inputValue = this._inputValue
+      }
     }
   },
   computed:{
     visible(){
       return this.popperVm && this.popperVm.visible
+    },
+    parent(){
+      return this
     }
   },
   beforeDestroy() {
@@ -156,6 +172,10 @@ export default {
         value = this.formatter(node.data)
       }
       return value
+    },
+    onInput(val){
+      this.searchInputValue = val
+      this.$refs["tree-popper"].getTree().filter(val)
     },
     onFocus(){
       this.$emit("focus")

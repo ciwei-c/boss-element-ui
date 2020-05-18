@@ -7,9 +7,9 @@
       }]"
       v-show="visible"
     >
-      <div class="boss-select-tree__filter" v-if="filter">
+      <!-- <div class="boss-select-tree__filter" v-if="filter">
         <boss-input placeholder="请输入关键字进行过滤" size="mini" v-model="filterValue" clearable/>
-      </div>
+      </div> -->
       <boss-scrollbar noresize wrap-class="boss-select-tree__scrollbar">
         <boss-tree
           ref="tree"
@@ -28,9 +28,8 @@
           :icon="icon"
           :default-expanded-keys="defaultExpandedKeys"
           :expandedIcon="expandedIcon"
-          :filter-node-method="filterNodeMethod"
+          :filter-node-method="filterNode"
           @check="onNodeClick"
-          @node-click="onNodeClick"
         ></boss-tree>
       </boss-scrollbar>
       <!-- <div class="boss-select-tree__bottom" v-if="multiple">
@@ -73,15 +72,11 @@ export default {
       if(val){
         this.update()
       }
-    },
-    filterValue(val){
-      this.$refs.tree.filter(val);
     }
   },
   data() {
     return {
-      visible:false,
-      filterValue:""
+      visible:false
     };
   },
   created(){
@@ -101,7 +96,7 @@ export default {
       }
     },
     filterNode(value,data){
-      return data.label.indexOf(value) > -1
+      return this.filterNodeMethod(value,data)
     },
     handleEnter() {
       document.body.addEventListener('keydown', this.handleKeydown);

@@ -8,8 +8,22 @@ export default {
       type:Boolean,
       default:true
     },
+    beforeLoad:Function,
     queryParams:Object,
-    beforeLoad:Function
+    method:{
+      type:String,
+      default:"post"
+    },
+    pageConfig:{
+      type:Object,
+      default(){
+        return {
+          indexField:"index",
+          sizeField:"size",
+          queryPlacement:"url"
+        }
+      }
+    },
   },
   data() {
     return {
@@ -38,25 +52,36 @@ export default {
   methods: {
     getDataByUrl() {
       if (this.enableLoadUrl) {
-        
-        let pagination = this.pagination
-        let { size, index } = this.queryParams || {}
-        
-        if(pagination && index && index !== pagination.currentPage) pagination.currentPage = index
-        if(pagination && size && size !== pagination.pageSize) pagination.pageSize = size
-        
-        let data = Object.assign({},this.queryParams || {})
-        if( this.hasPagination ) {
-          let { currentPage, pageSize } = this.pagination
-          if(pageSize !== undefined) Object.assign(data,{size:pageSize})
-          if(currentPage !== undefined) Object.assign(data,{index:currentPage})
-        }
-        if(this.beforeLoad && typeof this.beforeLoad === 'function' && this.beforeLoad() === false) return
 
         let requestData = {
           url: this.url,
           method: this.method || "post",
         }
+
+        let data = {}
+        let pageConfig = Object.assign({
+          indexField:"index",
+          sizeField:"size",
+          queryPlacement:"url"
+        }, this.pageConfig)
+
+        if(this.hasPagination) {
+          if(requestData.method === "get"){
+            data[pageConfig.sizeField] = this.pagination.pageSize
+            data[pageConfig.indexField] = this.pagination.currentPage
+          } else {
+            if(pageConfig.queryPlacement === "url"){
+              requestData.url = `${requestData.url}?${pageConfig.sizeField}=${this.pagination.pageSize}&${pageConfig.indexField}=${this.pagination.currentPage}`
+            } else {
+              data[pageConfig.sizeField] = this.pagination.pageSize
+              data[pageConfig.indexField] = this.pagination.currentPage
+            }
+          }
+        }
+
+        data = Object(data, this.queryParams)
+
+        if(this.beforeLoad && typeof this.beforeLoad === 'function' && this.beforeLoad() === false) return
 
         let _data = (this.requestReader && this.requestReader(data)) || data
 

@@ -29,12 +29,35 @@
       display: flex;
       align-items: center;
       flex-wrap: wrap;
+      span:first-child {
+        &.boss-select-tree__multiple-tags__input {
+          margin-left: 8px;
+        }
+      }
       .boss-tag {
         max-width: 100%;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
         margin: 2px 0 2px 6px;
+      }
+    }
+    @include e(multiple-tags__input) {
+      input {
+        outline: none;
+        border: none;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 4px;
+        box-shadow:unset !important;
+        text-overflow: unset !important;
+      }
+      &-mirror {
+        position: absolute;
+        visibility: hidden;
+        top: 0;
+        left: 0;
       }
     }
     @include e(multiple-tags) {
